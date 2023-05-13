@@ -15,41 +15,13 @@ model User {
   profilePicture  String?
   profileBanner   String?
   bio             String?
-  steamId         String?
-  twitchtoken     Json?
   gmailId         String?
   activeChoice    Boolean?
   isConnected     Boolean?
-  userInfoId      Int?              @unique
-  userInfo        UserInfo?         @relation(fields: [userInfoId], references: [id])
   Comment         Comment[]
   CommentReaction CommentReaction[]
 }
 
-model UserInfo {
-  id              Int      @id @default(autoincrement())
-  createdAt       DateTime @default(now())
-  Gender          String?
-  Country         String?
-  Language        String?
-  User            User?
-  Address         String?
-}
-
-model Friends {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  sender    String
-  reciever  String
-}
-
-model FriendRequest {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  sender    String
-  reciever  String
-  status    String
-}
 
 model Chat {
   id        Int      @id @default(autoincrement())
@@ -59,18 +31,6 @@ model Chat {
   msg       String
 }
 
-model GameSelectInfo {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  uid       String
-  appid     String
-}
-
-model OwnedGames {
-  uid       String   @id
-  createdAt DateTime @default(now())
-  games     String
-}
 
 model Posts {
   id          Int       @id @default(autoincrement())
