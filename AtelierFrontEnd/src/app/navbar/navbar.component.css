@@ -19,7 +19,7 @@ nav {
   justify-content: space-around;
   position: fixed;
   z-index: 15;
-  background-color: #262626;
+  background-color: #dee2e6;
 }
 app-app-search{
   width: 629px;
@@ -282,7 +282,7 @@ input:focus {
 }
 .nav-btn{
   cursor:pointer;
-  color:antiquewhite;
+  color:rgb(0, 0, 0);
   padding-right:10px;
   padding-left: 10px;
 }

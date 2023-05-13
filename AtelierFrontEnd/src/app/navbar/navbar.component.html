@@ -4,17 +4,17 @@
       <img src="./../../assets/icon-resource/cake.png" class="logo">
       <img src="./../../assets/icon-resource/map.png" style="margin-left:15px;width:40px;height:40px" class="logo" (click)="openModal()">
       <app-app-search></app-app-search>
-      <li style="margin-left: 35rem;" [routerLink]="['/home']"><img class="homeicon" src="./../../assets/icon-resource/home.png"><a class="nav-btn" style="color: antiquewhite;"
-          >Home</a></li>
+      <ul style="margin-left: 35rem;" [routerLink]="['/home']"><img class="homeicon" src="./../../assets/icon-resource/home.png"><a class="nav-btn" style="color: rgb(0, 0, 0);"
+          >Home</a></ul>
       <!-- <li class="hover-effect"><a class="nav-btn"  >Features</a></li>
         <li class="hover-effect"><a class="nav-btn"  >About</a></li> -->
       <!-- <li><a [routerLink]="['/chat']"[queryParams]="{ id: userparsed.uid}"[skipLocationChange]="true">Chat</a></li> -->
-      <li (click)="onchatClicked()"><img class="homeicon" src="./../../assets/icon-resource/chat.png"><a class="nav-btn" style="align-items: center;" >Chat</a>
+      <ul (click)="onchatClicked()"><img class="homeicon" src="./../../assets/icon-resource/chat.png"><a class="nav-btn" style="align-items: center;" >Chat</a>
         <div class="wrapper">
           <i *ngIf="noti" class="fa fa-bell icon"></i>
         </div>
-      </li>
-      <li>
+      </ul>
+      <ul>
         <div class="notification">
           <div class="notBtn" href="#">
             <!--Number supports double digits and automaticly hides itself when there is nothing between divs -->
@@ -22,9 +22,9 @@
             <i ><img class="notiicon" src="./../../assets/icon-resource/notification.png" #togglenoti (click)="toggleNotiDropDown()"></i>
           </div>
         </div>
-      </li>
+      </ul>
       <div class="noti-menu-wrap"  #notiMenu [ngClass]="notiShow?'open-menu':''">
-        <div style="color: white;left: 20px;font-weight: 650;font-size: x-large;position: relative;top: 10px;">
+        <div style="color: rgb(0, 0, 0);left: 20px;font-weight: 650;font-size: x-large;position: relative;top: 10px;">
           Notifications</div>
         <div class="noti-menu" >
               <div class="display">
