@@ -76,7 +76,6 @@ export class NavbarComponent implements  OnInit {
       this.socketService.setSocketId(this.userparsed.id);
       this.incMsg();
       this.incNotification();
-      this.getPendingReq();
     }
     })
     setInterval(() => {
@@ -128,36 +127,10 @@ export class NavbarComponent implements  OnInit {
     this.router.navigate(['chat']);
   }
 
-  getPendingReq() {
-    this.notificationArray=[];
-    axios.get('getFriendData').then(res => {
-      //console.log(res.data)
-      res.data.forEach((user: any) => {
-        if(user.status=='incoming'){
-          this.notificationArray.push({ sender: user.id, notiType: "frnd req", profileurl: user.profilePicture, userName: user.name })
-         }
-      });
-    }).catch(err => console.log(err))
-  }
-
   onclick(userid: any) {
     //console.log(userid)
     this.notiShow=false
     this.router.navigate(['/user'], { queryParams: { id: userid } });
-  }
-  acceptReq(frndid: any) {
-    this.messageService.add({ severity: 'success', summary: 'Accepted', detail: 'Friend request Accepted Good Call!!' });
-     axios.post('acceptFriend', { frnd_id: frndid }).then(res => {
-       //console.log("accepted", res)
-       this.getPendingReq();
-     }).catch(err => console.log(err))
-  }
-  rejectReq(frndid: any) {
-    this.messageService.add({ severity: 'success', summary: 'Rejected', detail: 'Friend request Rejected Good Call!!' });
-     axios.post('rejectFriend', { frnd_id: frndid }).then(res => {
-       //console.log("rejected", res)
-       this.getPendingReq();
-     }).catch(err => console.log(err))
   }
 
   notiDismiss(index:any){

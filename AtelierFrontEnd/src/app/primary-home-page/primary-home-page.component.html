@@ -5,8 +5,7 @@
     <div class="con">
       <div class="row">
         <div class="profileimg">
-          <img [src]="userInfo?.profilePicture" class="user-pic" (error)="onProfilePicError()"
-            referrerpolicy="no-referrer">
+          <img [src]="userInfo?.profilePicture" class="user-pic" referrerpolicy="no-referrer">
         </div>
         <div class="col-md-auto">
           <button #open type="button" class="btn btn-outline-light" (click)="openModal()">
