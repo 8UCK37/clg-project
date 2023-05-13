@@ -7,17 +7,14 @@ import axios from "axios";
 export const environment = {
   production: false,
 	SOCKET_ENDPOINT: 'http://localhost:5000',
-  baseUrl: 'http://localhost:4200',
-  endpointUrl: 'http://localhost:3000',
   firebaseConfig : {
-    apiKey: "AIzaSyDpR4P95ehxX3iN0IwLjVM8KFWP6JCN33Q",
-    authDomain: "teamfinder-e7048.firebaseapp.com",
-    projectId: "teamfinder-e7048",
-    storageBucket: "teamfinder-e7048.appspot.com",
-    messagingSenderId: "760131924547",
-    appId: "1:760131924547:web:9e93ae9834f848699fdaf6",
-    measurementId: "G-Q0LNWXCFB6",
-    vapidKey: "BNvDzxHlCpYtuvbJVr-u4YhAMUzEaHkh7F522s0KUrDXoQQx8zjxU8mT_DuAWaB2KQlv9fuGz_cA40b6IINuC0Q"
+    apiKey: "AIzaSyA0ET7oXkSP22IN-VulRuB3VXja9d0zCXI",
+    authDomain: "arachnoid-a42069.firebaseapp.com",
+    projectId: "arachnoid-a42069",
+    storageBucket: "arachnoid-a42069.appspot.com",
+    messagingSenderId: "447159358959",
+    appId: "1:447159358959:web:5be4127908d13edb01521a",
+    measurementId: "G-DT5FZXC14N"
   }
 };
 
