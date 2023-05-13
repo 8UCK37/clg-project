@@ -26,16 +26,11 @@ export class PrimaryHomePageComponent implements OnInit {
   public usr:any;
   public userparsed:any;
   public userInfo:any;
-  public posts : any[] = [];
   public utcDateTime:any;
   public timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  public imageFile!: File;
-  public imageSrcs: string[] = [];
-  public tagList = [];
-  public imageBlobs:any[]=[];
   myInterval = 0;
   activeSlideIndex = 0;
-  constructor(private commentService: CommentService,public user: UserService ,private auth: AngularFireAuth,private renderer: Renderer2,private modalService: BsModalService , private userService : UserService , public utilsServiceService : UtilsServiceService) {
+  constructor(private commentService: CommentService,public user: UserService ,private auth: AngularFireAuth,private renderer: Renderer2,private modalService: BsModalService , private userService : UserService ) {
     this.renderer.listen('window', 'click', (e: Event) => {
       if (!this.comment?.nativeElement.contains(e.target as HTMLElement) && e.target !== this.commentbtn?.nativeElement) {
         this.closeComments?.nativeElement.click();
@@ -60,10 +55,6 @@ export class PrimaryHomePageComponent implements OnInit {
 
    }
 
-
-
-
-
   toggleMenu() {
     this.show=!this.show;
   }
@@ -79,10 +70,6 @@ export class PrimaryHomePageComponent implements OnInit {
     event.preventDefault();
   }
 
-
-  openModal(){
-    this.utilsServiceService.modalObjSource.next({open:true, data:null})
-  }
 }
 
 

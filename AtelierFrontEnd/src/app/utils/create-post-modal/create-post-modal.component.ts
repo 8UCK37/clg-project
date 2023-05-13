@@ -89,60 +89,9 @@ export class CreatePostModalComponent implements OnInit {
     event.target.value = ''
   }
 
-  clearImages(): void {
-    this.imageSrcs = [];
-    this.imageBlobs = [];
-    // this.imageInput.nativeElement.value ='';
-  }
-
-  removeImage(index: number): void {
-    this.imageSrcs.splice(index, 1);
-    this.imageBlobs.splice(index, 1);
-    // this.imageInput.nativeElement.value ='';
-  }
-
-  uploadPostFile(){
-
-    this.formData = new FormData();
-    if(this.imageSrcs && this.imageSrcs.length != 0){
-      //console.log("not null")
-      // let type = this.imageInput.nativeElement.files[0].type
-    // if(type != "image/jpeg" && type != "image/jpg"){
-    //   alert("wrong image type please upload jpg or Jpeg")
-    //   return
-    // }
-    }
-    // const textareaElement = document.getElementById("message-text") as HTMLTextAreaElement;
-    // const text = textareaElement.value;
-    //console.log(this.input.nativeElement.files);
-    for(let i=0;i< this.imageBlobs.length;i++){
-      this.formData.append("post", this.imageBlobs[i]);
-
-    }
-    //console.log(this.imageBlobs)
-    this.formData.append("data" , JSON.stringify({data : this.tagList,desc: this.textObj}))
-    axios.post('/createPost', this.formData, {headers: {'Content-Type': 'multipart/form-data'}}).then(res=>{
-    }).catch(err =>console.log(err))
-    //console.log(this.input)
-    //console.log(this.formData.data)
-    this.tagList = [];
-    //console.log(this.tagList)
-    this.clearImages()
-    this.isOpen = false
-    // textareaElement.value=''
-    this.utilsServiceService.modalObjSource.next({open:false})
-    this.closeModal(this.modal)
-    // this.ngOnInit()
-    this.imageBlobs=[]
-
-    this.mentionNotification(this.textObj)
 
 
 
-    setTimeout(() => {
-      // this.fetchLatestPost();
-    }, 1500);
-  }
   openModal(template: TemplateRef<any>) {
     console.log("open")
     this.modalRef = this.modalService.show(template,
@@ -160,17 +109,5 @@ export class CreatePostModalComponent implements OnInit {
     this.textObj = data
   }
 
-  mentionNotification(data:any){
-    this.mentionList=[]
-    data.forEach((ele:any) => {
-      //console.log(ele)
-      if(ele.insert.mention){
-        //console.log(ele.insert.mention)
-        this.mentionList.push({id:ele.insert.mention.id})
-      }
-    });
-    //console.log(this.mentionList)
-    axios.post('/mention',{mentionlist:this.mentionList}).then(res=>{
-    }).catch(err =>console.log(err))
-  }
+  
 }

@@ -10,6 +10,7 @@ import * as bootstrap from 'bootstrap';
 import { animation } from '@angular/animations';
 import { CommentService } from '../post/comment.service';
 import { MessageService } from 'primeng/api';
+import { UtilsServiceService } from '../utils/utils-service.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -35,7 +36,7 @@ export class NavbarComponent implements  OnInit {
   public noti: boolean = false;
   public recData: any;
   commentOpen: boolean=false;
-  constructor(private messageService: MessageService,public user: UserService, private renderer: Renderer2, private auth: AngularFireAuth, private socketService: ChatServicesService, private router: Router , public userService : UserService) {
+  constructor(private messageService: MessageService,public user: UserService, private renderer: Renderer2, private auth: AngularFireAuth, private socketService: ChatServicesService, private router: Router , public userService : UserService,public utilsServiceService : UtilsServiceService) {
     this.renderer.listen('window', 'click', (e: Event) => {
       /**
        * Only run when toggleButton is not clicked
@@ -142,5 +143,8 @@ export class NavbarComponent implements  OnInit {
     this.notiDismiss(index)
     this.notiShow=false
     this.router.navigate(['post-page'],{ queryParams: { post_id: postId} });
+  }
+  openModal(){
+    this.utilsServiceService.modalObjSource.next({open:true, data:null})
   }
 }
