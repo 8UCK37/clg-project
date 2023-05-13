@@ -576,14 +576,14 @@ width: 100%;
 /*min-height: 71px;*/
 border: 1px solid transparent;
 border-radius: 3px;
-background-color: #212529;
+background-color: #ffffff;
 }
 
 .imtcontainer > .img {
 float: left;
 width: 40px;
 height: 40px;
-background-color: #212529;
+background-color: #ffffff;
 margin: 8px 1px 0 8px;
 display: inline-block;
 border: 1px solid transparent;

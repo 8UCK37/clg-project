@@ -1,40 +1,23 @@
 <ng-template class="" id="staticBackdrop"  data-bs-keyboard="false"
 tabindex="-1"  #modal >
 
-  <div class="">
-    <div class="" style="background-color: currentColor;">
+
       <div class="modal-header" style="border: 0px;">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel" style="color: whitesmoke;">Enter your Delivery Address</h1>
+        <h1 class="modal-title fs-5" id="staticBackdropLabel" style="color: rgb(0, 0, 0);">Enter your Delivery Address</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal(this.modal)"></button>
       </div>
       <div class="modal-body">
-        <!-- <div class="mb-3">
-          <textarea placeholder="Rant about those lootboxes here.." class="form-control"
-            id="message-text" style="background-color: currentColor; border: 0px;"></textarea>
-        </div>
-        <div style="background: white;border-radius: 5px;">
-          <tag-input [(ngModel)]="tagList">
-            <tag-input-dropdown [dynamicUpdate]="false">
-            </tag-input-dropdown>
-          </tag-input>
-        </div> -->
         <div class="imtcontainer">
           <div class="img">
             <img [src]="userInfo?.profilePicture" class="user-pic" >
           </div>
         </div>
-        <div style="background: white;border-radius: 5px;">
+        
 
-        </div>
-
-
-        <br>
       </div>
       <div class="modal-footer" style="border: 0px;">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeModal(this.modal)">Close</button>
         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
       </div>
-    </div>
-  </div>
 
 </ng-template>
