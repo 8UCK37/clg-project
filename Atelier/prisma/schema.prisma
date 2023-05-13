@@ -27,11 +27,12 @@ model User {
 model UserInfo {
   id              Int      @id @default(autoincrement())
   createdAt       DateTime @default(now())
-  Gender          String?
-  Country         String?
-  Language        String?
+  Locality        String?
+  zipcode         String?
   User            User?
   Address         String?
+  Landmark        String?
+  Phoneno         String?
 }
 
 model Chat {

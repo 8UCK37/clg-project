@@ -77,6 +77,7 @@ export class SettingsComponent implements OnInit {
       this.newUserName=this.userparsed.name
       this.bio = this.userInfo?.bio;
       axios.post('getUserInfo',{id:usr.id}).then(res => {
+        console.log(res.data)
         if(res.data.userInfo){
           this.info=res.data.userInfo;
         }else{

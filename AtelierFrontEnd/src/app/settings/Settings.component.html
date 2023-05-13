@@ -33,7 +33,7 @@
           <div class="tab-pane fade" [class.show]="this.tab=='account-settings'" [class.active]="this.tab=='account-settings'" role="tabpanel" id="v-pills-home" aria-labelledby="v-pills-home-tab">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title mb-0">Public info</h5>
+                <h5 class="card-title mb-0">Change Username</h5>
               </div>
               <div class="card-body">
                 <form>
@@ -43,10 +43,7 @@
                         <label for="inputUsername">Username</label>
                         <input type="text" class="form-control" id="inputUsername" placeholder="{{userparsed?.name}}" [(ngModel)]="newUserName" [ngModelOptions]="{standalone: true}">
                       </div>
-                      <div class="form-group" style="margin-top: 40px;">
-                        <label for="inputUsername">Biography</label>
-                        <textarea  placeholder="{{bio}}" class="form-control" id="bio-text" [(ngModel)]="bio" [ngModelOptions]="{standalone: true}"></textarea>
-                      </div>
+
                     </div>
 
                   </div>
@@ -56,7 +53,7 @@
             </div>
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title mb-0">Private info</h5>
+                <h5 class="card-title mb-0">Address info</h5>
               </div>
               <div class="card-body">
                 <form>
@@ -71,15 +68,19 @@
                     <input type="email" class="form-control disabled" id="inputEmail4" value={{userInfo.gmailId}} disabled>
                   </div>
                   <div class="form-group">
-                    <label for="inputAddress">Address</label>
-                    <input type="text" class="form-control" id="inputAddress" placeholder="Address">
+                    <label for="inputAddress">Contact no</label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="">
                   </div>
                   <div class="form-group">
-                    <label for="inputCountry">Country</label>
+                    <label for="inputCountry">Locality</label>
                     <input type="text" [typeahead]="indianStates" class="form-control" id="inputCountry" [isAnimated]="true" [(ngModel)]="info.Country" value={{info.Country}}>
                   </div>
                   <div class="form-group">
-                    <label for="inputGender">Gender</label>
+                    <label for="inputGender">Full Address</label>
+                    <input type="text" [typeahead]="gender" class="form-control" id="inputGender" [isAnimated]="true" [(ngModel)]="info.Gender" value={{info.Gender}}>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputGender">Pin code</label>
                     <input type="text" [typeahead]="gender" class="form-control" id="inputGender" [isAnimated]="true" [(ngModel)]="info.Gender" value={{info.Gender}}>
                   </div>
                   <!-- <div class="form-row">

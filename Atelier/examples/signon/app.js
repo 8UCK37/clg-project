@@ -163,6 +163,8 @@ app.post('/getUserInfo', ensureAuthenticated, async (req, res) => {
       let userData = await prisma.User.findUnique({
         where: {
           id: req.body.id
+        },include:{
+          userInfo:true
         }
       })
       console.log(userData)
