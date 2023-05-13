@@ -8,13 +8,10 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
-
 import { IonicModule } from '@ionic/angular';
-
 import { ChatPageComponent } from './chat-page/chat-page.component';
 import { ChatServicesService } from './chat-page/chat-services.service';
 import { NavbarComponent } from './navbar/navbar.component';
-
 import { MatAutocompleteModule} from '@angular/material/autocomplete';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { AppSearchComponent } from './navbar/app-search/app-search.component';
@@ -39,12 +36,12 @@ import { DialogModule } from 'primeng/dialog';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { LocationModalComponent } from './utils/location-modal/location-modal.component';
-
 import { QuillModule } from "ngx-quill";
 import { NotificationComponent } from './settings/notification/notification.component';
 import { PostPageComponent } from './post/post-page/post-page.component';
 import { ChatSettingsComponent } from './settings/chat-settings/chat-settings.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { LoginUserinfoComponent } from './primary-home-page/login-userinfo/login-userinfo.component';
 @NgModule({
   declarations: [
       AppComponent,
@@ -59,7 +56,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
       LocationModalComponent,
       NotificationComponent,
       PostPageComponent,
-      ChatSettingsComponent
+      ChatSettingsComponent,
+      LoginUserinfoComponent
    ],
   imports: [
     SidebarModule,
