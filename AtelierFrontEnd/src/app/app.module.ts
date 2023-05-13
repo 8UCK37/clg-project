@@ -8,15 +8,13 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
-import { ProfilePageComponent } from './profile-page/profile-page.component';
+
 import { IonicModule } from '@ionic/angular';
-import { LinkedAccountsComponent } from './profile-page/linked-accounts/linked-accounts.component';
+
 import { ChatPageComponent } from './chat-page/chat-page.component';
 import { ChatServicesService } from './chat-page/chat-services.service';
 import { NavbarComponent } from './navbar/navbar.component';
-import { GamesComponent } from './profile-page/games/games.component';
-import { ProfilePostComponent } from './profile-page/profile-post/profile-post.component';
-import { FriendsComponent } from './profile-page/friends/friends.component';
+
 import { MatAutocompleteModule} from '@angular/material/autocomplete';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { AppSearchComponent } from './navbar/app-search/app-search.component';
@@ -29,12 +27,10 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { SettingsComponent } from './settings/Settings.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { LoginUserinfoComponent } from './primary-home-page/login-userinfo/login-userinfo.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { PostComponent } from './post/post.component';
 import { ButtonModule } from 'primeng/button';
 import { SidebarModule } from 'primeng/sidebar';
-import { CommentComponent } from './comment/comment.component';
 import { ToastModule } from 'primeng/toast';
 import { GalleriaModule } from 'primeng/galleria';
 import { SpeedDialModule } from 'primeng/speeddial';
@@ -43,7 +39,7 @@ import { DialogModule } from 'primeng/dialog';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { CreatePostModalComponent } from './utils/create-post-modal/create-post-modal.component';
-import { MentionTextInputComponent } from './utils/mention-text-input/mention-text-input.component';
+
 import { QuillModule } from "ngx-quill";
 import { NotificationComponent } from './settings/notification/notification.component';
 import { PostPageComponent } from './post/post-page/post-page.component';
@@ -54,21 +50,13 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
       AppComponent,
       PrimaryHomePageComponent,
       LoginComponent,
-      ProfilePageComponent,
-      LinkedAccountsComponent,
       ChatPageComponent,
       NavbarComponent,
-      GamesComponent,
-      ProfilePostComponent,
-      FriendsComponent,
       AppSearchComponent,
       SettingsComponent,
       PrimaryHomePageComponent,
-      LoginUserinfoComponent,
       PostComponent,
-      CommentComponent,
       CreatePostModalComponent,
-      MentionTextInputComponent,
       NotificationComponent,
       PostPageComponent,
       ChatSettingsComponent

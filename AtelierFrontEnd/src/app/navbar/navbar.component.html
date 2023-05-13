@@ -1,5 +1,4 @@
 <main>
-  <app-login-userinfo></app-login-userinfo>
   <div *ngIf="userparsed">
     <nav class="nav-bg">
       <img src="./../../assets/icon-resource/logo-no-background.png" class="logo">
@@ -109,7 +108,7 @@
       </div>
       <div class="sub-menu-wrap" id="subMenu" #menu [ngClass]="show?'open-menu':''">
         <div class="sub-menu" id="openmenu">
-          <div class="user-info" routerLink="/profile-page/post" style="cursor: pointer;">
+          <div class="user-info" href="#" style="cursor: pointer;">
             <div class="profiledp">
               <img [src]="userInfo?.profilePicture">
             </div>
