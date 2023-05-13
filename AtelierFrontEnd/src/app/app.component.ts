@@ -32,34 +32,11 @@ export class AppComponent implements OnInit {
     //console.log(this.token)
     axios.defaults.headers.common['authorization'] = `Bearer ${this.token}`
     axios.defaults.baseURL = environment.endpointUrl;
-    this.requestPermission();
-    this.listen();
 
   }
   update(e:any){
 
     console.log( e)
   }
-  requestPermission() {
-    const messaging = getMessaging();
-    getToken(messaging,
-     { vapidKey: environment.firebaseConfig.vapidKey}).then(
-       (currentToken) => {
-         if (currentToken) {
-           console.log("Hurraaa!!! we got the token.....");
-           console.log(currentToken);
-         } else {
-           console.log('No registration token available. Request permission to generate one.');
-         }
-     }).catch((err) => {
-        console.log('An error occurred while retrieving token. ', err);
-    });
-  }
-  listen() {
-    const messaging = getMessaging();
-    onMessage(messaging, (payload) => {
-      console.log('Message received. ', payload);
-      this.message=payload;
-    });
-  }
+
 }

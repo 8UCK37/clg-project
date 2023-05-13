@@ -7,6 +7,8 @@ import axios from "axios";
 export const environment = {
   production: false,
 	SOCKET_ENDPOINT: 'http://localhost:5000',
+  baseUrl: 'http://localhost:4200',
+  endpointUrl: 'http://localhost:3000',
   firebaseConfig : {
     apiKey: "AIzaSyA0ET7oXkSP22IN-VulRuB3VXja9d0zCXI",
     authDomain: "arachnoid-a42069.firebaseapp.com",
