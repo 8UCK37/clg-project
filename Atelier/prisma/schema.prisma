@@ -1,0 +1,123 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("dbUrl")
+}
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["filteredRelationCount"]
+}
+
+model User {
+  id              String            @id
+  createdAt       DateTime          @default(now())
+  name            String
+  profilePicture  String?
+  profileBanner   String?
+  bio             String?
+  steamId         String?
+  twitchtoken     Json?
+  gmailId         String?
+  activeChoice    Boolean?
+  isConnected     Boolean?
+  userInfoId      Int?              @unique
+  userInfo        UserInfo?         @relation(fields: [userInfoId], references: [id])
+  Comment         Comment[]
+  CommentReaction CommentReaction[]
+}
+
+model UserInfo {
+  id              Int      @id @default(autoincrement())
+  createdAt       DateTime @default(now())
+  Gender          String?
+  Country         String?
+  Language        String?
+  User            User?
+  Address         String?
+}
+
+model Friends {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  sender    String
+  reciever  String
+}
+
+model FriendRequest {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  sender    String
+  reciever  String
+  status    String
+}
+
+model Chat {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  sender    String
+  receiver  String
+  msg       String
+}
+
+model GameSelectInfo {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  uid       String
+  appid     String
+}
+
+model OwnedGames {
+  uid       String   @id
+  createdAt DateTime @default(now())
+  games     String
+}
+
+model Posts {
+  id          Int       @id @default(autoincrement())
+  author      String
+  createdAt   DateTime  @default(now())
+  photoUrl    String?
+  description String?
+  comments    Comment[]
+  deleted     Boolean?
+  mention     Json?
+  shared      Int?
+}
+
+model Comment {
+  id              Int               @id @default(autoincrement())
+  author          User              @relation(fields: [userId], references: [id])
+  createdAt       DateTime          @default(now())
+  commentStr      String
+  commentOf       Int?
+  Posts           Posts?            @relation(fields: [postsId], references: [id])
+  postsId         Int?
+  userId          String
+  deleted         Boolean?
+  CommentReaction CommentReaction[]
+}
+
+model Tags {
+  id      Int    @id @default(autoincrement())
+  tagName String
+  post    Int
+}
+
+model Activity {
+  id        Int      @id @default(autoincrement())
+  post      Int
+  weight    Int
+  author    String
+  createdAt DateTime @default(now())
+  type      String
+}
+
+model CommentReaction {
+  id        Int      @id @default(autoincrement())
+  author    User     @relation(fields: [authorid], references: [id])
+  authorid  String
+  createdAt DateTime @default(now())
+  comment   Comment  @relation(fields: [commentid], references: [id])
+  commentid Int
+  type      String
+}

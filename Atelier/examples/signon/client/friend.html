@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+</head>
+
+<body>
+    <div>add friend</div>
+    <input id="friend-txt" type="text">
+    <button id="friend-add">Add </button>
+    <button id="friend-search">Search </button>
+    <a id="pending-request" href="/pendingrequest">Pending Requests </a>
+    <br/>
+    <div style="display: flex; justify-content: center">
+        FriendList :
+    </div>
+    <br>
+    <div style="display: flex;align-items: center; justify-content: center" id="friend-list"></div>
+    <div >
+        SearchResult :
+    </div>
+    <br>
+    <div id="search-result">
+
+    </div>
+    <script>
+        function fetchFriendData(){
+            let data = null;
+            $.ajax({
+                url: "/friendData", dataType: 'json', success: populateFriendData, Error: function (err) {
+                    console.log(err)
+                }
+            });
+        }
+        function populateFriendData(data) {
+            console.log("friend data populated ", data)
+
+            data.forEach(element => {
+                let eachFriend = element.response.players[0]
+                jQuery('<div>', {
+                    id: 'some-id',
+                    text: eachFriend.personaname
+                }).appendTo('#friend-list');
+                
+                jQuery('<img>', {
+                    src: eachFriend.avatarmedium
+                }).appendTo('#friend-list');
+            });
+        }
+        
+        function populateSearchData(data) {
+            console.log("frienddataPopulated", data)
+
+            data.forEach(element => {
+                let eachResult = element
+                jQuery('<div>', {
+                    id: 'some-id',
+                    text: eachResult.name
+                }).appendTo('#search-result');
+                
+                /*jQuery('<img>', {
+                    src: eachResult.avatarmedium
+                }).appendTo('#search-result');*/
+            });
+        }
+
+        fetchFriendData()
+
+        $("#friend-add").click(() => {
+            let inp = $("#friend-txt").val();
+            $("#friend-txt").val("");
+            console.log("add clicked", inp);
+            $.post("/addFriend",
+                {
+                    id: inp
+                },
+                function (data, status) {
+                    console.log("Data: " + data + "\nStatus: " + status);
+                })
+        })
+
+        $("#friend-search").click(() => {
+            let inp = $("#friend-txt").val();
+            $("#friend-txt").val("");
+            console.log("search clicked", inp);
+            $.post("/searchFriend",
+            
+                {
+                    name: inp
+                },
+                function (data, status) {
+                    populateSearchData(data);
+                    console.log("Data: " + data + "\nStatus: " + status);
+                },"json")
+        })
+        
+
+    </script>
+</body>
+
+</html>
