@@ -18,10 +18,21 @@ model User {
   gmailId         String?
   activeChoice    Boolean?
   isConnected     Boolean?
+  userInfoId      Int?              @unique
+  userInfo        UserInfo?         @relation(fields: [userInfoId], references: [id])
   Comment         Comment[]
   CommentReaction CommentReaction[]
 }
 
+model UserInfo {
+  id              Int      @id @default(autoincrement())
+  createdAt       DateTime @default(now())
+  Gender          String?
+  Country         String?
+  Language        String?
+  User            User?
+  Address         String?
+}
 
 model Chat {
   id        Int      @id @default(autoincrement())
