@@ -9,10 +9,10 @@ import { take } from 'rxjs/internal/operators/take';
 
 @Component({
   selector: 'app-create-post-modal',
-  templateUrl: './create-post-modal.component.html',
-  styleUrls: ['./create-post-modal.component.css']
+  templateUrl: './location-modal.component.html',
+  styleUrls: ['./location-modal.component.css']
 })
-export class CreatePostModalComponent implements OnInit {
+export class LocationModalComponent implements OnInit {
   public userInfo:any;
   public userparsed:any;
   public imageBlobs:any[]=[];
@@ -109,5 +109,5 @@ export class CreatePostModalComponent implements OnInit {
     this.textObj = data
   }
 
-  
+
 }

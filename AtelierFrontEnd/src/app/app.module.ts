@@ -38,7 +38,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DialogModule } from 'primeng/dialog';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ProgressBarModule } from 'primeng/progressbar';
-import { CreatePostModalComponent } from './utils/create-post-modal/create-post-modal.component';
+import { LocationModalComponent } from './utils/location-modal/location-modal.component';
 
 import { QuillModule } from "ngx-quill";
 import { NotificationComponent } from './settings/notification/notification.component';
@@ -56,7 +56,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
       ChatPageComponent,
       PrimaryHomePageComponent,
       PostComponent,
-      CreatePostModalComponent,
+      LocationModalComponent,
       NotificationComponent,
       PostPageComponent,
       ChatSettingsComponent
