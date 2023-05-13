@@ -47,7 +47,7 @@
                     </div>
 
                   </div>
-                  <button type="submit" class="button" (click)="changeName();updateBio()">Save changes</button>
+                  <button type="submit" class="button" (click)="changeName()">Save changes</button>
                 </form>
               </div>
             </div>
@@ -68,38 +68,22 @@
                     <input type="email" class="form-control disabled" id="inputEmail4" value={{userInfo.gmailId}} disabled>
                   </div>
                   <div class="form-group">
-                    <label for="inputAddress">Contact no</label>
-                    <input type="text" class="form-control" id="inputAddress" placeholder="">
+                    <label for="inputPhn">Contact no</label>
+                    <input type="text" class="form-control" id="inputPhn" placeholder="">
                   </div>
                   <div class="form-group">
-                    <label for="inputCountry">Locality</label>
-                    <input type="text" [typeahead]="indianStates" class="form-control" id="inputCountry" [isAnimated]="true" [(ngModel)]="info.Country" value={{info.Country}}>
+                    <label for="inputLocality">Locality</label>
+                    <input type="text" [typeahead]="indianStates" class="form-control" id="inputLocality" [isAnimated]="true" [(ngModel)]="info.Country" value={{info.Country}}>
                   </div>
                   <div class="form-group">
-                    <label for="inputGender">Full Address</label>
-                    <input type="text" [typeahead]="gender" class="form-control" id="inputGender" [isAnimated]="true" [(ngModel)]="info.Gender" value={{info.Gender}}>
+                    <label for="inputAddress">Full Address</label>
+                    <input type="text" [typeahead]="gender" class="form-control" id="inputAddress" [isAnimated]="true" [(ngModel)]="info.Gender" value={{info.Gender}}>
                   </div>
                   <div class="form-group">
-                    <label for="inputGender">Pin code</label>
-                    <input type="text" [typeahead]="gender" class="form-control" id="inputGender" [isAnimated]="true" [(ngModel)]="info.Gender" value={{info.Gender}}>
+                    <label for="inputZip">Pin code</label>
+                    <input type="text" [typeahead]="gender" class="form-control" id="inputZip" [isAnimated]="true" [(ngModel)]="info.Gender" value={{info.Gender}}>
                   </div>
-                  <!-- <div class="form-row">
-                    <div class="form-group col-md-6">
-                      <label for="inputCity">City</label>
-                      <input type="text" class="form-control" id="inputCity">
-                    </div>
-                    <div class="form-group col-md-4">
-                      <label for="inputState">State</label>
-                      <select id="inputState" class="form-control">
-                        <option selected="">Choose...</option>
-                        <option>...</option>
-                      </select>
-                    </div>
-                    <div class="form-group col-md-2">
-                      <label for="inputZip">Zip</label>
-                      <input type="text" class="form-control" id="inputZip">
-                    </div>
-                  </div> -->
+
                   <button type="submit" class="button">Save changes</button>
                 </form>
               </div>

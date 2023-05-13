@@ -97,11 +97,7 @@ export class SettingsComponent implements OnInit {
     }).catch(err => console.log(err))
     window.location.reload();
   }
-  updateBio(){
-    axios.post('updateBio',{bio:this.bio}).then(res=>{
-      this.userInfo.bio=this.bio;
-   }).catch(err=>console.log(err))
-  }
+  
   countrySelect(index:number){
     // console.log(index)
     // console.log(this.states[index])
