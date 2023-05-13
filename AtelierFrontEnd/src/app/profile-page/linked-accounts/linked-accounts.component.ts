@@ -93,7 +93,7 @@ export class LinkedAccountsComponent implements OnInit {
       }
       //console.log(this.linked)
     }).catch(err => console.log(err))
-    this.getSteamInfo();
+    //this.getSteamInfo();
    }
 
    getTwitchInfo(id:any){
