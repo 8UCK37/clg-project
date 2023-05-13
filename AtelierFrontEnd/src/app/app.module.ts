@@ -41,7 +41,7 @@ import { NotificationComponent } from './settings/notification/notification.comp
 import { PostPageComponent } from './post/post-page/post-page.component';
 import { ChatSettingsComponent } from './settings/chat-settings/chat-settings.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { LoginUserinfoComponent } from './primary-home-page/login-userinfo/login-userinfo.component';
+
 @NgModule({
   declarations: [
       AppComponent,
@@ -57,7 +57,6 @@ import { LoginUserinfoComponent } from './primary-home-page/login-userinfo/login
       NotificationComponent,
       PostPageComponent,
       ChatSettingsComponent,
-      LoginUserinfoComponent
    ],
   imports: [
     SidebarModule,
