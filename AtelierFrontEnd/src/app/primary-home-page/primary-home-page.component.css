@@ -824,6 +824,7 @@ a { text-decoration: none; }
 .flavours-menu{
   height:250px;
   width:40rem;
+  z-index: 1;
   position: absolute;
   background-color: #fba86f;
   display: none;
@@ -839,6 +840,7 @@ a { text-decoration: none; }
 .categories-menu{
   height:250px;
   width:40rem;
+  z-index: 1;
   position: absolute;
   background-color: #bcbdf9;
   display: none;
@@ -854,6 +856,7 @@ a { text-decoration: none; }
 .popular-menu{
   height:250px;
   width:40rem;
+  z-index: 1;
   position: absolute;
   background-color: #a0e6d1;
   display: none;
@@ -870,6 +873,7 @@ a { text-decoration: none; }
 .theme-menu{
   height:250px;
   width:40rem;
+  z-index: 1;
   position: absolute;
   background-color: #c7eeea;
   display: none;
@@ -884,4 +888,15 @@ a { text-decoration: none; }
   width:250px;
   border-radius: 15px;
 }
-
+.cake-showcase-wrapper{
+  width:auto;
+  display:flex;
+  overflow-x:scroll;
+}
+.cake-showcase-wrapper::-webkit-scrollbar{
+  width:0px;
+  color: #212529;
+}
+.cake-showcase-wrapper::-webkit-scrollbar-thumb{
+  color: #212529;
+}
