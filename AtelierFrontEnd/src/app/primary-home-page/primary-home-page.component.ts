@@ -5,11 +5,14 @@ import { UserService } from '../login/user.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { CommentService } from '../post/comment.service';
 import { UtilsServiceService } from '../utils/utils-service.service';
+import { Product } from 'src/service/product';
+import { ProductService } from 'src/service/productservice';
 
 @Component({
   selector: 'app-primary-home-page',
   templateUrl: './primary-home-page.component.html',
   styleUrls: ['./primary-home-page.component.css'],
+  providers: [ ProductService ]
 })
 
 export class PrimaryHomePageComponent implements OnInit {
@@ -30,7 +33,10 @@ export class PrimaryHomePageComponent implements OnInit {
   public timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   myInterval = 0;
   activeSlideIndex = 0;
-  constructor(private commentService: CommentService,public user: UserService ,private auth: AngularFireAuth,private renderer: Renderer2,private modalService: BsModalService , private userService : UserService ) {
+  products: Product[]=[];
+
+  responsiveOptions: any=[];
+  constructor(private productService: ProductService,private commentService: CommentService,public user: UserService ,private auth: AngularFireAuth,private renderer: Renderer2,private modalService: BsModalService , private userService : UserService ) {
     this.renderer.listen('window', 'click', (e: Event) => {
       if (!this.comment?.nativeElement.contains(e.target as HTMLElement) && e.target !== this.commentbtn?.nativeElement) {
         this.closeComments?.nativeElement.click();
@@ -52,7 +58,27 @@ export class PrimaryHomePageComponent implements OnInit {
     // this.utilsServiceService.modalObj$.subscribe((modalData:any)=>{
     //   console.log(modalData)
     // })
+    this.productService.getProductsSmall().then((products) => {
+      this.products = products;
+  });
 
+  this.responsiveOptions = [
+      {
+          breakpoint: '1199px',
+          numVisible: 1,
+          numScroll: 1
+      },
+      {
+          breakpoint: '991px',
+          numVisible: 2,
+          numScroll: 1
+      },
+      {
+          breakpoint: '767px',
+          numVisible: 1,
+          numScroll: 1
+      }
+  ];
    }
 
   toggleMenu() {

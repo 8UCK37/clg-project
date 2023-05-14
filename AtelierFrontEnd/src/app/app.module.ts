@@ -22,7 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TagInputModule } from 'ngx-chips';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { SettingsComponent } from './settings/Settings.component';
-import { CarouselModule } from 'ngx-bootstrap/carousel';
+
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { PostComponent } from './post/post.component';
@@ -41,7 +41,7 @@ import { NotificationComponent } from './settings/notification/notification.comp
 import { PostPageComponent } from './post/post-page/post-page.component';
 import { ChatSettingsComponent } from './settings/chat-settings/chat-settings.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-
+import { CarouselModule } from 'primeng/carousel';
 @NgModule({
   declarations: [
       AppComponent,
@@ -59,6 +59,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
       ChatSettingsComponent,
    ],
   imports: [
+    CarouselModule,
     SidebarModule,
     ToastModule,
     GalleriaModule,
@@ -83,7 +84,6 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     TagInputModule,
     ReactiveFormsModule,
     PickerModule,
-    CarouselModule.forRoot(),
     ModalModule.forRoot(),
     BsDropdownModule.forRoot(),
     QuillModule.forRoot(),
