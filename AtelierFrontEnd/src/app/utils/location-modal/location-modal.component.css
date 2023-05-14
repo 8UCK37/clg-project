@@ -624,3 +624,14 @@ box-shadow: none;
 ::ng-deep .modal-content  {
 
 }
+
+.modal-text-area{
+  margin-left: 47px;
+  background-color: azure; 
+  color: black; 
+  border: 1px solid black;
+}
+
+::placeholder.modal-text-area{
+  color: #3a5795;
+}
