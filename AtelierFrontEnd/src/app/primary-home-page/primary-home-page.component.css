@@ -863,3 +863,19 @@ a { text-decoration: none; }
 .popular:hover .popular-menu {
   display: block;
 }
+
+.theme{
+
+}
+.theme-menu{
+  height:250px;
+  width:40rem;
+  position: absolute;
+  background-color: #c7eeea;
+  display: none;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.theme:hover .theme-menu {
+  display: block;
+}
