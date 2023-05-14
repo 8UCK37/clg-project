@@ -8,7 +8,7 @@ import { first} from 'rxjs/internal/operators/first';
 import { take } from 'rxjs/internal/operators/take';
 
 @Component({
-  selector: 'app-create-post-modal',
+  selector: 'app-location-modal',
   templateUrl: './location-modal.component.html',
   styleUrls: ['./location-modal.component.css']
 })
