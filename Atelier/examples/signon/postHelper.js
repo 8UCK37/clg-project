@@ -1,5 +1,5 @@
 const {Storage} = require('@google-cloud/storage')
-const bucketName = 'gs://teamfinder-e7048.appspot.com/';
+const bucketName = 'gs://arachnoid-a42069.appspot.com';
 const { v4: uuidv4 } = require('uuid');
 const socketRunner = require('./socketRunner')
 

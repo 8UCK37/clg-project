@@ -1,5 +1,5 @@
 const {Storage} = require('@google-cloud/storage')
-const bucketName = 'gs://teamfinder-e7048.appspot.com/';
+const bucketName = 'gs://arachnoid-a42069.appspot.com';
 
 
 async function upChatBackGround(req, res){
