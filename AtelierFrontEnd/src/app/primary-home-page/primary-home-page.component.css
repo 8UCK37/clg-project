@@ -892,6 +892,7 @@ a { text-decoration: none; }
   width:auto;
   display:flex;
   overflow-x:scroll;
+  overflow-y: hidden;
 }
 .cake-showcase-wrapper::-webkit-scrollbar{
   width:0px;
