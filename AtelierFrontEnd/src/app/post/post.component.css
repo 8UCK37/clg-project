@@ -47,7 +47,8 @@ carousel img {
 }
 
 .cake-image-card{
-  height:250px;
-  width:250px;
+  height:350px;
+  width:350px;
+  margin-top: 25px;
   border-radius: 10px;
 }

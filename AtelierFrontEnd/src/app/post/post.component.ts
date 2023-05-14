@@ -90,15 +90,10 @@ export class PostComponent implements OnInit {
     this.commentService.setCommentObj({open:this.commentOpen,id:post.id});
   }
 
-
-
-
-
-
   goToPostPage(){
     //console.log(this.childPost.id)
     this.router.navigate(['post-page'],{ queryParams: { post_id: this.childPost.id } });
   }
 
-  
+
 }
