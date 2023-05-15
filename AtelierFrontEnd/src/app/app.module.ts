@@ -22,7 +22,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TagInputModule } from 'ngx-chips';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { SettingsComponent } from './settings/Settings.component';
-
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { PostComponent } from './post/post.component';
@@ -37,7 +36,6 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { LocationModalComponent } from './utils/location-modal/location-modal.component';
 import { QuillModule } from "ngx-quill";
-import { NotificationComponent } from './settings/notification/notification.component';
 import { PostPageComponent } from './post/post-page/post-page.component';
 import { AddCakeComponent } from './settings/add-cake/add-cake.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
@@ -54,7 +52,6 @@ import { CarouselModule } from 'primeng/carousel';
       PrimaryHomePageComponent,
       PostComponent,
       LocationModalComponent,
-      NotificationComponent,
       PostPageComponent,
       AddCakeComponent,
    ],
