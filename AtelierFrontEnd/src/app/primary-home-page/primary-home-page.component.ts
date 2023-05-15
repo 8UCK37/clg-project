@@ -29,8 +29,8 @@ export class PrimaryHomePageComponent implements OnInit {
       photoUrl: 'https://alittlecake.com/wp-content/uploads/2022/04/Marble-Geode-Cake-.jpg',
       price: 65,
       category: 'Accessories',
-      quantity: 24,
-      inventoryStatus: 'INSTOCK',
+      theme:'set a theme',
+      tags:'tag1,tag2',
       rating: 5
   },
   {
@@ -40,8 +40,8 @@ export class PrimaryHomePageComponent implements OnInit {
       photoUrl: 'https://chelsweets.com/wp-content/uploads/2022/11/recipe-card-penguin-cake-closer-735x980.jpg',
       price: 72,
       category: 'Accessories',
-      quantity: 61,
-      inventoryStatus: 'OUTOFSTOCK',
+      theme:'set a theme',
+      tags:'tag1,tag2',
       rating: 4
   },
   {
@@ -51,8 +51,8 @@ export class PrimaryHomePageComponent implements OnInit {
       photoUrl: 'https://cdn.shopify.com/s/files/1/0491/4646/2359/products/green-engagement-cake-kukkr-cakes-1.jpg?v=1678855554',
       price: 79,
       category: 'Fitness',
-      quantity: 2,
-      inventoryStatus: 'LOWSTOCK',
+      theme:'set a theme',
+      tags:'tag1,tag2',
       rating: 3
   },
   {
@@ -62,8 +62,8 @@ export class PrimaryHomePageComponent implements OnInit {
       photoUrl: 'https://www.brides.com/thmb/9vjyeuwH4DpjsG-kAKGO4vkIJyc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/KyleJohnPhotography-4cc9c2f6525b42158e0069d635c399e6.jpeg',
       price: 29,
       category: 'Clothing',
-      quantity: 25,
-      inventoryStatus: 'INSTOCK',
+      theme:'set a theme',
+      tags:'tag1,tag2',
       rating: 5
   },
   {
@@ -73,8 +73,8 @@ export class PrimaryHomePageComponent implements OnInit {
       photoUrl: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8NHx8fGVufDB8fHx8&w=1000&q=80',
       price: 15,
       category: 'Accessories',
-      quantity: 73,
-      inventoryStatus: 'INSTOCK',
+      theme:'set a theme',
+      tags:'tag1,tag2',
       rating: 4
   },
   {
@@ -84,8 +84,8 @@ export class PrimaryHomePageComponent implements OnInit {
     photoUrl: 'https://alittlecake.com/wp-content/uploads/2022/04/Marble-Geode-Cake-.jpg',
     price: 65,
     category: 'Accessories',
-    quantity: 24,
-    inventoryStatus: 'INSTOCK',
+    theme:'set a theme',
+    tags:'tag1,tag2',
     rating: 5
 },
 {
@@ -95,8 +95,8 @@ export class PrimaryHomePageComponent implements OnInit {
     photoUrl: 'https://chelsweets.com/wp-content/uploads/2022/11/recipe-card-penguin-cake-closer-735x980.jpg',
     price: 72,
     category: 'Accessories',
-    quantity: 61,
-    inventoryStatus: 'OUTOFSTOCK',
+    theme:'set a theme',
+    tags:'tag1,tag2',
     rating: 4
 },
 {
@@ -106,8 +106,8 @@ export class PrimaryHomePageComponent implements OnInit {
     photoUrl: 'https://cdn.shopify.com/s/files/1/0491/4646/2359/products/green-engagement-cake-kukkr-cakes-1.jpg?v=1678855554',
     price: 79,
     category: 'Fitness',
-    quantity: 2,
-    inventoryStatus: 'LOWSTOCK',
+    theme:'set a theme',
+    tags:'tag1,tag2',
     rating: 3
 },
 {
@@ -117,8 +117,8 @@ export class PrimaryHomePageComponent implements OnInit {
     photoUrl: 'https://www.brides.com/thmb/9vjyeuwH4DpjsG-kAKGO4vkIJyc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/KyleJohnPhotography-4cc9c2f6525b42158e0069d635c399e6.jpeg',
     price: 29,
     category: 'Clothing',
-    quantity: 25,
-    inventoryStatus: 'INSTOCK',
+    theme:'set a theme',
+    tags:'tag1,tag2',
     rating: 5
 },
 {
@@ -128,8 +128,8 @@ export class PrimaryHomePageComponent implements OnInit {
     photoUrl: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8NHx8fGVufDB8fHx8&w=1000&q=80',
     price: 15,
     category: 'Accessories',
-    quantity: 73,
-    inventoryStatus: 'INSTOCK',
+    theme:'set a theme',
+    tags:'tag1,tag2',
     rating: 4
 }
   ];

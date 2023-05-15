@@ -15,36 +15,27 @@ export class ChatSettingsComponent implements OnInit {
   constructor(public userService:UserService,private messageService: MessageService) { }
   @ViewChild('image') input!:ElementRef;
   @ViewChild('cakeImagePreview', { static: false }) cakeImagePreview!: ElementRef<HTMLImageElement>;
-  public chatBackGroundUrl:any;
   public formData:any;
-  showEmojiPicker = false;
   public userparsed:any;
   public fileSelected:boolean=false;
   public visible:boolean=false;
   showSpinner:boolean=true;
   deleteSuccess:boolean=false;
-  public averageHue:any;
-  cake:Product={
+  public cake:Product={
     id: '10',
-    name: 'White Cake',
-    description: 'Product Description',
+    name: '',
+    description: '',
     photoUrl: './../../assets/icon-resource/cake.png',
-    price: 15,
-    category: 'Accessories',
-    quantity: 73,
-    inventoryStatus: 'INSTOCK',
+    price: undefined,
+    category: '',
+    theme:'',
+    tags:'',
     rating: 4
   }
   ngOnInit(): void {
     this.userService.userCast.subscribe(usr=>{
       //console.log("user data" , usr)
       this.userparsed=usr
-      this.chatBackGroundUrl=`https://firebasestorage.googleapis.com/v0/b/teamfinder-e7048.appspot.com/o/ChatBackground%2F${this.userparsed?.id}.jpg?alt=media&token=8f8ec438-1ee6-4511-8478-04f3c418431e`
-
-      average(this.chatBackGroundUrl,{format:'hex'}).then(color=>{
-        //console.log(color)
-        this.averageHue=color
-      }).catch(err=>console.log(err))
 
     })
   }
@@ -55,12 +46,6 @@ export class ChatSettingsComponent implements OnInit {
     if(this.input.nativeElement.files[0]!=null){
       reader.onload = () => {
         const img = new Image();
-        img.onload = () => {
-          average(img, { format: 'hex' }).then(color => {
-            //console.log(color);
-            this.averageHue = color;
-          }).catch(err => console.log(err));
-        }
         img.src = reader.result as string;
         this.cakeImagePreview.nativeElement.src=img.src
       }
@@ -82,7 +67,8 @@ export class ChatSettingsComponent implements OnInit {
       }
       this.formData.append("chatbackground", this.input.nativeElement.files[0]);
       this.showUploadProgress()
-      axios.post('chat/background', this.formData, {headers: {'Content-Type': 'multipart/form-data'}}).then(res=>{
+      this.formData.append("data" , JSON.stringify({data : this.cake}))
+      axios.post('chat/background',this.formData, {headers: {'Content-Type': 'multipart/form-data'}}).then(res=>{
           this.input.nativeElement.value=null;
         }).catch(err =>console.log(err))
       }else{
@@ -101,10 +87,7 @@ export class ChatSettingsComponent implements OnInit {
       this.messageService.add({ severity: 'warn', summary: 'No image selcted', detail: 'No Image has yet been selected by you' });
     }
     this.input.nativeElement.value=null;
-    average(this.chatBackGroundUrl,{format:'hex'}).then(color=>{
-      //console.log(color)
-      this.averageHue=color
-    }).catch(err=>console.log(err))
+
   }
   showUploadProgress() {
     this.visible=true

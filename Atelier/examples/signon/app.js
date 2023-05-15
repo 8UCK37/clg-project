@@ -1016,7 +1016,7 @@ app.post("/updateBio", ensureAuthenticated, async (req, res) => {
 });
 app.post("/chat/background", ensureAuthenticated, upload.single('chatbackground'), (req, res) => {
   console.log("chat",req.user.user_id)
-  chatRouter.upChatBackGround(req,res)
+  chatRouter.upChatBackGround(req,res,prisma)
   res.sendStatus(200);
 });
 

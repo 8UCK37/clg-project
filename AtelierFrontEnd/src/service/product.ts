@@ -3,9 +3,9 @@ export interface Product {
   name?: string;
   description?: string;
   price?: number;
-  quantity?: number;
-  inventoryStatus?: string;
   category?: string;
+  theme?:  string;
+  tags?:string;
   photoUrl?: string;
   rating?: number;
 }
