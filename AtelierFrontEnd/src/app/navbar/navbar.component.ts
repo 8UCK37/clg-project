@@ -78,7 +78,7 @@ export class NavbarComponent implements  OnInit {
       this.incMsg();
       this.incNotification();
       axios.post('getUserInfo', { id: usr.id }).then(res => {
-        console.log(res.data);
+        //console.log(res.data);
       }).catch(err => console.log(err))
     }
     })
