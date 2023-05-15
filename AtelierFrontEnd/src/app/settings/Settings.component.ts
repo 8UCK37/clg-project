@@ -13,7 +13,7 @@ export class SettingsComponent implements OnInit {
   public userparsed:any;
   public userInfo:any={name:""};
   public bio:any;
-  public info:any={phnNo:'',locality:'',landmark:'',address:'',zip:''};
+  public info:any={Locality:'',zipcode:'',Address:'',Landmark:'',Phoneno:''};
 
   public tab:any;
 
