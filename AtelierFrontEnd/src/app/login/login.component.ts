@@ -22,8 +22,8 @@ export class LoginComponent  {
       //console.log("user data" , usr)
       this.userObject=usr
       if(this.userObject != null){
-      router.navigate(['/home']);
-    }
+        router.navigate(['/home']);
+      }
     })
   }
 }

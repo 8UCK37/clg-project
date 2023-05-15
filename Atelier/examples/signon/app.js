@@ -142,6 +142,7 @@ app.post('/saveuser', ensureAuthenticated, async function (req, res) {
         profileBanner: 'https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg',
         gmailId: req.user.email,
         activeChoice: true,
+        isAdmin: false,
         isConnected: true
       },
     })
