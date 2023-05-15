@@ -39,7 +39,7 @@ import { LocationModalComponent } from './utils/location-modal/location-modal.co
 import { QuillModule } from "ngx-quill";
 import { NotificationComponent } from './settings/notification/notification.component';
 import { PostPageComponent } from './post/post-page/post-page.component';
-import { ChatSettingsComponent } from './settings/chat-settings/chat-settings.component';
+import { AddCakeComponent } from './settings/add-cake/add-cake.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { CarouselModule } from 'primeng/carousel';
 @NgModule({
@@ -56,7 +56,7 @@ import { CarouselModule } from 'primeng/carousel';
       LocationModalComponent,
       NotificationComponent,
       PostPageComponent,
-      ChatSettingsComponent,
+      AddCakeComponent,
    ],
   imports: [
     CarouselModule,

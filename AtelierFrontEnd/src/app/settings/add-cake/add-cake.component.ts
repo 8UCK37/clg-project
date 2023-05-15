@@ -5,12 +5,12 @@ import { average } from 'color.js'
 import { MessageService } from 'primeng/api';
 import { Product } from 'src/service/product';
 @Component({
-  selector: 'app-chat-settings',
-  templateUrl: './chat-settings.component.html',
-  styleUrls: ['./chat-settings.component.css'],
+  selector: 'app-add-cake',
+  templateUrl: './add-cake.component.html',
+  styleUrls: ['./add-cake.component.css'],
   providers: [MessageService]
 })
-export class ChatSettingsComponent implements OnInit {
+export class AddCakeComponent implements OnInit {
 
   constructor(public userService:UserService,private messageService: MessageService) { }
   @ViewChild('image') input!:ElementRef;
