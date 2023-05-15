@@ -3,6 +3,7 @@ import axios from 'axios';
 import { UserService } from 'src/app/login/user.service';
 import { average } from 'color.js'
 import { MessageService } from 'primeng/api';
+import { Product } from 'src/service/product';
 @Component({
   selector: 'app-chat-settings',
   templateUrl: './chat-settings.component.html',
@@ -13,7 +14,7 @@ export class ChatSettingsComponent implements OnInit {
 
   constructor(public userService:UserService,private messageService: MessageService) { }
   @ViewChild('image') input!:ElementRef;
-  @ViewChild('previewImageElement', { static: false }) previewImageElement!: ElementRef<HTMLImageElement>;
+  @ViewChild('cakeImagePreview', { static: false }) cakeImagePreview!: ElementRef<HTMLImageElement>;
   public chatBackGroundUrl:any;
   public formData:any;
   showEmojiPicker = false;
@@ -23,6 +24,17 @@ export class ChatSettingsComponent implements OnInit {
   showSpinner:boolean=true;
   deleteSuccess:boolean=false;
   public averageHue:any;
+  cake:Product={
+    id: '10',
+    name: 'White Cake',
+    description: 'Product Description',
+    photoUrl: './../../assets/icon-resource/cake.png',
+    price: 15,
+    category: 'Accessories',
+    quantity: 73,
+    inventoryStatus: 'INSTOCK',
+    rating: 4
+  }
   ngOnInit(): void {
     this.userService.userCast.subscribe(usr=>{
       //console.log("user data" , usr)
@@ -50,7 +62,7 @@ export class ChatSettingsComponent implements OnInit {
           }).catch(err => console.log(err));
         }
         img.src = reader.result as string;
-        this.previewImageElement.nativeElement.src = img.src;
+        this.cakeImagePreview.nativeElement.src=img.src
       }
       reader.readAsDataURL(file);
     }

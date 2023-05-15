@@ -44,18 +44,17 @@ export class PrimaryHomePageComponent implements OnInit {
       inventoryStatus: 'OUTOFSTOCK',
       rating: 4
   },
-  // {
-  //     id: '3',
-  //     code: 'zz21cz3c1',
-  //     name: 'Anniversary',
-  //     description: 'Product Description',
-  //     image: 'https://cdn.shopify.com/s/files/1/0491/4646/2359/products/green-engagement-cake-kukkr-cakes-1.jpg?v=1678855554',
-  //     price: 79,
-  //     category: 'Fitness',
-  //     quantity: 2,
-  //     inventoryStatus: 'LOWSTOCK',
-  //     rating: 3
-  // },
+  {
+      id: '3',
+      name: 'Anniversary',
+      description: 'Product Description',
+      photoUrl: 'https://cdn.shopify.com/s/files/1/0491/4646/2359/products/green-engagement-cake-kukkr-cakes-1.jpg?v=1678855554',
+      price: 79,
+      category: 'Fitness',
+      quantity: 2,
+      inventoryStatus: 'LOWSTOCK',
+      rating: 3
+  },
   {
       id: '4',
       name: 'Anniversary',
