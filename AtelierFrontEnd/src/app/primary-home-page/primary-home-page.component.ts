@@ -24,7 +24,7 @@ export class PrimaryHomePageComponent implements OnInit {
   products: Product[]=[
     {
       id: '1',
-      name: 'cake1',
+      name: 'Blue Cake',
       description: 'Product Description',
       photoUrl: 'https://alittlecake.com/wp-content/uploads/2022/04/Marble-Geode-Cake-.jpg',
       price: 65,
@@ -35,7 +35,7 @@ export class PrimaryHomePageComponent implements OnInit {
   },
   {
       id: '2',
-      name: 'cake2',
+      name: 'Teddy Cake',
       description: 'Product Description',
       photoUrl: 'https://chelsweets.com/wp-content/uploads/2022/11/recipe-card-penguin-cake-closer-735x980.jpg',
       price: 72,
@@ -44,20 +44,21 @@ export class PrimaryHomePageComponent implements OnInit {
       inventoryStatus: 'OUTOFSTOCK',
       rating: 4
   },
-  {
-      id: '3',
-      name: 'cake3',
-      description: 'Product Description',
-      photoUrl: 'https://cdn.shopify.com/s/files/1/0491/4646/2359/products/green-engagement-cake-kukkr-cakes-1.jpg?v=1678855554',
-      price: 79,
-      category: 'Fitness',
-      quantity: 2,
-      inventoryStatus: 'LOWSTOCK',
-      rating: 3
-  },
+  // {
+  //     id: '3',
+  //     code: 'zz21cz3c1',
+  //     name: 'Anniversary',
+  //     description: 'Product Description',
+  //     image: 'https://cdn.shopify.com/s/files/1/0491/4646/2359/products/green-engagement-cake-kukkr-cakes-1.jpg?v=1678855554',
+  //     price: 79,
+  //     category: 'Fitness',
+  //     quantity: 2,
+  //     inventoryStatus: 'LOWSTOCK',
+  //     rating: 3
+  // },
   {
       id: '4',
-      name: 'cake4',
+      name: 'Anniversary',
       description: 'Product Description',
       photoUrl: 'https://www.brides.com/thmb/9vjyeuwH4DpjsG-kAKGO4vkIJyc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/KyleJohnPhotography-4cc9c2f6525b42158e0069d635c399e6.jpeg',
       price: 29,
@@ -68,7 +69,7 @@ export class PrimaryHomePageComponent implements OnInit {
   },
   {
       id: '5',
-      name: 'cake5',
+      name: 'Choclate',
       description: 'Product Description',
       photoUrl: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8NHx8fGVufDB8fHx8&w=1000&q=80',
       price: 15,
@@ -79,7 +80,7 @@ export class PrimaryHomePageComponent implements OnInit {
   },
   {
     id: '6',
-    name: 'cake1',
+    name: 'Blue Cake',
     description: 'Product Description',
     photoUrl: 'https://alittlecake.com/wp-content/uploads/2022/04/Marble-Geode-Cake-.jpg',
     price: 65,
@@ -90,7 +91,7 @@ export class PrimaryHomePageComponent implements OnInit {
 },
 {
     id: '7',
-    name: 'cake2',
+    name: 'Teddy Cake',
     description: 'Product Description',
     photoUrl: 'https://chelsweets.com/wp-content/uploads/2022/11/recipe-card-penguin-cake-closer-735x980.jpg',
     price: 72,
@@ -101,7 +102,7 @@ export class PrimaryHomePageComponent implements OnInit {
 },
 {
     id: '8',
-    name: 'cake3',
+    name: 'Anniversary',
     description: 'Product Description',
     photoUrl: 'https://cdn.shopify.com/s/files/1/0491/4646/2359/products/green-engagement-cake-kukkr-cakes-1.jpg?v=1678855554',
     price: 79,
@@ -123,7 +124,7 @@ export class PrimaryHomePageComponent implements OnInit {
 },
 {
     id: '10',
-    name: 'cake5',
+    name: 'White Cake',
     description: 'Product Description',
     photoUrl: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8NHx8fGVufDB8fHx8&w=1000&q=80',
     price: 15,
