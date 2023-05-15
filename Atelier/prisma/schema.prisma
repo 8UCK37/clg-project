@@ -94,3 +94,14 @@ model CommentReaction {
   commentid Int
   type      String
 }
+model Cakes {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  name        String?
+  description String?
+  price       String?
+  category    String?
+  theme       String?
+  tags      String?
+  photoUrl    String?
+}
