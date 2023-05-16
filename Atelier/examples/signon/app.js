@@ -405,7 +405,7 @@ app.post('/searchFriend', ensureAuthenticated, urlencodedParser, async function 
   res.send(JSON.stringify(searchresult));}
   //res.sendStatus(200);
 });
-app.post('/searchCakes', ensureAuthenticated, urlencodedParser, async function (req, res) {
+app.post('/searchCakes', urlencodedParser, async function (req, res) {
   const jsonObject = req.body;
 
   const searchresult = await prisma.Cakes.findMany({
@@ -435,6 +435,21 @@ app.post('/searchCakes', ensureAuthenticated, urlencodedParser, async function (
 });
 
 
+app.post('/addToCart', ensureAuthenticated, async function (req, res) {
+  console.log(req.body.data)
+  const cart=await prisma.Cart.upsert({
+    where:{
+      userId:req.user.user_id
+    },
+    update: { items: req.body.data },
+    create: {
+      userId:req.user.user_id, 
+      items: req.body.data 
+    },
+  })
+
+  res.sendStatus(200);
+});
 
 
 //selfexplanatory #endpoint

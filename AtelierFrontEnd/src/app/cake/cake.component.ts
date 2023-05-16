@@ -54,7 +54,7 @@ export class CakeComponent implements OnInit {
     //console.log(this.childPost.id)
     this.router.navigate(['item-page'],{ queryParams: { item_id: this.cake.id } });
   }
-  addTocart(){
+  async addTocart(){
     if(this.cart.includes(this.cake)){
       this.cart[this.cart.indexOf(this.cake)].quantity+=1
       console.log(this.cake)
@@ -64,5 +64,8 @@ export class CakeComponent implements OnInit {
       this.cart.push(this.cake)
     }
     this.utilsServiceService.setCartObj(this.cart)
+    await axios.post('addToCart',{data: this.cart}).then(res=>{
+      
+    }).catch(err=>console.log(err))
   }
 }

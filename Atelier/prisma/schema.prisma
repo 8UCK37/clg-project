@@ -109,6 +109,6 @@ model Cakes {
 model Cart {
   id          Int      @id @default(autoincrement())
   createdAt   DateTime @default(now())
-  userId      String?
+  userId      String?  @unique
   items       Json?
 }
