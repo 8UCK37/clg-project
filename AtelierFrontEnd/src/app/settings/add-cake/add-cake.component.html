@@ -1,0 +1,77 @@
+
+<input type="file" style="display: none;" #image (change)="previewImage()">
+
+
+<div class='dialog' *ngIf="visible" style="left:103px;">
+  <h3>Uploading the picture</h3>
+  <i *ngIf="!showSpinner" class="pi pi-times" style="margin-top: -30px;float:right;font-size: 1rem;cursor:pointer"
+    (click)="closeUploadDialog()"></i>
+  <div *ngIf="!showSpinner">
+    <i class="pi pi-check-circle" style="font-size: 35px;margin-top: 38px;margin-left: 246px;margin-right: 20px;"></i>
+    <br>
+    <span style="position: relative;right:-160px">Chat Background Updated!!</span>
+    <br>
+    <span style="position: relative;right:-91px">Reload the chat page a few times to see results</span>
+  </div>
+  <div *ngIf="showSpinner">
+    <p-progressSpinner [style]="{top:'12px',left:'241px'}"></p-progressSpinner>
+  </div>
+</div>
+<div style="display: flex;">
+
+  <div class="card_cust">
+    <img class="cake-image-card" #cakeImagePreview [src]="fileSelected ?  + cakeImagePreview.src  : cake.photoUrl " alt="">
+    <span style="position: relative;top: 400px;right: 331px;color: black;">₹{{cake.price}}</span>
+  </div>
+
+<div class="form-container">
+
+    <label for="exampleFormControlInput1">Name</label>
+    <input type="" class="form-control" id="exampleFormControlInput1" placeholder="set a name for this cake" [(ngModel)]="cake.name">
+
+    <label for="exampleFormControlInput2">Description</label>
+    <input type="" class="form-control" id="exampleFormControlInput1" placeholder="add a description for this cake" [(ngModel)]="cake.description">
+
+    <label for="exampleFormControlInput3">Size</label>
+    <input type="" class="form-control" id="exampleFormControlInput1" placeholder="set a size" [(ngModel)]="cake.size">
+
+    <label for="exampleFormControlInput3">Price</label>
+    <input type="" class="form-control" id="exampleFormControlInput1" placeholder="set a price" [(ngModel)]="cake.price">
+
+    <label for="exampleFormControlInput4">Category</label>
+    <input type="" class="form-control" id="exampleFormControlInput1" placeholder="set a category for this cake" [(ngModel)]="cake.category">
+
+    <label for="exampleFormControlInput5">Theme</label>
+    <input type="" class="form-control" id="exampleFormControlInput1" placeholder="set a theme" [(ngModel)]="cake.theme">
+
+    <label for="exampleFormControlInput6">Tags</label>
+    <input type="" class="form-control" id="exampleFormControlInput1" placeholder="add some tags like this: tag1,tag2" [(ngModel)]="cake.tags">
+
+</div>
+<div class="button-holder">
+  <div class="upload-btn"  (click)="image.click()">
+    <div class="wrapper">
+      <div class="file-select">
+        <i class="fa fa-image"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="upload-btn"  (click)="uploadChatBackground()">
+    <div class="wrapper">
+      <div class="file-upload">
+        <i class="fa fa-arrow-up"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="upload-btn"  (click)="cancelSelect()" >
+    <div class="wrapper">
+      <div class="file-cancel">
+        <i class="fa fa-xmark"></i>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+<p-toast position="bottom-right"></p-toast>

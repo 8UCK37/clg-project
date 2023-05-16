@@ -77,6 +77,9 @@ export class NavbarComponent implements  OnInit {
       this.socketService.setSocketId(this.userparsed.id);
       this.incMsg();
       this.incNotification();
+      axios.post('getUserInfo', { id: usr.id }).then(res => {
+        //console.log(res.data);
+      }).catch(err => console.log(err))
     }
     })
     setInterval(() => {
@@ -110,7 +113,6 @@ export class NavbarComponent implements  OnInit {
           axios.post('getUserInfo', { id: noti.sender }).then(res => {
             noti.profileurl = res.data.profilePicture;
             noti.userName = res.data.name;
-
             if(noti.notiType =="frndReqAcc"){
               this.messageService.add({ severity: 'success', summary: 'Accepted', detail: noti.userName.toString()+' accepted your friend request' });
             }

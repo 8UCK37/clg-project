@@ -3,36 +3,40 @@ import axios from 'axios';
 import { UserService } from 'src/app/login/user.service';
 import { average } from 'color.js'
 import { MessageService } from 'primeng/api';
+import { Product } from 'src/service/product';
 @Component({
-  selector: 'app-chat-settings',
-  templateUrl: './chat-settings.component.html',
-  styleUrls: ['./chat-settings.component.css'],
+  selector: 'app-add-cake',
+  templateUrl: './add-cake.component.html',
+  styleUrls: ['./add-cake.component.css'],
   providers: [MessageService]
 })
-export class ChatSettingsComponent implements OnInit {
+export class AddCakeComponent implements OnInit {
 
   constructor(public userService:UserService,private messageService: MessageService) { }
   @ViewChild('image') input!:ElementRef;
-  @ViewChild('previewImageElement', { static: false }) previewImageElement!: ElementRef<HTMLImageElement>;
-  public chatBackGroundUrl:any;
+  @ViewChild('cakeImagePreview', { static: false }) cakeImagePreview!: ElementRef<HTMLImageElement>;
   public formData:any;
-  showEmojiPicker = false;
   public userparsed:any;
   public fileSelected:boolean=false;
   public visible:boolean=false;
   showSpinner:boolean=true;
   deleteSuccess:boolean=false;
-  public averageHue:any;
+  public cake:Product={
+    id: '10',
+    name: '',
+    description: '',
+    photoUrl: './../../assets/icon-resource/cake.png',
+    price: undefined,
+    category: '',
+    theme:'',
+    tags:'',
+    size:'',
+    rating: 4
+  }
   ngOnInit(): void {
     this.userService.userCast.subscribe(usr=>{
       //console.log("user data" , usr)
       this.userparsed=usr
-      this.chatBackGroundUrl=`https://firebasestorage.googleapis.com/v0/b/teamfinder-e7048.appspot.com/o/ChatBackground%2F${this.userparsed?.id}.jpg?alt=media&token=8f8ec438-1ee6-4511-8478-04f3c418431e`
-
-      average(this.chatBackGroundUrl,{format:'hex'}).then(color=>{
-        //console.log(color)
-        this.averageHue=color
-      }).catch(err=>console.log(err))
 
     })
   }
@@ -43,14 +47,8 @@ export class ChatSettingsComponent implements OnInit {
     if(this.input.nativeElement.files[0]!=null){
       reader.onload = () => {
         const img = new Image();
-        img.onload = () => {
-          average(img, { format: 'hex' }).then(color => {
-            //console.log(color);
-            this.averageHue = color;
-          }).catch(err => console.log(err));
-        }
         img.src = reader.result as string;
-        this.previewImageElement.nativeElement.src = img.src;
+        this.cakeImagePreview.nativeElement.src=img.src
       }
       reader.readAsDataURL(file);
     }
@@ -70,7 +68,8 @@ export class ChatSettingsComponent implements OnInit {
       }
       this.formData.append("chatbackground", this.input.nativeElement.files[0]);
       this.showUploadProgress()
-      axios.post('chat/background', this.formData, {headers: {'Content-Type': 'multipart/form-data'}}).then(res=>{
+      this.formData.append("data" , JSON.stringify({data : this.cake}))
+      axios.post('chat/background',this.formData, {headers: {'Content-Type': 'multipart/form-data'}}).then(res=>{
           this.input.nativeElement.value=null;
         }).catch(err =>console.log(err))
       }else{
@@ -89,10 +88,7 @@ export class ChatSettingsComponent implements OnInit {
       this.messageService.add({ severity: 'warn', summary: 'No image selcted', detail: 'No Image has yet been selected by you' });
     }
     this.input.nativeElement.value=null;
-    average(this.chatBackGroundUrl,{format:'hex'}).then(color=>{
-      //console.log(color)
-      this.averageHue=color
-    }).catch(err=>console.log(err))
+
   }
   showUploadProgress() {
     this.visible=true

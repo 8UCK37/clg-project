@@ -13,54 +13,11 @@ export class SettingsComponent implements OnInit {
   public userparsed:any;
   public userInfo:any={name:""};
   public bio:any;
-  public info:any={Country:"",Gender:""};
-  public cardStyle?: any;
-  public cardStyle2?: any;
+  public info:any={Locality:'',zipcode:'',Address:'',Landmark:'',Phoneno:''};
+
   public tab:any;
-  selected1?: string;
-  selected2?: string;
-  public indianStates: string[] = [
-    "Andhra Pradesh",
-    "Arunachal Pradesh",
-    "Assam",
-    "Bihar",
-    "Chhattisgarh",
-    "Goa",
-    "Gujarat",
-    "Haryana",
-    "Himachal Pradesh",
-    "Jharkhand",
-    "Karnataka",
-    "Kerala",
-    "Madhya Pradesh",
-    "Maharashtra",
-    "Manipur",
-    "Meghalaya",
-    "Mizoram",
-    "Nagaland",
-    "Odisha",
-    "Punjab",
-    "Rajasthan",
-    "Sikkim",
-    "Tamil Nadu",
-    "Telangana",
-    "Tripura",
-    "Uttar Pradesh",
-    "Uttarakhand",
-    "West Bengal",
-    "Andaman and Nicobar Islands",
-    "Chandigarh",
-    "Dadra and Nagar Haveli and Daman and Diu",
-    "Delhi",
-    "Ladakh",
-    "Lakshadweep",
-    "Puducherry"
-  ];
-  public gender: string[] = [
-    "Male",
-    "Female",
-    "Other"
-  ];
+
+
   constructor(public userService:UserService,private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -80,12 +37,10 @@ export class SettingsComponent implements OnInit {
         console.log(res.data)
         if(res.data.userInfo){
           this.info=res.data.userInfo;
-        }else{
-          this.info={Gender:null,Country:null}
         }
         console.log(res.data.userInfo)
-      })
-      }
+      }).catch(err=>console.log(err))
+    }
     })
   }
 
@@ -97,16 +52,12 @@ export class SettingsComponent implements OnInit {
     }).catch(err => console.log(err))
     window.location.reload();
   }
-  
-  countrySelect(index:number){
-    // console.log(index)
-    // console.log(this.states[index])
-    this.selected1 = this.indianStates[index]
-    this.cardStyle2 = []
-    this.cardStyle = []
-  }
-  updateinfo(){
 
+
+  updateinfo(){
+    console.log(this.info)
+    axios.post('/saveUserInfo', { Locality:this.info.locality,zipcode:this.info.zip,Address:this.info.address,Landmark:this.info.landmark,Phoneno:this.info.phnNo}
+    ).catch(err=>console.log(err))
   }
 
 }

@@ -142,6 +142,7 @@ app.post('/saveuser', ensureAuthenticated, async function (req, res) {
         profileBanner: 'https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg',
         gmailId: req.user.email,
         activeChoice: true,
+        isAdmin: false,
         isConnected: true
       },
     })
@@ -1015,7 +1016,7 @@ app.post("/updateBio", ensureAuthenticated, async (req, res) => {
 });
 app.post("/chat/background", ensureAuthenticated, upload.single('chatbackground'), (req, res) => {
   console.log("chat",req.user.user_id)
-  chatRouter.upChatBackGround(req,res)
+  chatRouter.upChatBackGround(req,res,prisma)
   res.sendStatus(200);
 });
 

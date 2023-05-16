@@ -18,6 +18,7 @@ model User {
   gmailId         String?
   activeChoice    Boolean?
   isConnected     Boolean?
+  isAdmin         Boolean?
   userInfoId      Int?              @unique
   userInfo        UserInfo?         @relation(fields: [userInfoId], references: [id])
   Comment         Comment[]
@@ -92,4 +93,16 @@ model CommentReaction {
   comment   Comment  @relation(fields: [commentid], references: [id])
   commentid Int
   type      String
+}
+model Cakes {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  name        String?
+  description String?
+  price       String?
+  size        String?
+  category    String?
+  theme       String?
+  tags        String?
+  photoUrl    String?
 }

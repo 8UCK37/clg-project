@@ -75,7 +75,7 @@ export class ChatPageComponent implements OnInit {
       //console.log(this.userparsed.id)
       this.chatBackGroundUrl=`https://firebasestorage.googleapis.com/v0/b/teamfinder-e7048.appspot.com/o/ChatBackground%2F${this.userparsed?.id}.jpg?alt=media&token=8f8ec438-1ee6-4511-8478-04f3c418431e`
       this.getActiveChoice();
-      
+
       average(this.chatBackGroundUrl,{format:'hex'}).then(color=>{
         //console.log(color)
         this.averageHue=color
@@ -277,9 +277,6 @@ export class ChatPageComponent implements OnInit {
       axios.post('sendNoti',{receiver_id:frndid}).then(res=>{
         console.log(res.data);
      }).catch(err=>console.log(err))
-    }
-    goToChatSettings(){
-      this.router.navigate(['/settings'], { queryParams: { tab:"chat-settings" } });
     }
 }
 

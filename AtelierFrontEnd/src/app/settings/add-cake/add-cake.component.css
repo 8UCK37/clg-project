@@ -1,0 +1,198 @@
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.wrapper .file-upload {
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 4px solid #FFFFFF;
+  overflow: hidden;
+  background-image: linear-gradient(to bottom, #2590EB 50%, #FFFFFF 50%);
+  background-size: 100% 200%;
+  transition: all 1s;
+  color: #FFFFFF;
+  font-size: 25px;
+}
+.wrapper .file-upload input[type=file] {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.wrapper .file-upload:hover {
+  background-position: 0 -100%;
+  color: #2590EB;
+}
+
+.wrapper .file-cancel {
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 4px solid #FFFFFF;
+  overflow: hidden;
+  background-image: linear-gradient(to bottom, #eb2525 50%, #FFFFFF 50%);
+  background-size: 100% 200%;
+  transition: all 1s;
+  color: #FFFFFF;
+  font-size: 25px;
+}
+.wrapper .file-cancel input[type=file] {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.wrapper .file-cancel:hover {
+  background-position: 0 -100%;
+  color: #eb2525;
+}
+.wrapper .file-select {
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 4px solid #FFFFFF;
+  overflow: hidden;
+  background-image: linear-gradient(to bottom, #25eb50 50%, #FFFFFF 50%);
+  background-size: 100% 200%;
+  transition: all 1s;
+  color: #FFFFFF;
+  font-size: 25px;
+}
+.wrapper .file-select input[type=file] {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.wrapper .file-select:hover {
+  background-position: 0 -100%;
+  color: #25eb50;
+}
+.upload-btn{
+  margin-top: 15px;
+}
+/*progress dialog*/
+.dialog {
+  -webkit-animation-name: add;
+          animation-name: add;
+  -webkit-animation-duration: 0.4s;
+          animation-duration: 0.4s;
+  -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  background: #fff;
+  width: 585px;
+  height: 200px;
+  border-radius: 20px;
+  position: absolute;
+  z-index: 99;
+  left: calc(50% - 200px);
+  top: calc(50% - 100px);
+  box-shadow: 0 -1px 0 #e5e5e5, 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+  padding: 16px;
+  color: #212121;
+}
+.dialog h3 {
+  margin: 0;
+  font-size: 20px;
+  height: 24px;
+  line-height: 24px;
+}
+.dialog p {
+  margin: 16px 0;
+}
+.dialog .action-group {
+  width: 100%;
+  height: 40px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0 16px 16px 16px;
+}
+.dialog .action-group button {
+  float: right;
+  font-family: inherit;
+  background: rgba(0, 0, 0, 0);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 8px;
+}
+.dialog .action-group button:first-child {
+  color: #03A9F4;
+}
+
+@-webkit-keyframes add {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes add {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.card_cust {
+  height:500px;
+  width:400px;
+  display: flex;
+  justify-content: center;
+  background-color:#eeeeee;
+  border-radius: 5px;
+}
+
+.cake-image-card{
+  height:350px;
+  width:350px;
+  margin-top: 25px;
+  margin-left:25px;
+  border-radius: 10px;
+}
+.button-holder{
+  margin-left: 25px;
+  position:relative;
+  float:right;
+}
+.form-container{
+  width: 330px;
+  margin-left:25px
+}

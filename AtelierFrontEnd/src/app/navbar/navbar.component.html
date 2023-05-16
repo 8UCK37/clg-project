@@ -1,15 +1,12 @@
 <main>
-  
-  <div *ngIf="userparsed">
+  <div>
     <nav class="nav-bg">
       <img src="./../../assets/icon-resource/cake-atelier.png" class="logo">
       <img src="./../../assets/icon-resource/map.png" style="margin-left:15px;width:40px;height:40px" class="logo" (click)="openModal()">
       <app-app-search></app-app-search>
       <ul style="margin-left: 16rem;" [routerLink]="['/home']"><img class="homeicon" src="./../../assets/icon-resource/home.png"><a class="nav-btn" style="color: rgb(0, 0, 0);"
           >Home</a></ul>
-      <!-- <li class="hover-effect"><a class="nav-btn"  >Features</a></li>
-        <li class="hover-effect"><a class="nav-btn"  >About</a></li> -->
-      <!-- <li><a [routerLink]="['/chat']"[queryParams]="{ id: userparsed.uid}"[skipLocationChange]="true">Chat</a></li> -->
+
       <ul (click)="onchatClicked()"><img class="homeicon" src="./../../assets/icon-resource/chat.png"><a class="nav-btn" style="align-items: center;" >Chat</a>
         <div class="wrapper">
           <i *ngIf="noti" class="fa fa-bell icon"></i>
@@ -23,6 +20,9 @@
             <i ><img class="notiicon" src="./../../assets/icon-resource/notification.png" #togglenoti (click)="toggleNotiDropDown()"></i>
           </div>
         </div>
+      </ul>
+      <ul>
+        <img src="./../../assets/icon-resource/cupcakes.png" class="logo">
       </ul>
       <div class="noti-menu-wrap"  #notiMenu [ngClass]="notiShow?'open-menu':''">
         <div style="color: rgb(0, 0, 0);left: 20px;font-weight: 650;font-size: x-large;position: relative;top: 10px;">
@@ -101,9 +101,13 @@
         </div>
       </div>
 
-      <div>
+      <div *ngIf="userparsed">
         <img [src]="userInfo?.profilePicture" #toggleButton class="user-pic" (click)="toggleMenu()"
           referrerpolicy="no-referrer">
+      </div>
+      <div *ngIf="!userparsed" (click)="user.login()" style="cursor:pointer">
+        <img src="./../../assets/icon-resource/user.png" class="logo">
+        Login/Register
       </div>
       <div class="sub-menu-wrap" id="subMenu" #menu [ngClass]="show?'open-menu':''">
         <div class="sub-menu" id="openmenu">
@@ -114,7 +118,7 @@
             <h3>{{userInfo?.name}}</h3>
           </div>
           <hr>
-          <a href="#" [routerLink]="['/settings']" [queryParams]="{ tab: 'account-settings' }"routerLinkActive="router-link-active" class="sub-menu-link">
+          <a href="#" [routerLink]="['/settings']" routerLinkActive="router-link-active" class="sub-menu-link">
             <img src="./../../assets/icon-resource/setting2.png">
             <p>Settings & Privacy</p>
           </a>
