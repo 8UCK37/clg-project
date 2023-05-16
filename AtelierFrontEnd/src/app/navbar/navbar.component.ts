@@ -35,6 +35,7 @@ export class NavbarComponent implements  OnInit {
   public noti: boolean = false;
   public recData: any;
   commentOpen: boolean=false;
+  public cart:any;
   constructor(private messageService: MessageService,public user: UserService, private renderer: Renderer2, private auth: AngularFireAuth, private socketService: ChatServicesService, private router: Router , public userService : UserService,public utilsServiceService : UtilsServiceService) {
     this.renderer.listen('window', 'click', (e: Event) => {
       /**
@@ -79,6 +80,10 @@ export class NavbarComponent implements  OnInit {
       axios.post('getUserInfo', { id: usr.id }).then(res => {
         //console.log(res.data);
       }).catch(err => console.log(err))
+      this.utilsServiceService.cartObj$.subscribe(cart => {
+        this.cart= cart;
+        console.log(this.cart)
+      });
     }
     })
     setInterval(() => {

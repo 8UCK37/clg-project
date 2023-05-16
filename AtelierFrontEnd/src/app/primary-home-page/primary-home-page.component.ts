@@ -22,7 +22,7 @@ export class PrimaryHomePageComponent implements OnInit {
   public utcDateTime:any;
   public timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   public cakes:Product[]=[]
-  images:any=[]
+  public cart:any;
   responsiveOptions: any=[
     {
       breakpoint: '1199px',
@@ -39,9 +39,9 @@ export class PrimaryHomePageComponent implements OnInit {
       numVisible: 1,
       numScroll: 1
     }];
-  public cart:any;
 
-  constructor(public utilsServiceService : UtilsServiceService,public user: UserService ,private auth: AngularFireAuth,private renderer: Renderer2,private modalService: BsModalService , private userService : UserService ) {
+
+  constructor(public utilsServiceService : UtilsServiceService,private auth: AngularFireAuth,private renderer: Renderer2,private modalService: BsModalService , private userService : UserService ) {
 
   }
   // constructor(public user: UserService ,private auth: AngularFireAuth,private renderer: Renderer2,private modalService: BsModalService ) {}
@@ -57,7 +57,7 @@ export class PrimaryHomePageComponent implements OnInit {
     })
     this.utilsServiceService.cartObj$.subscribe(cart => {
       this.cart= cart;
-      console.log(this.cart)
+      //console.log(this.cart)
     });
 
    }

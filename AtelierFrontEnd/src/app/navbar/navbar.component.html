@@ -23,7 +23,10 @@
         </div>
       </ul>
       <ul>
-        <img src="./../../assets/icon-resource/cupcakes.png" class="logo">
+        <div [routerLink]="['/cart']" style="cursor: pointer;">
+          <img src="./../../assets/icon-resource/cupcakes.png" class="logo">
+          <span class="cart-count">{{cart.length}}</span>
+        </div>
       </ul>
       <div class="noti-menu-wrap"  #notiMenu [ngClass]="notiShow?'open-menu':''">
         <div style="color: rgb(0, 0, 0);left: 20px;font-weight: 650;font-size: x-large;position: relative;top: 10px;">

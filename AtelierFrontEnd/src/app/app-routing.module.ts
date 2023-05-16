@@ -9,12 +9,14 @@ import { PrimaryHomePageComponent } from './primary-home-page/primary-home-page.
 import { SettingsComponent } from './settings/Settings.component';
 import { AuthGuard } from './shared/guard/auth.guard';
 import { ItemPageComponent } from './item-page/item-page.component';
+import { ItemCartComponent } from './item-cart/item-cart.component';
 
 
 const routes: Routes = [
 
   { path: 'home', component: PrimaryHomePageComponent, canActivate: [AuthGuard] },
   { path: 'item-page', component: ItemPageComponent, canActivate: [AuthGuard] },
+  { path: 'cart', component: ItemCartComponent, canActivate: [AuthGuard] },
   { path: 'login-page', pathMatch: 'full', component: LoginComponent },
   { path: 'settings', pathMatch: 'full', component: SettingsComponent },
   { path: 'chat', pathMatch: 'full', component: ChatPageComponent, canActivate: [AuthGuard]},

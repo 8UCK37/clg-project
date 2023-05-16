@@ -40,6 +40,7 @@ import { AddCakeComponent } from './settings/add-cake/add-cake.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { CarouselModule } from 'primeng/carousel';
 import { ItemPageComponent } from './item-page/item-page.component';
+import { ItemCartComponent } from './item-cart/item-cart.component';
 @NgModule({
   declarations: [
       AppComponent,
@@ -54,6 +55,7 @@ import { ItemPageComponent } from './item-page/item-page.component';
       LocationModalComponent,
       AddCakeComponent,
       ItemPageComponent,
+      ItemCartComponent,
    ],
   imports: [
     CarouselModule,

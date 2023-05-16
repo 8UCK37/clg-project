@@ -546,3 +546,10 @@ cursor: pointer;
   bottom: 5px;
   position: relative;
   }
+.cart-count{
+  top: -24px;
+  position: relative;
+  left: -11px;
+  color: red;
+  font-size: larger;
+}
