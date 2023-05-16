@@ -48,10 +48,12 @@ export class PrimaryHomePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCakesList()
+
     this.userService.userCast.subscribe(usr=>{
       //console.log("user data" , usr)
       this.userparsed = usr;
       this.userInfo = usr;
+      this.getCart()
     })
     this.utilsServiceService.cartObj$.subscribe(cart => {
       this.cart= cart;
@@ -76,6 +78,12 @@ export class PrimaryHomePageComponent implements OnInit {
     axios.get('getCakesList').then(res => {
       console.log(res.data)
       this.cakes=res.data
+    }).catch(err=>console.log(err))
+  }
+  getCart(){
+    axios.get('getCart').then(res => {
+      console.log(res.data)
+      this.utilsServiceService.setCartObj(res.data.items)
     }).catch(err=>console.log(err))
   }
 }

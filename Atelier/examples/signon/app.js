@@ -450,7 +450,15 @@ app.post('/addToCart', ensureAuthenticated, async function (req, res) {
 
   res.sendStatus(200);
 });
-
+app.get('/getCart', ensureAuthenticated, async function (req, res) {
+  console.log(req.body.data)
+  const cart=await prisma.Cart.findUnique({
+    where:{
+      userId:req.user.user_id
+    }
+  })
+  res.send(JSON.stringify(cart));
+});
 
 //selfexplanatory #endpoint
 app.get('/logout', function (req, res) {

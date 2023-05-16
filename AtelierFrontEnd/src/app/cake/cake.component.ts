@@ -55,17 +55,33 @@ export class CakeComponent implements OnInit {
     this.router.navigate(['item-page'],{ queryParams: { item_id: this.cake.id } });
   }
   async addTocart(){
-    if(this.cart.includes(this.cake)){
-      this.cart[this.cart.indexOf(this.cake)].quantity+=1
-      console.log(this.cake)
+    // if(this.cart.includes(this.cake)){
+    //   this.cart[this.cart.indexOf(this.cake)].quantity+=1
+    //   console.log(this.cake)
+    // }else{
+    //   this.cake.quantity=1
+    //   console.log(this.cake)
+    //   this.cart.push(this.cake)
+    // }
+
+    if(this.cart.length!=0){
+      if(this.cart.find(element => element.id === this.cake.id)){
+        console.log('present')
+        this.cart.find(element => element.id === this.cake.id).quantity+=1
+      }else{
+        this.cake.quantity=1
+        this.cart.push(this.cake)
+      }
     }else{
       this.cake.quantity=1
-      console.log(this.cake)
       this.cart.push(this.cake)
     }
+
     this.utilsServiceService.setCartObj(this.cart)
+    if(this.userparsed.isAdmin){
     await axios.post('addToCart',{data: this.cart}).then(res=>{
-      
+
     }).catch(err=>console.log(err))
+    }
   }
 }
