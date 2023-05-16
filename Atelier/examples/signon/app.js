@@ -410,18 +410,30 @@ app.post('/searchCakes', ensureAuthenticated, urlencodedParser, async function (
 
   const searchresult = await prisma.Cakes.findMany({
     where: {
-      tags: {
-        contains: jsonObject.searchTerm,
-        mode: 'insensitive',
-      },
-    },orderBy:{
-      id:'asc'
-    }
-  })
-  
+      OR: [
+        {
+          name: {
+            contains: jsonObject.searchTerm,
+            mode: 'insensitive',
+          },
+        },
+        {
+          tags: {
+            contains: jsonObject.searchTerm,
+            mode: 'insensitive',
+          },
+        },
+      ],
+    },
+    orderBy: {
+      id: 'asc',
+    },
+  });
+
   res.send(JSON.stringify(searchresult));
   //res.sendStatus(200);
 });
+
 
 
 
