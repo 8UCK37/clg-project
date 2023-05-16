@@ -36,7 +36,6 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { LocationModalComponent } from './utils/location-modal/location-modal.component';
 import { QuillModule } from "ngx-quill";
-import { PostPageComponent } from './post/post-page/post-page.component';
 import { AddCakeComponent } from './settings/add-cake/add-cake.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { CarouselModule } from 'primeng/carousel';
@@ -52,7 +51,6 @@ import { CarouselModule } from 'primeng/carousel';
       PrimaryHomePageComponent,
       PostComponent,
       LocationModalComponent,
-      PostPageComponent,
       AddCakeComponent,
    ],
   imports: [

@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
 import { ChatPageComponent } from '../chat-page/chat-page.component';
 import * as bootstrap from 'bootstrap';
 import { animation } from '@angular/animations';
-import { CommentService } from '../post/comment.service';
 import { MessageService } from 'primeng/api';
 import { UtilsServiceService } from '../utils/utils-service.service';
 @Component({

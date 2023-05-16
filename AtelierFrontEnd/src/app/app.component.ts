@@ -4,7 +4,6 @@ import axios from 'axios';
 import { PrimaryHomePageComponent } from './primary-home-page/primary-home-page.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { UserService } from './login/user.service';
-import { CommentService } from './post/comment.service';
 import { Subscription } from 'rxjs';
 import { environment } from "../environments/environment";
 import { getMessaging, getToken, onMessage } from "firebase/messaging";
@@ -23,7 +22,7 @@ export class AppComponent implements OnInit {
   commentOpen!: boolean;
   treeObj: any;
   private treeObjSub!: Subscription;
-  constructor(private commentService: CommentService,private service : UserService){
+  constructor(private service : UserService){
     // console.log(this.service.userData )
 
   }

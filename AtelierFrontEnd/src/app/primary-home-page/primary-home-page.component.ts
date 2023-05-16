@@ -2,7 +2,6 @@ import { Component, ElementRef, OnInit, Renderer2, ViewChild,TemplateRef } from 
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { UserService } from '../login/user.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { CommentService } from '../post/comment.service';
 import { Product } from 'src/service/product';
 
 
@@ -145,7 +144,7 @@ export class PrimaryHomePageComponent implements OnInit {
   ];
   images:any=[]
   responsiveOptions: any=[];
-  constructor(private commentService: CommentService,public user: UserService ,private auth: AngularFireAuth,private renderer: Renderer2,private modalService: BsModalService , private userService : UserService ) {
+  constructor(public user: UserService ,private auth: AngularFireAuth,private renderer: Renderer2,private modalService: BsModalService , private userService : UserService ) {
 
   }
   // constructor(public user: UserService ,private auth: AngularFireAuth,private renderer: Renderer2,private modalService: BsModalService ) {}

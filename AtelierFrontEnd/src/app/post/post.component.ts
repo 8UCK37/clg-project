@@ -1,7 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, EventEmitter, Inject, Input, OnInit, Output, QueryList, Renderer2, SimpleChanges, ViewChild, ViewChildren } from '@angular/core';
 import axios from 'axios';
-import { CommentService } from './comment.service';
 import { MenuItem, MessageService,ConfirmationService, ConfirmEventType } from 'primeng/api';
 import { UserService } from '../login/user.service';
 import { UtilsServiceService } from '../utils/utils-service.service';
@@ -49,7 +48,7 @@ export class PostComponent implements OnInit {
   deleteHeader:string="Delete Post"
   deleteBody:string="Are you sure you want to delete this post?"
   deleteSuccess:boolean=false;
-  constructor(public utilsServiceService : UtilsServiceService, public userService:UserService,private commentService: CommentService,private renderer: Renderer2, @Inject(DOCUMENT) document: Document,private router: Router) {
+  constructor(public utilsServiceService : UtilsServiceService, public userService:UserService,private renderer: Renderer2, @Inject(DOCUMENT) document: Document,private router: Router) {
     // this.renderer.listen('window', 'click', (e: Event) => {
     //   const clickedElement = e.target as HTMLElement;
     //   const clickedElementClassList = clickedElement.classList;
@@ -71,28 +70,11 @@ export class PostComponent implements OnInit {
 
     })
 
-    this.commentService.postsObj$.subscribe(posts => {
-      this.postsByTag= posts;
-    });
-
   }
-
-
-
 
   utcToLocal(utcTime: any) {
     this.utcDateTime = new Date(utcTime);
     return this.utcDateTime.toLocaleString('en-US', { timeZone: this.timeZone });
-  }
-  openComment(post: any) {
-    console.log(post)
-    this.commentOpen = true
-    this.commentService.setCommentObj({open:this.commentOpen,id:post.id});
-  }
-
-  goToPostPage(){
-    //console.log(this.childPost.id)
-    this.router.navigate(['post-page'],{ queryParams: { post_id: this.childPost.id } });
   }
 
 

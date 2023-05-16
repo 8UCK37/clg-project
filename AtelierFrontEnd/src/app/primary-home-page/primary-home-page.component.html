@@ -35,14 +35,7 @@
       <div style="width:auto;height:30rem;">
         <p-carousel [value]="products" [numVisible]="4" [numScroll]="3" [circular]="false" [responsiveOptions]="responsiveOptions">
           <ng-template let-product pTemplate="item">
-
-              <div class="card_cust">
-                <img class="cake-image-card" [src]="product.photoUrl" alt="">
-                <span style="margin-left:25px;color: black;">{{product.name}}</span>
-                <br>
-                <span style="margin-left:25px;color: black;">₹{{product.price}}</span>
-              </div>
-
+              <app-post [childPost]="product"></app-post>
           </ng-template>
       </p-carousel>
       </div>

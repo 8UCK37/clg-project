@@ -1,10 +1,18 @@
 <ng-container >
-  <div class="container">
-      <div class="card_cust">
-        <img class="cake-image-card" [src]="childPost.photoUrl" alt="">
-        <span style="margin-left:25px;color: black;">{{childPost.name}}</span>
-        <br>
-        <span style="margin-left:25px;color: black;">₹{{childPost.price}}</span>
-      </div>
+  <div class="card_cust">
+    <img class="cake-image-card" [src]="childPost.photoUrl " alt="">
+    <div style="margin-left: 25px;">
+      <h2 style="color: black;">{{childPost.name}}</h2>
+
+    <span style="color: black;">{{childPost.size}}</span>
+    <br>
+    <span style="color: black;">₹{{childPost.price}}</span>
+    <br>
+    <span style="color: black;">{{childPost.description}}</span>
+    <br>
+    <span style="color: black;">{{childPost.category}}</span>
+    <br>
+    <span style="color: black;">{{childPost.theme}}</span>
     </div>
+  </div>
 </ng-container>
