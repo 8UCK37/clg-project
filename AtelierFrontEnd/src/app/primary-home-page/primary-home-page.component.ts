@@ -82,7 +82,7 @@ export class PrimaryHomePageComponent implements OnInit {
   }
   getCart(){
     axios.get('getCart').then(res => {
-      console.log(res.data)
+      //console.log(res.data)
       this.utilsServiceService.setCartObj(res.data.items)
     }).catch(err=>console.log(err))
   }

@@ -23,9 +23,9 @@
         </div>
       </ul>
       <ul>
-        <div [routerLink]="['/cart']" style="cursor: pointer;">
+        <div [routerLink]="userparsed? ['/cart']:''" style="cursor: pointer;" >
           <img src="./../../assets/icon-resource/cupcakes.png" class="logo">
-          <span class="cart-count">{{cart.length}}</span>
+          <span class="cart-count">{{cart?.length}}</span>
         </div>
       </ul>
       <div class="noti-menu-wrap"  #notiMenu [ngClass]="notiShow?'open-menu':''">

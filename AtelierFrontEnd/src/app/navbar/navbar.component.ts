@@ -82,7 +82,7 @@ export class NavbarComponent implements  OnInit {
       }).catch(err => console.log(err))
       this.utilsServiceService.cartObj$.subscribe(cart => {
         this.cart= cart;
-        console.log(this.cart)
+        //console.log(this.cart)
       });
     }
     })

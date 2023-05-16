@@ -78,7 +78,7 @@ export class CakeComponent implements OnInit {
     }
 
     this.utilsServiceService.setCartObj(this.cart)
-    if(this.userparsed.isAdmin){
+    if(this.userparsed){
     await axios.post('addToCart',{data: this.cart}).then(res=>{
 
     }).catch(err=>console.log(err))
