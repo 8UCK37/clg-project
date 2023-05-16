@@ -4,6 +4,7 @@ import { UserService } from '../login/user.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Product } from 'src/service/product';
 import axios from 'axios';
+import { UtilsServiceService } from '../utils/utils-service.service';
 
 
 @Component({
@@ -22,8 +23,25 @@ export class PrimaryHomePageComponent implements OnInit {
   public timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   public cakes:Product[]=[]
   images:any=[]
-  responsiveOptions: any=[];
-  constructor(public user: UserService ,private auth: AngularFireAuth,private renderer: Renderer2,private modalService: BsModalService , private userService : UserService ) {
+  responsiveOptions: any=[
+    {
+      breakpoint: '1199px',
+      numVisible: 1,
+      numScroll: 1
+    },
+    {
+      breakpoint: '991px',
+      numVisible: 2,
+      numScroll: 1
+    },
+    {
+      breakpoint: '767px',
+      numVisible: 1,
+      numScroll: 1
+    }];
+  public cart:any;
+
+  constructor(public utilsServiceService : UtilsServiceService,public user: UserService ,private auth: AngularFireAuth,private renderer: Renderer2,private modalService: BsModalService , private userService : UserService ) {
 
   }
   // constructor(public user: UserService ,private auth: AngularFireAuth,private renderer: Renderer2,private modalService: BsModalService ) {}
@@ -35,24 +53,11 @@ export class PrimaryHomePageComponent implements OnInit {
       this.userparsed = usr;
       this.userInfo = usr;
     })
+    this.utilsServiceService.cartObj$.subscribe(cart => {
+      this.cart= cart;
+      console.log(this.cart)
+    });
 
-  this.responsiveOptions = [
-      {
-          breakpoint: '1199px',
-          numVisible: 1,
-          numScroll: 1
-      },
-      {
-          breakpoint: '991px',
-          numVisible: 2,
-          numScroll: 1
-      },
-      {
-          breakpoint: '767px',
-          numVisible: 1,
-          numScroll: 1
-      }
-  ];
    }
 
   toggleMenu() {

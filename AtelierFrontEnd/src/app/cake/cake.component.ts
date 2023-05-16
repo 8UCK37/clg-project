@@ -27,18 +27,22 @@ export class CakeComponent implements OnInit {
   deleteHeader:string="Delete Post"
   deleteBody:string="Are you sure you want to delete this post?"
   deleteSuccess:boolean=false;
-  constructor(public utilsServiceService : UtilsServiceService, public userService:UserService,private renderer: Renderer2, @Inject(DOCUMENT) document: Document,private router: Router) {
+  public cart:any[]=[];
+
+  constructor(public utilsServiceService : UtilsServiceService, public userService:UserService,private router: Router) {
 
   }
-
 
   ngOnInit(): void {
     this.userService.userCast.subscribe(usr=>{
       //console.log("user data" , usr)
       this.userparsed = usr;
-
     })
 
+    this.utilsServiceService.cartObj$.subscribe(cart => {
+      this.cart= cart;
+
+    });
   }
 
   utcToLocal(utcTime: any) {
@@ -49,5 +53,8 @@ export class CakeComponent implements OnInit {
   goToPostPage(){
     //console.log(this.childPost.id)
     this.router.navigate(['item-page'],{ queryParams: { item_id: this.cake.id } });
+  }
+  addTocart(){
+    this.utilsServiceService.setCartObj(this.cart)
   }
 }

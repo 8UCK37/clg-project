@@ -106,3 +106,9 @@ model Cakes {
   tags        String?
   photoUrl    String?
 }
+model Cart {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  userId      String?
+  items       Json?
+}
