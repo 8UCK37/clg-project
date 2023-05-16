@@ -24,7 +24,7 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { SettingsComponent } from './settings/Settings.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { PostComponent } from './post/post.component';
+import { CakeComponent } from './cake/cake.component';
 import { ButtonModule } from 'primeng/button';
 import { SidebarModule } from 'primeng/sidebar';
 import { ToastModule } from 'primeng/toast';
@@ -49,7 +49,7 @@ import { CarouselModule } from 'primeng/carousel';
       SettingsComponent,
       ChatPageComponent,
       PrimaryHomePageComponent,
-      PostComponent,
+      CakeComponent,
       LocationModalComponent,
       AddCakeComponent,
    ],

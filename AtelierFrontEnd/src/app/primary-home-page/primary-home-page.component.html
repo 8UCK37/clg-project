@@ -35,7 +35,7 @@
       <div style="width:auto;height:30rem;">
         <p-carousel [value]="products" [numVisible]="4" [numScroll]="3" [circular]="false" [responsiveOptions]="responsiveOptions">
           <ng-template let-product pTemplate="item">
-              <app-post [childPost]="product"></app-post>
+              <app-cake [cake]="product"></app-cake>
           </ng-template>
       </p-carousel>
       </div>

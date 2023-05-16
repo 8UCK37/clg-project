@@ -8,40 +8,19 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-post',
-  templateUrl: './post.component.html',
-  styleUrls: ['./post.component.css'],
+  selector: 'app-cake',
+  templateUrl: './cake.component.html',
+  styleUrls: ['./cake.component.css'],
   providers: [MessageService]
 
 })
 
 
-export class PostComponent implements OnInit {
+export class CakeComponent implements OnInit {
 
-  @Input() childPost: any;
-  @ViewChild('comment') comment!: ElementRef;
-  @ViewChild('closeComments') closeComments!: ElementRef;
-  @ViewChild('commentbtn') commentbtn!: ElementRef;
-
-  parentComment: any;
-  @Input() public commentOpen: boolean = false;
-  @Output() valueChange: EventEmitter<any> = new EventEmitter<any>();
-
-  myInterval = 0;
-  public postsByTag=[];
-  activeSlideIndex = 0;
+  @Input() cake: any;
   public utcDateTime: any;
   public timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  // commentData: Comment[] = [];
-  public treeObj: any = {}
-  images: any[] =[];
-  galeriaPosition: string = 'bottom';
-  responsiveOptions: any[] = [];
-  items:any[]=[];
-  public ownPosts:any=[];
-  delay:number=90;
-  radi:number=100;
-  confirmPosition:string ="top";
   visible: boolean=false;
   showSpinner:boolean=false;
   public userparsed:any;
