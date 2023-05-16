@@ -198,7 +198,18 @@ app.put('/updateUserInfo', ensureAuthenticated, async (req, res) => {
 });
 
 app.post("/saveUserInfo" , ensureAuthenticated , async (req , res)=>{
+  try {
+    const userId = req.user.user_id;
 
+    await prisma.userInfo.deleteMany({
+      where: { User: { id: userId } },
+    });
+
+    
+  } catch (error) {
+    console.log(error);
+    
+  }
  let userData = await prisma.User.update({
   where:{
     id: req.user.user_id

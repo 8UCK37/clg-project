@@ -56,7 +56,7 @@ export class SettingsComponent implements OnInit {
 
   updateinfo(){
     console.log(this.info)
-    axios.post('/saveUserInfo', { Locality:this.info.locality,zipcode:this.info.zip,Address:this.info.address,Landmark:this.info.landmark,Phoneno:this.info.phnNo}
+    axios.post('/saveUserInfo', {Locality:this.info.Locality,zipcode:this.info.zipcode,Address:this.info.Address,Landmark:this.info.Landmark,Phoneno:this.info.Phoneno}
     ).catch(err=>console.log(err))
   }
 
