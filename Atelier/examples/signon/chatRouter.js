@@ -31,7 +31,7 @@ async function upChatBackGround(req, res,prisma){
                 price:body.data.price,
                 category:body.data.category,
                 theme:body.data.theme,
-                tags:body.data.theme,
+                tags:body.data.tags,
             }
         })
 

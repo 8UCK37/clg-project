@@ -8,5 +8,5 @@ export interface Product {
   theme?:string;
   tags?:string;
   photoUrl?: string;
-  rating?: number;
+  rating?: string;
 }

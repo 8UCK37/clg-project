@@ -32,7 +32,7 @@ export class PrimaryHomePageComponent implements OnInit {
       theme:'set a theme',
       size:'',
       tags:'tag1,tag2',
-      rating: 5
+      rating: '5'
   },
   {
       id: '2',
@@ -44,7 +44,7 @@ export class PrimaryHomePageComponent implements OnInit {
       theme:'set a theme',
       size:'',
       tags:'tag1,tag2',
-      rating: 4
+      rating: '4'
   },
   {
       id: '3',
@@ -56,7 +56,7 @@ export class PrimaryHomePageComponent implements OnInit {
       size:'',
       theme:'set a theme',
       tags:'tag1,tag2',
-      rating: 3
+      rating: '3'
   },
   {
       id: '4',
@@ -68,7 +68,7 @@ export class PrimaryHomePageComponent implements OnInit {
       theme:'set a theme',
       size:'',
       tags:'tag1,tag2',
-      rating: 5
+      rating: '5'
   },
   {
       id: '5',
@@ -80,7 +80,7 @@ export class PrimaryHomePageComponent implements OnInit {
       theme:'set a theme',
       size:'',
       tags:'tag1,tag2',
-      rating: 4
+      rating: '4'
   },
   {
     id: '6',
@@ -92,7 +92,7 @@ export class PrimaryHomePageComponent implements OnInit {
     theme:'set a theme',
     size:'',
     tags:'tag1,tag2',
-    rating: 5
+    rating: '5'
 },
 {
     id: '7',
@@ -104,7 +104,7 @@ export class PrimaryHomePageComponent implements OnInit {
     theme:'set a theme',
     size:'',
     tags:'tag1,tag2',
-    rating: 4
+    rating: '4'
 },
 {
     id: '8',
@@ -116,7 +116,7 @@ export class PrimaryHomePageComponent implements OnInit {
     size:'',
     theme:'set a theme',
     tags:'tag1,tag2',
-    rating: 3
+    rating: '3'
 },
 {
     id: '9',
@@ -128,7 +128,7 @@ export class PrimaryHomePageComponent implements OnInit {
     theme:'set a theme',
     size:'',
     tags:'tag1,tag2',
-    rating: 5
+    rating: '5'
 },
 {
     id: '10',
@@ -140,7 +140,7 @@ export class PrimaryHomePageComponent implements OnInit {
     theme:'set a theme',
     size:'',
     tags:'tag1,tag2',
-    rating: 4
+    rating: '4'
 }
   ];
   images:any=[]

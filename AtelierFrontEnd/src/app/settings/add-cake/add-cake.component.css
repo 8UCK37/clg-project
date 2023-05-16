@@ -174,17 +174,15 @@
 .card_cust {
   height:500px;
   width:400px;
-  display: flex;
-  justify-content: center;
   background-color:#eeeeee;
   border-radius: 5px;
 }
 
 .cake-image-card{
-  height:350px;
-  width:350px;
+  height:270px;
+  width:270px;
   margin-top: 25px;
-  margin-left:25px;
+  margin-left:48px;
   border-radius: 10px;
 }
 .button-holder{

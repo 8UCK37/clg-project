@@ -31,7 +31,7 @@ export class AddCakeComponent implements OnInit {
     theme:'',
     tags:'',
     size:'',
-    rating: 4
+    rating: ''
   }
   ngOnInit(): void {
     this.userService.userCast.subscribe(usr=>{
