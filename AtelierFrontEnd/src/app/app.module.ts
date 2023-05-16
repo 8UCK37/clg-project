@@ -39,6 +39,7 @@ import { QuillModule } from "ngx-quill";
 import { AddCakeComponent } from './settings/add-cake/add-cake.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { CarouselModule } from 'primeng/carousel';
+import { ItemPageComponent } from './item-page/item-page.component';
 @NgModule({
   declarations: [
       AppComponent,
@@ -52,6 +53,7 @@ import { CarouselModule } from 'primeng/carousel';
       CakeComponent,
       LocationModalComponent,
       AddCakeComponent,
+      ItemPageComponent,
    ],
   imports: [
     CarouselModule,

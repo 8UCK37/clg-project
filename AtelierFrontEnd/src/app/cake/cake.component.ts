@@ -28,17 +28,7 @@ export class CakeComponent implements OnInit {
   deleteBody:string="Are you sure you want to delete this post?"
   deleteSuccess:boolean=false;
   constructor(public utilsServiceService : UtilsServiceService, public userService:UserService,private renderer: Renderer2, @Inject(DOCUMENT) document: Document,private router: Router) {
-    // this.renderer.listen('window', 'click', (e: Event) => {
-    //   const clickedElement = e.target as HTMLElement;
-    //   const clickedElementClassList = clickedElement.classList;
-    //   if (!this.comment?.nativeElement.contains(e.target as HTMLElement) && !this.commentbtn?.nativeElement.contains(e.target as HTMLElement)) {
-    //     if(this.commentOpen && clickedElementClassList[0]!='comment-btn'){
-    //     this.closeComments.nativeElement.click();
-    //     this.commentOpen=false
-    //   }
-    //     //console.log("caught")
-    //   }
-    // });
+
   }
 
 
@@ -56,5 +46,8 @@ export class CakeComponent implements OnInit {
     return this.utcDateTime.toLocaleString('en-US', { timeZone: this.timeZone });
   }
 
-
+  goToPostPage(){
+    //console.log(this.childPost.id)
+    this.router.navigate(['item-page'],{ queryParams: { item_id: this.cake.id } });
+  }
 }

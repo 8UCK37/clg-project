@@ -1039,7 +1039,19 @@ app.get('/getCakesList', async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
-
+app.post('/getCakeById', async (req, res) => {
+  console.log(req.body.cakeId)
+  try {
+    const cakes = await prisma.Cakes.findUnique({
+      where:{
+        id:parseInt(req.body.cakeId)
+      }
+    });
+    res.json(cakes);
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
 
 
 

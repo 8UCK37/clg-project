@@ -1,18 +1,20 @@
 <ng-container >
   <div class="card_cust">
-    <img class="cake-image-card" [src]="cake.photoUrl " alt="">
+    <i class="fa-solid fa-arrow-up-right-from-square" (click)="goToPostPage()"
+    style="position: absolute;margin-left: 360px;margin-top: 25px;"></i>
+    <img class="cake-image-card" [src]="cake?.photoUrl " alt="">
     <div style="margin-left: 25px;">
-      <h2 style="color: black;">{{cake.name}}</h2>
+      <h2 style="color: black;">{{cake?.name}}</h2>
 
-    <span style="color: black;">{{cake.size}}</span>
+    <span style="color: black;">{{cake?.size}}</span>
     <br>
-    <span style="color: black;">₹{{cake.price}}</span>
+    <span style="color: black;">₹{{cake?.price}}</span>
     <br>
-    <span style="color: black;">{{cake.description}}</span>
+    <span style="color: black;">{{cake?.description}}</span>
     <br>
-    <span style="color: black;">{{cake.category}}</span>
+    <span style="color: black;">{{cake?.category}}</span>
     <br>
-    <span style="color: black;">{{cake.theme}}</span>
+    <span style="color: black;">{{cake?.theme}}</span>
     </div>
   </div>
 </ng-container>
