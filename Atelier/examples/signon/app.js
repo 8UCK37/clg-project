@@ -16,7 +16,7 @@ require("dotenv").config()
 
 let postHelper = require('./postHelper')
 let profileHelper = require('./profileHelper')
-let chatRouter = require('./chatRouter')
+let cakeHelper= require('./cakeHelper')
 var bodyParser = require('body-parser')
 // create application/json parser
 var jsonParser = bodyParser.json()
@@ -1027,7 +1027,7 @@ app.post("/updateBio", ensureAuthenticated, async (req, res) => {
 });
 app.post("/chat/background", ensureAuthenticated, upload.single('chatbackground'), (req, res) => {
   console.log("chat",req.user.user_id)
-  chatRouter.upChatBackGround(req,res,prisma)
+  cakeHelper.uploadCake(req,res,prisma)
   res.sendStatus(200);
 });
 

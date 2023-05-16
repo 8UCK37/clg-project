@@ -4,7 +4,7 @@ const { v4: uuidv4 } = require('uuid');
 BigInt.prototype.toJSON = function() {
   return this.toString();
 }
-async function upChatBackGround(req, res,prisma){
+async function uploadCake(req, res,prisma){
   console.log(req.file);
   let body = JSON.parse(req.body.data)
   console.log(body.data);
@@ -42,4 +42,4 @@ async function upChatBackGround(req, res,prisma){
   }
 }
 
-module.exports =  {upChatBackGround}
+module.exports =  {uploadCake}
