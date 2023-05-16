@@ -405,6 +405,25 @@ app.post('/searchFriend', ensureAuthenticated, urlencodedParser, async function 
   res.send(JSON.stringify(searchresult));}
   //res.sendStatus(200);
 });
+app.post('/searchCakes', ensureAuthenticated, urlencodedParser, async function (req, res) {
+  const jsonObject = req.body;
+
+  const searchresult = await prisma.Cakes.findMany({
+    where: {
+      tags: {
+        contains: jsonObject.searchTerm,
+        mode: 'insensitive',
+      },
+    },orderBy:{
+      id:'asc'
+    }
+  })
+  
+  res.send(JSON.stringify(searchresult));
+  //res.sendStatus(200);
+});
+
+
 
 //selfexplanatory #endpoint
 app.get('/logout', function (req, res) {

@@ -40,8 +40,9 @@ export class AppSearchComponent implements OnInit {
   async getUsers(){
     this.searchResults=[];
     if(this.selected?.length!=0){
-    await axios.post('searchFriend',{searchTerm: this.selected}).then(res=>{
+    await axios.post('searchCakes',{searchTerm: this.selected}).then(res=>{
       this.searchResults=res.data;
+      console.log(this.searchResults)
     }).catch(err=>console.log(err))
     }
   else{
@@ -54,9 +55,9 @@ export class AppSearchComponent implements OnInit {
     }).catch(err =>console.log(err))
     //console.log(this.userparsed)
   }
-  onclick(userid:any){
+  onclick(id:any){
     //console.log(userid)
-    this.router.navigate(['/user'], { queryParams: { id: userid } });
+    this.router.navigate(['item-page'], { queryParams: { item_id: id } });
     this.searchResults = [];
   }
   handleClickOutside(event: { target: any; }) {
