@@ -30,6 +30,7 @@ export class AddCakeComponent implements OnInit {
     category: '',
     theme:'',
     tags:'',
+    size:'',
     rating: 4
   }
   ngOnInit(): void {

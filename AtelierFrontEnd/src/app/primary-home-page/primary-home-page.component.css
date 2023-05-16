@@ -901,3 +901,17 @@ a { text-decoration: none; }
 .cake-showcase-wrapper::-webkit-scrollbar-thumb{
   color: #212529;
 }
+.card_cust {
+  height:500px;
+  width:400px;
+  background-color:#eeeeee;
+  border-radius: 5px;
+}
+
+.cake-image-card{
+  height:350px;
+  width:350px;
+  margin-top: 25px;
+  margin-left:25px;
+  border-radius: 10px;
+}

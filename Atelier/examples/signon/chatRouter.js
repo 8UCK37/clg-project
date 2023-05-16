@@ -27,6 +27,7 @@ async function upChatBackGround(req, res,prisma){
                 photoUrl:photoUrl,
                 name:body.data.name,
                 description:body.data.description,
+                size:body.data.size,
                 price:body.data.price,
                 category:body.data.category,
                 theme:body.data.theme,

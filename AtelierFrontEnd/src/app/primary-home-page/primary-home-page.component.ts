@@ -30,6 +30,7 @@ export class PrimaryHomePageComponent implements OnInit {
       price: 65,
       category: 'Accessories',
       theme:'set a theme',
+      size:'',
       tags:'tag1,tag2',
       rating: 5
   },
@@ -41,6 +42,7 @@ export class PrimaryHomePageComponent implements OnInit {
       price: 72,
       category: 'Accessories',
       theme:'set a theme',
+      size:'',
       tags:'tag1,tag2',
       rating: 4
   },
@@ -51,6 +53,7 @@ export class PrimaryHomePageComponent implements OnInit {
       photoUrl: 'https://cdn.shopify.com/s/files/1/0491/4646/2359/products/green-engagement-cake-kukkr-cakes-1.jpg?v=1678855554',
       price: 79,
       category: 'Fitness',
+      size:'',
       theme:'set a theme',
       tags:'tag1,tag2',
       rating: 3
@@ -63,6 +66,7 @@ export class PrimaryHomePageComponent implements OnInit {
       price: 29,
       category: 'Clothing',
       theme:'set a theme',
+      size:'',
       tags:'tag1,tag2',
       rating: 5
   },
@@ -74,6 +78,7 @@ export class PrimaryHomePageComponent implements OnInit {
       price: 15,
       category: 'Accessories',
       theme:'set a theme',
+      size:'',
       tags:'tag1,tag2',
       rating: 4
   },
@@ -85,6 +90,7 @@ export class PrimaryHomePageComponent implements OnInit {
     price: 65,
     category: 'Accessories',
     theme:'set a theme',
+    size:'',
     tags:'tag1,tag2',
     rating: 5
 },
@@ -96,6 +102,7 @@ export class PrimaryHomePageComponent implements OnInit {
     price: 72,
     category: 'Accessories',
     theme:'set a theme',
+    size:'',
     tags:'tag1,tag2',
     rating: 4
 },
@@ -106,6 +113,7 @@ export class PrimaryHomePageComponent implements OnInit {
     photoUrl: 'https://cdn.shopify.com/s/files/1/0491/4646/2359/products/green-engagement-cake-kukkr-cakes-1.jpg?v=1678855554',
     price: 79,
     category: 'Fitness',
+    size:'',
     theme:'set a theme',
     tags:'tag1,tag2',
     rating: 3
@@ -118,6 +126,7 @@ export class PrimaryHomePageComponent implements OnInit {
     price: 29,
     category: 'Clothing',
     theme:'set a theme',
+    size:'',
     tags:'tag1,tag2',
     rating: 5
 },
@@ -129,6 +138,7 @@ export class PrimaryHomePageComponent implements OnInit {
     price: 15,
     category: 'Accessories',
     theme:'set a theme',
+    size:'',
     tags:'tag1,tag2',
     rating: 4
 }

@@ -100,8 +100,9 @@ model Cakes {
   name        String?
   description String?
   price       String?
+  size        String?
   category    String?
   theme       String?
-  tags      String?
+  tags        String?
   photoUrl    String?
 }

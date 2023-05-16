@@ -40,7 +40,6 @@ carousel img {
 .card_cust {
   height:500px;
   width:400px;
-  display: flex;
   justify-content: center;
   background-color:#eeeeee;
   border-radius: 5px;
