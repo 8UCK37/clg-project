@@ -100,8 +100,18 @@ export class AddCakeComponent implements OnInit {
   }
   closeUploadDialog(){
     this.visible = !this.visible;
-    setTimeout(() => {
-      window.location.reload()
-    }, 500);
+    this.cake={
+      id: '10',
+      name: '',
+      description: '',
+      photoUrl: './../../assets/icon-resource/cake.png',
+      price: undefined,
+      category: '',
+      theme:'',
+      tags:'',
+      size:'',
+      rating: ''
+    }
+    this.cakeImagePreview.nativeElement.src='./../../assets/icon-resource/cake.png'
   }
 }

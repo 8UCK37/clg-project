@@ -33,7 +33,7 @@
         </div>
       </nav>
       <div style="width:auto;height:30rem;">
-        <p-carousel [value]="products" [numVisible]="4" [numScroll]="3" [circular]="false" [responsiveOptions]="responsiveOptions">
+        <p-carousel [value]="cakes" [numVisible]="4" [numScroll]="3" [circular]="false" [responsiveOptions]="responsiveOptions">
           <ng-template let-product pTemplate="item">
               <app-cake [cake]="product"></app-cake>
           </ng-template>

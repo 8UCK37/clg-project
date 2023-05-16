@@ -1031,6 +1031,18 @@ app.post("/chat/background", ensureAuthenticated, upload.single('chatbackground'
   res.sendStatus(200);
 });
 
+app.get('/getCakesList', async (req, res) => {
+  try {
+    const cakesList = await prisma.Cakes.findMany();
+    res.json(cakesList);
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+
+
+
 socketRunner.execute(io)
 
 
