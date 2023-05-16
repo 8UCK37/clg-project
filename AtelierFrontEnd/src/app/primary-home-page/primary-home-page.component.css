@@ -202,13 +202,7 @@ body {
     background-color: hsl(200, 20%, 95%);
   }
 }
-.card_cust{
-  width: 55rem;
-  margin-left: 206px;
-  background-color: #262626;
-  color: aliceblue;
-  border-radius: 20px;
-}
+
 .react {
   --r:36px;
   display:inline-grid;

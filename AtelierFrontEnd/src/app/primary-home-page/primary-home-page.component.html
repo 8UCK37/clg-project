@@ -33,7 +33,7 @@
         </div>
       </nav>
       <div style="width:auto;height:30rem;">
-        <p-carousel [value]="products" [numVisible]="3" [numScroll]="3" [circular]="false" [responsiveOptions]="responsiveOptions">
+        <p-carousel [value]="products" [numVisible]="4" [numScroll]="3" [circular]="false" [responsiveOptions]="responsiveOptions">
           <ng-template let-product pTemplate="item">
 
               <div class="card_cust">
@@ -42,7 +42,7 @@
                 <br>
                 <span style="margin-left:25px;color: black;">₹{{product.price}}</span>
               </div>
-          
+
           </ng-template>
       </p-carousel>
       </div>
