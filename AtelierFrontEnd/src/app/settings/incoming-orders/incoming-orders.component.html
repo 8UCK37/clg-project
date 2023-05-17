@@ -1,7 +1,7 @@
 <ng-container *ngFor="let order of orderList" >
   <span>order id: {{order.id}}</span>
   <br>
-  <span>Has to be dlivered by {{order.deliveryDate}}</span>
+  <span>Has to be delivered by {{order.deliveryDate}}</span>
   <div style="display: flex;">
     <div style="display: flex;flex-direction: column;">
   <ng-container *ngFor="let item of order.items" >
@@ -16,7 +16,7 @@
     </div>
     <div class="product-price">{{item.price}}</div>
     <div class="product-quantity">
-      <input type="number" [(ngModel)]="item.quantity" min="1" >
+      <span>qnt:{{item.quantity}}</span>
     </div>
     <div class="product-line-price">{{item.quantity*item.price}}</div>
   </div>
@@ -39,23 +39,23 @@
       <div class="col" >
         <div class="flex flex-wrap gap-3">
             <div class="check-boxes">
-              <p-radioButton name="accept" value="Accepted" [(ngModel)]="status" inputId="ingredient1"
-                [disabled]="!isRadioButtonSelected(1)"></p-radioButton>
+              <p-radioButton name="accept" value="Accepted" [(ngModel)]="order.status" inputId="ingredient1"
+               (click)="updateOrderStatus(order)"></p-radioButton>
               <label for="ingredient1" class="ml-2">Accepted</label>
             </div>
             <div class="check-boxes ">
-              <p-radioButton name="pizza" value="Prepping" [(ngModel)]="status" inputId="ingredient2"
-                [disabled]="!isRadioButtonSelected(2)"></p-radioButton>
+              <p-radioButton name="pizza" value="Prepping" [(ngModel)]="order.status" inputId="ingredient2"
+              (click)="updateOrderStatus(order)"></p-radioButton>
               <label for="ingredient2" class="ml-2">Prepping</label>
             </div>
             <div class="check-boxes">
-              <p-radioButton name="pizza" value="Out for delivery" [(ngModel)]="status" inputId="ingredient3"
-                [disabled]="!isRadioButtonSelected(3)"></p-radioButton>
+              <p-radioButton name="pizza" value="Out for delivery" [(ngModel)]="order.status" inputId="ingredient3"
+              (click)="updateOrderStatus(order)"></p-radioButton>
               <label for="ingredient3" class="ml-2">Out for delivery</label>
             </div>
             <div class="check-boxes">
-              <p-radioButton name="pizza" value="Delivered" [(ngModel)]="status" inputId="ingredient4"
-                [disabled]="!isRadioButtonSelected(4)"></p-radioButton>
+              <p-radioButton name="pizza" value="Delivered" [(ngModel)]="order.status" inputId="ingredient4"
+              (click)="updateOrderStatus(order)"></p-radioButton>
               <label for="ingredient4" class="ml-2">Delivered</label>
             </div>
         </div>

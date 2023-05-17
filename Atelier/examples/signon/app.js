@@ -480,11 +480,26 @@ app.get('/getOrders', ensureAuthenticated, async function (req, res) {
   const orders= await prisma.Orders.findMany({
     include: {
       user: true,
-    },
+    },orderBy:{
+      id:'asc'
+    }
   })
   res.send(JSON.stringify(orders));
 });
 
+
+app.post('/updateOrderStatus', ensureAuthenticated, async function (req, res) {
+  
+  const orders= await prisma.Orders.update({
+    where:{
+      id:parseInt(req.body.orderId)
+    },
+    data:{
+      status:req.body.status,
+    }
+  })
+  res.send(JSON.stringify(orders));
+});
 //selfexplanatory #endpoint
 app.get('/logout', function (req, res) {
   req.logout();

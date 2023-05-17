@@ -38,17 +38,10 @@ export class IncomingOrdersComponent implements OnInit {
     }).catch(err=>console.log(err))
   }
 
-  isRadioButtonSelected(index: number): boolean {
-    switch (index) {
-      case 1:
-        return (this.status === 'pending');
-      case 2:
-        return this.status === 'Accepted';
-      case 3:
-        return this.status === 'Prepping';
-      case 4:
-        return this.status === 'Out for delivery' ;
-    }
-    return false;
+  updateOrderStatus(order:any){
+    console.log(order)
+    axios.post('updateOrderStatus',{orderId:order.id,status:order.status}).then(res=>{
+      
+    }).catch(err=>console.log(err))
   }
 }
