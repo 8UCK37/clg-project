@@ -5,10 +5,10 @@
       <img src="./../../assets/icon-resource/atelier-text.png" style="width: 150px;height: 50px;">
       <img src="./../../assets/icon-resource/map1.png" style="margin-left:15px;width:40px;height:40px" class="logo" (click)="openModal()">
       <app-app-search></app-app-search>
-      <ul style="margin-left: 0rem;" [routerLink]="['/home']"><img class="homeicon" src="./../../assets/icon-resource/home1.png"><a class="nav-btn" style="color: rgb(0, 0, 0);"
+      <ul style="margin-left: 0rem;" [routerLink]="['/home']"><img class="homeicon" src="./../../assets/icon-resource/home1.png" style="height: 2rem;width: 2rem;"><a class="nav-btn" style="color: rgb(0, 0, 0);"
           >Home</a></ul>
 
-      <ul (click)="onchatClicked()"><img class="homeicon" src="./../../assets/icon-resource/chat1.png"><a class="nav-btn" style="align-items: center;" >Chat</a>
+      <ul (click)="onchatClicked()"><img class="homeicon" src="./../../assets/icon-resource/chat1.png" style="height: 2rem;width: 2rem;"><a class="nav-btn" style="align-items: center;" >Chat</a>
         <div class="wrapper">
           <i *ngIf="noti" class="fa fa-bell icon"></i>
         </div>
@@ -110,7 +110,7 @@
           referrerpolicy="no-referrer">
       </div>
       <div *ngIf="!userparsed" (click)="user.login()" style="cursor:pointer">
-        <img src="./../../assets/icon-resource/user.png" class="logo">
+        <img src="./../../assets/icon-resource/profile1.png" class="logo">
         Login/Register
       </div>
       <div class="sub-menu-wrap" id="subMenu" #menu [ngClass]="show?'open-menu':''">
