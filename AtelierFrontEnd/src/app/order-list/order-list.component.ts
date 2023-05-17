@@ -14,8 +14,8 @@ export class OrderListComponent implements OnInit {
   public orderList:any=[]
   public orderHistory:any=[]
   public orderPending:any=[]
-  public utcDateTime:any;
   public tabSeleted:any='All Orders'
+  public utcDateTime:any;
   public timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
   constructor(public utilsServiceService : UtilsServiceService,private userService : UserService) { }
@@ -31,6 +31,9 @@ export class OrderListComponent implements OnInit {
     })
   }
   getOrders(){
+      this.orderList=[]
+      this.orderHistory=[]
+      this.orderPending=[]
      axios.get('getOrdersForUser').then(res=>{
       this.orderList=res.data
       this.orderList.forEach((order: any) => {

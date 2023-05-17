@@ -1,81 +1,87 @@
-<ng-container *ngFor="let order of orderList" >
-  <span>order id: {{order.id}}</span>
-  <br>
-  <span>Has to be delivered by {{order.deliveryDate}}</span>
-  <div style="display: flex;">
-    <div style="display: flex;flex-direction: column;">
-  <ng-container *ngFor="let item of order.items" >
-  <div class="product">
-    <div class="product-image">
-      <img [src]="item.photoUrl">
-    </div>
-    <div class="product-details">
-      <div class="product-title">{{item.name}}</div>
-      <p class="product-description">{{item.description}}</p>
-
-    </div>
-    <div class="product-price">{{item.price}}</div>
-    <div class="product-quantity">
-      <span>qnt:{{item.quantity}}</span>
-    </div>
-    <div class="product-line-price">{{item.quantity*item.price}}</div>
+<div style="display: flex;margin-left: 150px;margin-top: 25px;">
+  <div class="flex align-items-center">
+    <p-radioButton name="pizza" value="All Orders" [(ngModel)]="tabSeleted" inputId="ingredient1"
+    (click)="orderPending=orderList"></p-radioButton>
+    <label for="ingredient1" class="ml-2" style="margin-left:15px">All Orders</label>
   </div>
-</ng-container>
+
+  <div class="flex align-items-center" style="margin-left: 50px;">
+    <p-radioButton name="pizza" value="Previous Orders" [(ngModel)]="tabSeleted" inputId="ingredient2"
+    (click)="orderPending=orderHistory"></p-radioButton>
+    <label for="ingredient2" class="ml-2" style="margin-left:15px">Previous Orders</label>
+  </div>
+
+  <div class="flex align-items-center" style="margin-left: 50px;">
+    <p-radioButton name="pizza" value="Upcoming Orders" [(ngModel)]="tabSeleted" inputId="ingredient3"
+    (click)="getOrders()"></p-radioButton>
+    <label for="ingredient3" class="ml-2" style="margin-left:15px">Upcoming Orders</label>
+  </div>
 </div>
 
-<p-timeline [value]="events">
-  <ng-template pTemplate="marker" let-event>
-    <span [style.backgroundColor]="event.color" style="border-radius: 53px;height: 25px;width: 25px;">
-        <i style="margin-left: 4px;margin-top: 4px;" [ngClass]="event.icon"></i>
-    </span>
-  </ng-template>
-  <ng-template pTemplate="content" let-event>
-      <small class="p-text-secondary" style="opacity: 0;">{{ event.date }}</small>
-  </ng-template>
-  <ng-template pTemplate="opposite" let-event>
-      {{ event.status }}
-  </ng-template>
-</p-timeline>
-      <div class="col" >
-        <div class="flex flex-wrap gap-3">
-            <div class="check-boxes">
-              <p-radioButton name="accept" value="Accepted" [(ngModel)]="order.status" inputId="ingredient1"
-               (click)="updateOrderStatus(order)"></p-radioButton>
-              <label for="ingredient1" class="ml-2">Accepted</label>
+<div class="shopping-cart">
+
+  <div style="display: flex;flex-direction: column;height:auto;;border-radius: 5px;overflow-y: auto; margin-top: 50px;">
+
+    <ng-container *ngFor="let order of orderPending;let i = index">
+      <div class="order-card" style="color: black;">
+        <div class="order-header">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm">
+                <span >Order placed on</span>
+                <br>
+                <span>{{utcToLocal(order.createdAt)}}</span>
+              </div>
+              <div class="col-sm">
+                <span>Total</span>
+                <br>
+                <span>₹{{order.total+100}}</span>
+              </div>
+              <div class="col-sm">
+                <span>Order reference id</span>
+                <br>
+                <span>Id: {{order.id}}</span>
+              </div>
+              <div class="col-sm">
+                <span>Status</span>
+                <br>
+                <span>{{order.status}}</span>
+              </div>
             </div>
-            <div class="check-boxes ">
-              <p-radioButton name="pizza" value="Prepping" [(ngModel)]="order.status" inputId="ingredient2"
-              (click)="updateOrderStatus(order)"></p-radioButton>
-              <label for="ingredient2" class="ml-2">Prepping</label>
+          </div>
+        </div>
+        <div class="order-body">
+          <div class="column-labels">
+            <label class="product-image">Image</label>
+            <label class="product-details">Product</label>
+            <label class="product-price">Price</label>
+            <label class="product-quantity">Quantity</label>
+          </div>
+          <ng-container *ngFor="let item of order.items;">
+            <div class="product">
+              <div class="product-image">
+                <img class='item-image' [src]="item.photoUrl">
+              </div>
+              <div class="product-details">
+                <div class="product-title">{{item.name}}</div>
+                <p class="product-description">{{item.description}}</p>
+              </div>
+              <div class="product-price">{{item.price}}</div>
+              <div class="product-quantity">
+                <span>Quantity: {{item.quantity}}</span>
+              </div>
+              <div class="product-line-price">{{item.quantity*item.price}}</div>
             </div>
-            <div class="check-boxes">
-              <p-radioButton name="pizza" value="Out for delivery" [(ngModel)]="order.status" inputId="ingredient3"
-              (click)="updateOrderStatus(order)"></p-radioButton>
-              <label for="ingredient3" class="ml-2">Out for delivery</label>
-            </div>
-            <div class="check-boxes">
-              <p-radioButton name="pizza" value="Delivered" [(ngModel)]="order.status" inputId="ingredient4"
-              (click)="updateOrderStatus(order)"></p-radioButton>
-              <label for="ingredient4" class="ml-2">Delivered</label>
-            </div>
+          </ng-container>
+        </div>
+        <div class="order-footer">
         </div>
       </div>
+    </ng-container>
 
-
-  </div>
-
-
-
-<span>-------------end of order----------------</span>
-<div class="totals">
-  <div class="totals-item">
-    <label>Status</label>
-    <div class="totals-value" id="cart-subtotal">{{order.status}}</div>
   </div>
 
 </div>
-<br>
-</ng-container>
 
 
 

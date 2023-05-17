@@ -72,7 +72,6 @@ label {
 .shopping-cart {
   margin-top: -45px;
   margin-left: 50px;
-  margin-right: 260px;
 }
 
 /* Column headers */
@@ -199,6 +198,44 @@ label {
     width: 40%;
   }
   .check-boxes{
-    
+
   }
+}
+.order-card{
+  height: auto;
+  max-width:85rem;
+  width:auto;
+  margin-top: 50px;
+  margin-bottom: 25px;
+  
+  margin-right: 50px;
+  border-radius: 25px;
+  border:1px solid black;
+}
+.order-header{
+  height:75px;
+  width:auto;
+  border-bottom: 1px solid black;
+  border-top-right-radius: 25px;
+  border-top-left-radius: 25px;
+  background-color: #d1e7dd;
+}
+.order-body{
+  width:auto;
+  height:auto;
+}
+.item-image{
+  margin-top: 50px;
+  margin-left: 50px;
+  height:175px;
+  width:175px;
+  border-radius: 10px;
+}
+.order-footer{
+  height:50px;
+  width:auto;
+  border-top: 1px solid black;
+  background-color: #eee;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
 }

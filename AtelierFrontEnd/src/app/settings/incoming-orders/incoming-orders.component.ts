@@ -10,10 +10,15 @@ import { UtilsServiceService } from 'src/app/utils/utils-service.service';
 })
 export class IncomingOrdersComponent implements OnInit {
   public userparsed:any;
-  public orderList:any;
+  public orderList:any=[]
+  public orderHistory:any=[]
+  public orderPending:any=[]
   public status: string='pending';
   public events: any[]=[]
   public align:string='right'
+  public tabSeleted:any='Upcoming Orders'
+  public utcDateTime:any;
+  public timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   constructor(public utilsServiceService : UtilsServiceService,private userService : UserService) {
     this.events = [
       { status: 'Accepted', date: '15/10/2020 10:30', icon: 'pi pi-shopping-cart', color: '#9C27B0', image: 'game-controller.jpg' },
@@ -31,17 +36,36 @@ export class IncomingOrdersComponent implements OnInit {
     this.getOrders()
   }
 
-  async getOrders(){
-    await axios.get('getOrders').then(res=>{
-      console.log(res.data)
-      this.orderList=res.data
-    }).catch(err=>console.log(err))
-  }
-
+   getOrders(){
+      this.orderList=[]
+      this.orderHistory=[]
+      this.orderPending=[]
+    axios.get('getOrders').then(res=>{
+     this.orderList=res.data
+     this.orderList.forEach((order: any) => {
+       order.total=0
+       order.items.forEach((items: any) => {
+         order.total+=items.quantity*items.price
+       });
+       if(order.status=='Delivered'){
+         this.orderHistory.push(order)
+       }else{
+         this.orderPending.push(order)
+       }
+     });
+     console.log(this.orderList)
+     console.log(this.orderHistory)
+     console.log(this.orderPending)
+   }).catch(err=>console.log(err))
+ }
   updateOrderStatus(order:any){
     console.log(order)
     axios.post('updateOrderStatus',{orderId:order.id,status:order.status}).then(res=>{
-      
+
     }).catch(err=>console.log(err))
+  }
+  utcToLocal(utcTime:any){
+    this.utcDateTime = new Date(utcTime);
+    return this.utcDateTime.toLocaleString('en-US', { timeZone:this.timeZone });
   }
 }
