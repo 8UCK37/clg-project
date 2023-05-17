@@ -487,6 +487,15 @@ app.get('/getOrders', ensureAuthenticated, async function (req, res) {
   res.send(JSON.stringify(orders));
 });
 
+app.get('/getOrdersForUser', ensureAuthenticated, async function (req, res) {
+  
+  const orders= await prisma.Orders.findMany({
+    where:{
+      userId:req.user.user_id
+    }
+  })
+  res.send(JSON.stringify(orders));
+});
 
 app.post('/updateOrderStatus', ensureAuthenticated, async function (req, res) {
   

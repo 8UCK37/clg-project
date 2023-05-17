@@ -115,7 +115,8 @@ export class ItemCartComponent implements OnInit {
     console.log(this.cart)
   }
   async checkOut(){
-    await axios.post('checkout',{items: this.cart,request:this.requests,date:this.date.toDateString()}).then(res=>{
+    console.log("checkedout")
+    await axios.post('checkout',{items: this.cart,request:this.requests,date:this.date}).then(res=>{
     }).catch(err=>console.log(err))
     this.cart=[]
     this.utilsServiceService.setCartObj(this.cart)

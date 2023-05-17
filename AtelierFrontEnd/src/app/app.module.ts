@@ -47,6 +47,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { IncomingOrdersComponent } from './settings/incoming-orders/incoming-orders.component';
 import { TimelineModule } from 'primeng/timeline';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { OrderListComponent } from './order-list/order-list.component';
 @NgModule({
   declarations: [
       AppComponent,
@@ -63,6 +64,7 @@ import { RadioButtonModule } from 'primeng/radiobutton';
       ItemPageComponent,
       ItemCartComponent,
       IncomingOrdersComponent,
+      OrderListComponent,
    ],
   imports: [
     CarouselModule,

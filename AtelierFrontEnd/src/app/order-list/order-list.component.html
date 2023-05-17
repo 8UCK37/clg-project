@@ -1,0 +1,36 @@
+<main class="page" >
+  <h1 style="margin-left: 150px;">Shopping Cart</h1>
+
+<div class="shopping-cart">
+  <div style="display: flex;flex-direction: column;height:auto;border:2px solid red;
+  border-radius: 5px;
+  overflow-y: auto;">
+  <ng-container *ngFor="let order of orderList;let i = index">
+  <ng-container *ngFor="let item of order.items;" >
+    <div class="product">
+      <div class="product-image">
+        <img [src]="item.photoUrl">
+      </div>
+      <div class="product-details">
+        <div class="product-title">{{item.name}}</div>
+        <p class="product-description">{{item.description}}</p>
+
+      </div>
+      <div class="product-price">{{item.price}}</div>
+      <div class="product-quantity">
+        <input type="number" [(ngModel)]="item.quantity" min="1">
+      </div>
+
+      <div class="product-line-price">{{item.quantity*item.price}}</div>
+    </div>
+  </ng-container>
+</ng-container>
+  <div style="display: flex;">
+
+</div>
+</div>
+
+</div>
+
+</main>
+
