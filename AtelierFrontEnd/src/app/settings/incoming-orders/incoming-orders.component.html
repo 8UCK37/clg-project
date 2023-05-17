@@ -1,1 +1,31 @@
-<p>incoming-orders works!</p>
+<ng-container *ngFor="let order of orderList" >
+  <span>order id: {{order.id}}</span>
+  <br>
+  <span>Has to be dlivered by {{order.deliveryDate}}</span>
+  <ng-container *ngFor="let item of order.items" >
+  <div class="product">
+    <div class="product-image">
+      <img [src]="item.photoUrl">
+    </div>
+    <div class="product-details">
+      <div class="product-title">{{item.name}}</div>
+      <p class="product-description">{{item.description}}</p>
+
+    </div>
+    <div class="product-price">{{item.price}}</div>
+    <div class="product-quantity">
+      <input type="number" [(ngModel)]="item.quantity" min="1" >
+    </div>
+    <div class="product-line-price">{{item.quantity*item.price}}</div>
+  </div>
+</ng-container>
+<span>-------------end of order----------------</span>
+<div class="totals">
+  <div class="totals-item">
+    <label>Status</label>
+    <div class="totals-value" id="cart-subtotal">{{order.status}}</div>
+  </div>
+
+</div>
+<br>
+</ng-container>

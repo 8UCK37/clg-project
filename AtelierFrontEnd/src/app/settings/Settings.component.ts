@@ -34,11 +34,11 @@ export class SettingsComponent implements OnInit {
       this.newUserName=this.userparsed.name
       this.bio = this.userInfo?.bio;
       axios.post('getUserInfo',{id:usr.id}).then(res => {
-        console.log(res.data)
+        //console.log(res.data)
         if(res.data.userInfo){
           this.info=res.data.userInfo;
         }
-        console.log(res.data.userInfo)
+        //console.log(res.data.userInfo)
       }).catch(err=>console.log(err))
     }
     })

@@ -121,4 +121,5 @@ model Orders {
   items         Json?
   requests      String?
   deliveryDate  String?
+  status        String?
 }

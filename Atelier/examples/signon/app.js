@@ -467,8 +467,8 @@ app.post('/checkout', ensureAuthenticated, async function (req, res) {
       userId:req.user.user_id,
       items:req.body.items,
       requests:req.body.request,
-      deliveryDate:req.body.date
-
+      deliveryDate:req.body.date,
+      status:'pending'
     }
   })
 
