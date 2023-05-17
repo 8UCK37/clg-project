@@ -55,11 +55,11 @@
           </div>
           <div class="order-body">
             <div class="column-labels">
-              <label class="product-image">Image</label>
-              <label class="product-details">Product</label>
-              <label class="product-price">Price</label>
-              <label class="product-quantity">Quantity</label>
+              <label class="product-price" style="margin-left: 666px;width:100px">Price</label>
+              <label class="product-quantity" style="margin-left: 40px;">Quantity</label>
             </div>
+            <div style="display: flex;">
+            <div style="width:auto;min-width:72rem ;">
             <ng-container *ngFor="let item of order.items;">
               <div class="product">
                 <div class="product-image">
@@ -76,6 +76,23 @@
                 <div class="product-line-price">{{item.quantity*item.price}}</div>
               </div>
             </ng-container>
+          </div>
+          <div style="margin-left: 50px;">
+            <p-timeline [value]="events">
+              <ng-template pTemplate="marker" let-event>
+                <span [style.backgroundColor]="order.status=='pending'? event.color:'green'" style="border-radius: 53px;height: 25px;width: 25px;">
+                    <i style="margin-left: 4px;margin-top: 4px;" [ngClass]="event.icon"></i>
+                </span>
+              </ng-template>
+              <ng-template pTemplate="content" let-event>
+                  <small class="p-text-secondary" style="opacity: 0;">{{ event.date }}</small>
+              </ng-template>
+              <ng-template pTemplate="opposite" let-event>
+                  {{ event.status }}
+              </ng-template>
+            </p-timeline>
+          </div>
+          </div>
           </div>
           <div class="order-footer">
           </div>

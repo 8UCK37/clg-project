@@ -17,8 +17,15 @@ export class OrderListComponent implements OnInit {
   public tabSeleted:any='All Orders'
   public utcDateTime:any;
   public timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-
-  constructor(public utilsServiceService : UtilsServiceService,private userService : UserService) { }
+  public events: any[]=[]
+  constructor(public utilsServiceService : UtilsServiceService,private userService : UserService) {
+    this.events = [
+      { status: 'Accepted', date: '15/10/2020 10:30', icon: 'pi pi-shopping-cart', color: '#06b6d4' },
+      { status: 'Prepping', date: '15/10/2020 14:00', icon: 'pi pi-cog', color: '#673AB7' },
+      { status: 'Out for delivery', date: '15/10/2020 16:15', icon: 'pi pi-shopping-cart', color: '#FF9800' },
+      { status: 'Delivered', date: '16/10/2020 10:00', icon: 'pi pi-check', color: '#607D8B' }
+  ];
+   }
 
   ngOnInit(): void {
     this.userService.userCast.subscribe(usr=>{
