@@ -41,6 +41,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { CarouselModule } from 'primeng/carousel';
 import { ItemPageComponent } from './item-page/item-page.component';
 import { ItemCartComponent } from './item-cart/item-cart.component';
+import { DropdownModule } from 'primeng/dropdown';
 @NgModule({
   declarations: [
       AppComponent,
@@ -67,6 +68,7 @@ import { ItemCartComponent } from './item-cart/item-cart.component';
     ConfirmDialogModule,
     ProgressSpinnerModule,
     ProgressBarModule,
+    DropdownModule,
     ButtonModule,
     BrowserModule,
     AppRoutingModule,

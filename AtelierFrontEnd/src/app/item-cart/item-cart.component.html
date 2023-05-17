@@ -22,6 +22,13 @@
       <div class="product-details">
         <div class="product-title">{{item.name}}</div>
         <p class="product-description">{{item.description}}</p>
+        <div style="display: flex;">
+
+          <p-dropdown  [(ngModel)]="item.veg" [options]="veg" optionLabel="name" ></p-dropdown>
+
+          <p-dropdown  [(ngModel)]="item.flavour" [options]="flavours" optionLabel="name" style="margin-left: 120px;"></p-dropdown>
+
+      </div>
       </div>
       <div class="product-price">{{item.price}}</div>
       <div class="product-quantity">
@@ -52,7 +59,7 @@
     </div>
   </div>
 
-      <button class="checkout">Checkout</button>
+      <button class="checkout" (click)="checkOut()">Checkout</button>
 
 </div>
 </main>
