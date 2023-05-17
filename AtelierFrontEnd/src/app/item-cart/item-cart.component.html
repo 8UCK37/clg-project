@@ -1,1 +1,58 @@
-<p>item-cart works!</p>
+<main class="page" >
+  <h1 style="margin-left: 150px;">Shopping Cart</h1>
+
+<div class="shopping-cart">
+
+  <div class="column-labels">
+    <label class="product-image">Image</label>
+    <label class="product-details">Product</label>
+    <label class="product-price">Price</label>
+    <label class="product-quantity">Quantity</label>
+    <label class="product-removal">Remove</label>
+    <label class="product-line-price">Total</label>
+  </div>
+  <div style="display: flex;flex-direction: column;height:32rem;border:2px solid red;
+  border-radius: 5px;
+  overflow-y: auto;">
+  <ng-container *ngFor="let item of cart;let i = index" >
+    <div class="product">
+      <div class="product-image">
+        <img [src]="item.photoUrl">
+      </div>
+      <div class="product-details">
+        <div class="product-title">{{item.name}}</div>
+        <p class="product-description">{{item.description}}</p>
+      </div>
+      <div class="product-price">{{item.price}}</div>
+      <div class="product-quantity">
+        <input type="number" [(ngModel)]="item.quantity" min="1" (click)="onclick()">
+      </div>
+      <div class="product-removal">
+        <button class="remove-product">
+          Remove
+        </button>
+      </div>
+      <div class="product-line-price">{{item.quantity*item.price}}</div>
+    </div>
+  </ng-container>
+</div>
+  <div class="totals">
+    <div class="totals-item">
+      <label>Subtotal</label>
+      <div class="totals-value" id="cart-subtotal">{{totalPrice}}</div>
+    </div>
+
+    <div class="totals-item">
+      <label>Shipping</label>
+      <div class="totals-value" id="cart-shipping">100</div>
+    </div>
+    <div class="totals-item totals-item-total">
+      <label>Grand Total</label>
+      <div class="totals-value" id="cart-total">{{totalPrice+100}}</div>
+    </div>
+  </div>
+
+      <button class="checkout">Checkout</button>
+
+</div>
+</main>
