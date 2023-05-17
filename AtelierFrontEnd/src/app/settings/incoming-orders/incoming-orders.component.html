@@ -23,6 +23,7 @@
   <div style="display: flex;flex-direction: column;height:auto;;border-radius: 5px;overflow-y: auto; margin-top: 50px;">
 
     <ng-container *ngFor="let order of orderPending;let i = index">
+
       <div class="order-card" style="color: black;">
         <div class="order-header">
           <div class="container">
@@ -57,6 +58,13 @@
             <label class="product-price">Price</label>
             <label class="product-quantity">Quantity</label>
           </div>
+          <span style="color:black;margin-left:25px">Ordered By</span>
+        <div style="display: flex;margin-left: 25px;">
+          <img class="user-pic" [src]="order.user.profilePicture" alt="">
+          <div>
+            <span style="color:black">{{order.user.name}}</span>
+          </div>
+        </div>
           <ng-container *ngFor="let item of order.items;">
             <div class="product">
               <div class="product-image">

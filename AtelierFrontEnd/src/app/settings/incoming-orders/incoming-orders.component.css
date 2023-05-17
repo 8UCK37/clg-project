@@ -205,9 +205,8 @@ label {
   height: auto;
   max-width:85rem;
   width:auto;
-  margin-top: 50px;
+  margin-top: 5px;
   margin-bottom: 25px;
-
   margin-right: 50px;
   border-radius: 25px;
   border:1px solid black;
@@ -238,4 +237,16 @@ label {
   background-color: #eee;
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
+}
+.user-bar{
+  margin-top: 50px;
+  height:75px;
+  max-width:85rem;
+  width:auto;
+  border: 1px solid red;
+}
+.user-pic{
+  height: 45px;
+  width: 45px;
+  border-radius: 50px;
 }
