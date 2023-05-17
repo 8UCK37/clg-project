@@ -7,11 +7,12 @@
     <br>
     <br>
     <div class="row">
-      <div class="col-md-5 col-xl-4" style="margin-left: 180px;">
+      <div class="col-md-5 col-xl-4" style="margin-left: 180px;min-width: 262px;max-width: 265px;">
         <div class="card">
             <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
               <button class="nav-link active"  id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" >Account settings</button>
-              <button *ngIf="userparsed?.isAdmin" class="nav-link"  id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" >Add a cake</button>
+              <button *ngIf="userparsed?.isAdmin" class="nav-link"  id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-add-cake" type="button" role="tab" aria-controls="v-pills-settings" >Add a cake</button>
+              <button *ngIf="userparsed?.isAdmin" class="nav-link"  id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-incoming-orders" type="button" role="tab" aria-controls="v-pills-settings" >Incoming Orders</button>
             </div>
         </div>
       </div>
@@ -80,11 +81,19 @@
               </div>
             </div>
           </div>
-          <div class="tab-pane fade " role="tabpanel" id="v-pills-settings" aria-labelledby="v-pills-settings-tab">
+          <div class="tab-pane fade " role="tabpanel" id="v-pills-add-cake" aria-labelledby="v-pills-settings-tab">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Add a new cake</h5>
                  <app-add-cake></app-add-cake>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade " role="tabpanel" id="v-pills-incoming-orders" aria-labelledby="v-pills-settings-tab">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">View Incoming Orders</h5>
+                 <app-incoming-orders></app-incoming-orders>
               </div>
             </div>
           </div>

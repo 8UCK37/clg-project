@@ -468,12 +468,22 @@ app.post('/checkout', ensureAuthenticated, async function (req, res) {
       items:req.body.items,
       requests:req.body.request,
       deliveryDate:req.body.date
+
     }
   })
 
   res.sendStatus(200);
 });
 
+app.get('/getOrders', ensureAuthenticated, async function (req, res) {
+  
+  const orders= await prisma.Orders.findMany({
+    include: {
+      user: true,
+    },
+  })
+  res.send(JSON.stringify(orders));
+});
 
 //selfexplanatory #endpoint
 app.get('/logout', function (req, res) {

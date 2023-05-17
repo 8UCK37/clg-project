@@ -44,6 +44,7 @@ import { ItemCartComponent } from './item-cart/item-cart.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { CalendarModule } from 'primeng/calendar';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { IncomingOrdersComponent } from './settings/incoming-orders/incoming-orders.component';
 @NgModule({
   declarations: [
       AppComponent,
@@ -59,6 +60,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
       AddCakeComponent,
       ItemPageComponent,
       ItemCartComponent,
+      IncomingOrdersComponent,
    ],
   imports: [
     CarouselModule,

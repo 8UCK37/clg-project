@@ -22,6 +22,7 @@ model User {
   userInfoId      Int?              @unique
   userInfo        UserInfo?         @relation(fields: [userInfoId], references: [id])
   Comment         Comment[]
+  Order           Orders[]
   CommentReaction CommentReaction[]
 }
 
@@ -115,7 +116,8 @@ model Cart {
 model Orders {
   id            Int      @id @default(autoincrement())
   createdAt     DateTime @default(now())
-  userId        String?  
+  userId        String?
+  user          User?     @relation(fields: [userId], references: [id])
   items         Json?
   requests      String?
   deliveryDate  String?
