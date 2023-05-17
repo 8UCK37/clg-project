@@ -75,6 +75,28 @@
           </ng-container>
         </div>
         <div class="order-footer">
+          <div style="display: flex;margin-left: 150px;margin-top: 10px;">
+            <div class="check-boxes" style="margin-left: 15px;">
+              <p-radioButton name="accept" value="Accepted" [(ngModel)]="order.status" inputId="ingredient1"
+               (click)="updateOrderStatus(order)"></p-radioButton>
+              <label style="margin-left: 15px;color:black" for="ingredient1" class="ml-2">Accepted</label>
+            </div>
+            <div class="check-boxes " style="margin-left: 15px;">
+              <p-radioButton name="pizza" value="Prepping" [(ngModel)]="order.status" inputId="ingredient2"
+              (click)="updateOrderStatus(order)"></p-radioButton>
+              <label style="margin-left: 15px;color:black" for="ingredient2" class="ml-2">Prepping</label>
+            </div>
+            <div class="check-boxes" style="margin-left: 15px;">
+              <p-radioButton name="pizza" value="Out for delivery" [(ngModel)]="order.status" inputId="ingredient3"
+              (click)="updateOrderStatus(order)"></p-radioButton>
+              <label style="margin-left: 15px;color:black" for="ingredient3" class="ml-2">Out for delivery</label>
+            </div>
+            <div class="check-boxes" style="margin-left: 15px;">
+              <p-radioButton name="pizza" value="Delivered" [(ngModel)]="order.status" inputId="ingredient4"
+              (click)="updateOrderStatus(order)"></p-radioButton>
+              <label style="margin-left: 15px;color:black" for="ingredient4" class="ml-2">Delivered</label>
+            </div>
+          </div>
         </div>
       </div>
     </ng-container>
