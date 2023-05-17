@@ -27,7 +27,7 @@
       <div class="product-quantity">
         <input type="number" [(ngModel)]="item.quantity" min="1" (click)="onclick()">
       </div>
-      <div class="product-removal">
+      <div class="product-removal" (click)="removeItem(i)">
         <button class="remove-product">
           Remove
         </button>

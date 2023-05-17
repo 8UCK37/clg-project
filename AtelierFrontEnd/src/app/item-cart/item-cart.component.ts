@@ -48,4 +48,9 @@ export class ItemCartComponent implements OnInit {
 
     }).catch(err=>console.log(err))
   }
+  removeItem(id:any){
+    this.cart.splice(id,1)
+    this.onclick()
+    console.log(this.cart)
+  }
 }
