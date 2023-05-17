@@ -42,6 +42,8 @@ import { CarouselModule } from 'primeng/carousel';
 import { ItemPageComponent } from './item-page/item-page.component';
 import { ItemCartComponent } from './item-cart/item-cart.component';
 import { DropdownModule } from 'primeng/dropdown';
+import { CalendarModule } from 'primeng/calendar';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 @NgModule({
   declarations: [
       AppComponent,
@@ -69,8 +71,10 @@ import { DropdownModule } from 'primeng/dropdown';
     ProgressSpinnerModule,
     ProgressBarModule,
     DropdownModule,
+    CalendarModule,
     ButtonModule,
     BrowserModule,
+    InputTextareaModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,

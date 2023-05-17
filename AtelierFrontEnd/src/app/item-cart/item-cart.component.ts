@@ -21,9 +21,24 @@ export class ItemCartComponent implements OnInit {
   public flavours:Flavours[]=[]
   public veg:Veg[]=[]
 
+  public date!: Date ;
+  public minDate!: Date ;
+  public maxDate!: Date;
+
+  public requests!:string;
   constructor(public utilsServiceService : UtilsServiceService,private userService : UserService) { }
 
   ngOnInit(): void {
+    let today = new Date();
+    let minDate = new Date();
+    minDate.setDate(today.getDate() + 4); // Set minimum date as 4 days after the current date
+
+    let maxDate = new Date();
+    maxDate.setMonth(today.getMonth() + 1); // Set maximum date as 1 month from the current date
+
+    this.minDate = minDate;
+    this.maxDate = maxDate;
+
     this.userService.userCast.subscribe(usr=>{
       //console.log("user data" , usr)
       this.userparsed = usr;
@@ -99,8 +114,14 @@ export class ItemCartComponent implements OnInit {
     }).catch(err=>console.log(err))
     console.log(this.cart)
   }
-  checkOut(){
-    console.log(this.cart)
+  async checkOut(){
+    await axios.post('checkout',{items: this.cart,request:this.requests,date:this.date.toDateString()}).then(res=>{
+    }).catch(err=>console.log(err))
+    this.cart=[]
+    this.utilsServiceService.setCartObj(this.cart)
+    await axios.post('addToCart',{data: this.cart}).then(res=>{
+      window.location.reload()
+    }).catch(err=>console.log(err))
   }
 
 }

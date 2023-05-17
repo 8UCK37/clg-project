@@ -1,7 +1,7 @@
 <main class="page" >
   <h1 style="margin-left: 150px;">Shopping Cart</h1>
 
-<div class="shopping-cart">
+<div class="shopping-cart" *ngIf="this.cart.length!=0">
 
   <div class="column-labels">
     <label class="product-image">Image</label>
@@ -11,7 +11,7 @@
     <label class="product-removal">Remove</label>
     <label class="product-line-price">Total</label>
   </div>
-  <div style="display: flex;flex-direction: column;height:32rem;border:2px solid red;
+  <div style="display: flex;flex-direction: column;height:auto;border:2px solid red;
   border-radius: 5px;
   overflow-y: auto;">
   <ng-container *ngFor="let item of cart;let i = index" >
@@ -42,6 +42,15 @@
       <div class="product-line-price">{{item.quantity*item.price}}</div>
     </div>
   </ng-container>
+  <div style="display: flex;">
+  <span class="p-float-label">
+    <textarea id="float-input" [(ngModel)]="requests" rows="5" cols="30" pInputTextarea></textarea>
+    <label for="float-input">Special requests if any!!</label>
+  </span>
+  <div style="margin-left: 900px;">
+    <p-calendar [(ngModel)]="date" dateFormat="dd/mm/yy" [minDate]="minDate" [maxDate]="maxDate" [readonlyInput]="true" placeholder="Select Delivery Date"></p-calendar>
+  </div>
+</div>
 </div>
   <div class="totals">
     <div class="totals-item">
@@ -62,4 +71,7 @@
       <button class="checkout" (click)="checkOut()">Checkout</button>
 
 </div>
+<ng-container *ngIf="this.cart.length===0">
+  <h2 style="margin-left: 500px;">such empty!! much wow</h2>
+</ng-container>
 </main>

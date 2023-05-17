@@ -460,6 +460,21 @@ app.get('/getCart', ensureAuthenticated, async function (req, res) {
   res.send(JSON.stringify(cart));
 });
 
+app.post('/checkout', ensureAuthenticated, async function (req, res) {
+  console.log(req.body)
+  let order = await prisma.Orders.create({
+    data:{
+      userId:req.user.user_id,
+      items:req.body.items,
+      requests:req.body.request,
+      deliveryDate:req.body.date
+    }
+  })
+
+  res.sendStatus(200);
+});
+
+
 //selfexplanatory #endpoint
 app.get('/logout', function (req, res) {
   req.logout();
