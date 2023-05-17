@@ -492,6 +492,8 @@ app.get('/getOrdersForUser', ensureAuthenticated, async function (req, res) {
   const orders= await prisma.Orders.findMany({
     where:{
       userId:req.user.user_id
+    },orderBy:{
+      id:'asc'
     }
   })
   res.send(JSON.stringify(orders));
