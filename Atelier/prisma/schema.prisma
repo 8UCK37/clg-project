@@ -113,8 +113,10 @@ model Cart {
   items       Json?
 }
 model Oders {
-  id          Int      @id @default(autoincrement())
-  createdAt   DateTime @default(now())
-  userId      String?  
-  items       Json?
+  id            Int      @id @default(autoincrement())
+  createdAt     DateTime @default(now())
+  userId        String?  
+  items         Json?
+  requests      String?
+  deliveryDate  String?
 }

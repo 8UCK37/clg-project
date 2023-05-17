@@ -70,6 +70,8 @@ export class ItemCartComponent implements OnInit {
     axios.get('getCart').then(res => {
       //console.log(res.data)
       this.utilsServiceService.setCartObj(res.data.items)
+      this.cart=res.data.items
+      this.getTotalPrice()
     }).catch(err=>console.log(err))
   }
   getTotalPrice(){
@@ -78,16 +80,23 @@ export class ItemCartComponent implements OnInit {
       this.totalPrice+=item.quantity*item.price
     });
   }
-  async onclick(){
+  async changeQuantity(){
     this.getTotalPrice()
     this.utilsServiceService.setCartObj(this.cart)
     await axios.post('addToCart',{data: this.cart}).then(res=>{
 
     }).catch(err=>console.log(err))
   }
-  removeItem(id:any){
+  async removeItem(id:any){
     this.cart.splice(id,1)
-    this.onclick()
+    this.getTotalPrice()
+    await axios.post('addToCart',{data: this.cart}).then(res=>{
+    }).catch(err=>console.log(err))
+    console.log(this.cart)
+  }
+  async select(){
+    await axios.post('addToCart',{data: this.cart}).then(res=>{
+    }).catch(err=>console.log(err))
     console.log(this.cart)
   }
   checkOut(){

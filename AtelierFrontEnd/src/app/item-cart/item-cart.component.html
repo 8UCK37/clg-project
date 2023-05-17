@@ -22,17 +22,17 @@
       <div class="product-details">
         <div class="product-title">{{item.name}}</div>
         <p class="product-description">{{item.description}}</p>
-        <div style="display: flex;">
+        <div style="display: flex;" (click)="select()">
 
           <p-dropdown  [(ngModel)]="item.veg" [options]="veg" optionLabel="name" ></p-dropdown>
 
-          <p-dropdown  [(ngModel)]="item.flavour" [options]="flavours" optionLabel="name" style="margin-left: 120px;"></p-dropdown>
+          <p-dropdown  [(ngModel)]="item.flavour" [options]="flavours" optionLabel="name"></p-dropdown>
 
       </div>
       </div>
       <div class="product-price">{{item.price}}</div>
       <div class="product-quantity">
-        <input type="number" [(ngModel)]="item.quantity" min="1" (click)="onclick()">
+        <input type="number" [(ngModel)]="item.quantity" min="1" (click)="changeQuantity()">
       </div>
       <div class="product-removal" (click)="removeItem(i)">
         <button class="remove-product">
