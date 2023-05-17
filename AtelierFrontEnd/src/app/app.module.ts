@@ -45,6 +45,8 @@ import { DropdownModule } from 'primeng/dropdown';
 import { CalendarModule } from 'primeng/calendar';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { IncomingOrdersComponent } from './settings/incoming-orders/incoming-orders.component';
+import { TimelineModule } from 'primeng/timeline';
+import { RadioButtonModule } from 'primeng/radiobutton';
 @NgModule({
   declarations: [
       AppComponent,
@@ -74,6 +76,8 @@ import { IncomingOrdersComponent } from './settings/incoming-orders/incoming-ord
     ProgressBarModule,
     DropdownModule,
     CalendarModule,
+    TimelineModule,
+    RadioButtonModule,
     ButtonModule,
     BrowserModule,
     InputTextareaModule,

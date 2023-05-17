@@ -2,6 +2,8 @@
   <span>order id: {{order.id}}</span>
   <br>
   <span>Has to be dlivered by {{order.deliveryDate}}</span>
+  <div style="display: flex;">
+    <div style="display: flex;flex-direction: column;">
   <ng-container *ngFor="let item of order.items" >
   <div class="product">
     <div class="product-image">
@@ -19,6 +21,51 @@
     <div class="product-line-price">{{item.quantity*item.price}}</div>
   </div>
 </ng-container>
+</div>
+
+<p-timeline [value]="events">
+  <ng-template pTemplate="marker" let-event>
+    <span [style.backgroundColor]="event.color" style="border-radius: 53px;height: 25px;width: 25px;">
+        <i style="margin-left: 4px;margin-top: 4px;" [ngClass]="event.icon"></i>
+    </span>
+  </ng-template>
+  <ng-template pTemplate="content" let-event>
+      <small class="p-text-secondary" style="opacity: 0;">{{ event.date }}</small>
+  </ng-template>
+  <ng-template pTemplate="opposite" let-event>
+      {{ event.status }}
+  </ng-template>
+</p-timeline>
+      <div class="col" >
+        <div class="flex flex-wrap gap-3">
+            <div class="check-boxes">
+              <p-radioButton name="accept" value="Accepted" [(ngModel)]="status" inputId="ingredient1"
+                [disabled]="!isRadioButtonSelected(1)"></p-radioButton>
+              <label for="ingredient1" class="ml-2">Accepted</label>
+            </div>
+            <div class="check-boxes ">
+              <p-radioButton name="pizza" value="Prepping" [(ngModel)]="status" inputId="ingredient2"
+                [disabled]="!isRadioButtonSelected(2)"></p-radioButton>
+              <label for="ingredient2" class="ml-2">Prepping</label>
+            </div>
+            <div class="check-boxes">
+              <p-radioButton name="pizza" value="Out for delivery" [(ngModel)]="status" inputId="ingredient3"
+                [disabled]="!isRadioButtonSelected(3)"></p-radioButton>
+              <label for="ingredient3" class="ml-2">Out for delivery</label>
+            </div>
+            <div class="check-boxes">
+              <p-radioButton name="pizza" value="Delivered" [(ngModel)]="status" inputId="ingredient4"
+                [disabled]="!isRadioButtonSelected(4)"></p-radioButton>
+              <label for="ingredient4" class="ml-2">Delivered</label>
+            </div>
+        </div>
+      </div>
+
+
+  </div>
+
+
+
 <span>-------------end of order----------------</span>
 <div class="totals">
   <div class="totals-item">
@@ -29,3 +76,7 @@
 </div>
 <br>
 </ng-container>
+
+
+
+
