@@ -332,5 +332,9 @@ export class ChatPageComponent implements OnInit {
         this.fetchChatData(id)
       }, 1000);
     }
+    deleteSelected(){
+      this.fileSelected=false;
+      this.input.nativeElement.value=null;
+    }
 }
 
