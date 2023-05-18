@@ -24,9 +24,10 @@ export class PrimaryHomePageComponent implements OnInit {
   public cakes:Product[]=[]
   public cart:any;
   public carosleUrl:string=''
-  public urlarray:string[]=['https://firebasestorage.googleapis.com/v0/b/arachnoid-a42069.appspot.com/o/Cakes%2F52d421e6-5880-4074-a25e-eb70662d2159.jpg?alt=media&token=6febc586-490f-40f2-8400-64009ce1a02c',
-  'https://firebasestorage.googleapis.com/v0/b/arachnoid-a42069.appspot.com/o/Cakes%2Fe1973e37-999c-4807-87fc-8279e981e955.jpg?alt=media&token=6febc586-490f-40f2-8400-64009ce1a02c',
-'https://firebasestorage.googleapis.com/v0/b/arachnoid-a42069.appspot.com/o/Cakes%2Fc763e5cc-84e3-4213-b571-20a72ee9e24e.jpg?alt=media&token=6febc586-490f-40f2-8400-64009ce1a02c']
+  public urlarray:string[]=['https://sweetcrunch.in/wp-content/uploads/2016/12/img1-1-750x400.jpg',
+  'https://cakesrus.store/image/cache/catalog/Slider%20Images/Cake%20slider%201-1000x500h.jpg',
+'https://www.madewithdelmonte.in/uploads/christmas-cake-slider.jpg',
+'https://cdn.shopify.com/s/files/1/0272/5848/6851/files/slide05_124ae589-51dd-4e69-bee1-3310b09fbf0e_1800x.jpg?v=1667895282']
 
 
 

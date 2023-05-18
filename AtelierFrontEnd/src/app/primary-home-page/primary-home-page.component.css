@@ -1521,3 +1521,20 @@ footer .right {
     -webkit-transform: scale(1.22);
     transform: scale(1.22);
   }
+
+  .caroselslider{
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-name: example;
+  animation-duration: 2s;
+
+
+  }
+
+  @keyframes example {
+    0%   {left:320px; top:320px;}
+  }
+
+
