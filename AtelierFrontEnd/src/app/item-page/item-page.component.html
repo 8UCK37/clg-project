@@ -46,15 +46,8 @@
               </div>
               <!-- <form method="post" enctype="multipart/form-data" id="AddToCartForm"> -->
 
-                <div class="btn-and-quantity-wrap">
+                <div class="btn-and-quantity-wrap" style="cursor:pointer" (click)="addTocart()">
                   <div class="btn-and-quantity">
-                    <div class="spinner">
-                      <span class="btn minus" data-id="2721888517"></span>
-                      <input type="text" id="updates_2721888517" name="quantity" value="1" class="quantity-selector">
-                      <input type="hidden" id="product_id" name="product_id" value="2721888517">
-                      <span class="q">Qty.</span>
-                      <span class="btn plus" data-id="2721888517"></span>
-                    </div>
                     <div id="AddToCart" quickbeam="add-to-cart">
                       <span id="AddToCartText">Add to Cart</span>
                     </div>
@@ -165,6 +158,6 @@
     </span>
   </a>
 </div>
-
+<p-toast position='bottom-right'></p-toast>
 <!-- Quickbeam cart end -->
 </main>
