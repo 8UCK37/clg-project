@@ -42,6 +42,7 @@ carousel img {
   width:400px;
   background-color:#eeeeee;
   border-radius: 5px;
+  cursor:pointer;
 }
 .cake-image-card{
   height:270px;
