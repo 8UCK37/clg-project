@@ -2,10 +2,12 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import axios from 'axios';
 import { UserService } from '../login/user.service';
 import { ActivatedRoute } from '@angular/router';
+import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-Settings',
   templateUrl: './Settings.component.html',
-  styleUrls: ['./Settings.component.css']
+  styleUrls: ['./Settings.component.css'],
+  providers: [MessageService]
 })
 export class SettingsComponent implements OnInit {
   public newUserName: String="";
@@ -18,7 +20,7 @@ export class SettingsComponent implements OnInit {
   public tab:any;
 
 
-  constructor(public userService:UserService,private route: ActivatedRoute) { }
+  constructor(private messageService: MessageService,public userService:UserService,private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(async params => {
@@ -55,9 +57,47 @@ export class SettingsComponent implements OnInit {
 
 
   updateinfo(){
+    const phonenoPattern = /^\d{10}$/;
+    const localityPattern = /^[\w\s/]+$/;
+    const landmarkPattern = /^[\w\s]+$/;
+    const addressPattern = /^[\w\s\/,]+$/;
+    const zipcodePattern = /^\d{6}$/;
+
+    // Validate phoneno
+    if (!phonenoPattern.test(this.info.Phoneno)) {
+      console.log('Invalid phoneno');
+      this.messageService.add({ severity: 'warn', summary: 'Invalid phoneno', detail: "Phone no must be 10 digits and only numbers" });
+      return;
+    }
+    // Validate locality
+    if (!localityPattern.test(this.info.Locality)) {
+      console.log('Invalid locality');
+      this.messageService.add({ severity: 'warn', summary: 'Invalid locality', detail: "Locality can't contain special characters" });
+      return;
+    }
+    // Validate landmark
+    if (!landmarkPattern.test(this.info.Landmark)) {
+      console.log('Invalid landmark');
+      this.messageService.add({ severity: 'warn', summary: 'Invalid Landmark', detail: "Landmark can't contain special characters" });
+      return;
+    }
+    // Validate address
+    if (!addressPattern.test(this.info.Address)) {
+      console.log('Invalid address');
+      this.messageService.add({ severity: 'warn', summary: 'Invalid Address', detail: "Address can't contain special characters other than / or , " });
+      return;
+    }
+    // Validate zipcode
+    if (!zipcodePattern.test(this.info.zipcode)) {
+      console.log('Invalid zipcode');
+      this.messageService.add({ severity: 'warn', summary: 'Invalid zipcode', detail: "Zipcode must be a 6 digit number" });
+      return;
+    }
     console.log(this.info)
-    axios.post('/saveUserInfo', {Locality:this.info.Locality,zipcode:this.info.zipcode,Address:this.info.Address,Landmark:this.info.Landmark,Phoneno:this.info.Phoneno}
-    ).catch(err=>console.log(err))
+
+    axios.post('/saveUserInfo', {Locality:this.info.Locality,zipcode:this.info.zipcode,Address:this.info.Address,Landmark:this.info.Landmark,Phoneno:this.info.Phoneno}).then(res=>{
+      this.messageService.add({ severity: 'success', summary: 'Contact info Successfully Updated', detail: "Enjoy!!" })
+    }).catch(err=>console.log(err))
   }
 
 }

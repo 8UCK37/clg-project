@@ -11,8 +11,11 @@
         <div class="card">
             <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
               <button class="nav-link active"  id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" >Account settings</button>
+              <span *ngIf="userparsed?.isAdmin" style="margin-left: 15px;margin-top: 25px;">Admin Settings</span>
+              <div style="margin-left: 50px;">
               <button *ngIf="userparsed?.isAdmin" class="nav-link"  id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-add-cake" type="button" role="tab" aria-controls="v-pills-settings" >Add a cake</button>
               <button *ngIf="userparsed?.isAdmin" class="nav-link"  id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-incoming-orders" type="button" role="tab" aria-controls="v-pills-settings" >Incoming Orders</button>
+              </div>
             </div>
         </div>
       </div>
@@ -31,9 +34,7 @@
                         <label for="inputUsername">Username</label>
                         <input type="text" class="form-control" id="inputUsername" placeholder="{{userparsed?.name}}" [(ngModel)]="newUserName" [ngModelOptions]="{standalone: true}">
                       </div>
-
                     </div>
-
                   </div>
                   <button type="submit" class="button" (click)="changeName()">Save changes</button>
                 </form>
@@ -101,4 +102,5 @@
       </div>
     </div>
   </div>
+  <p-toast position='bottom-right'></p-toast>
 </main>
