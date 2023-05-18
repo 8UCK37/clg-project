@@ -833,7 +833,7 @@ header .logo {
   letter-spacing: 4px;
   position: relative;
   text-transform: uppercase;
-  
+
 }
 
 header nav {
@@ -1542,7 +1542,7 @@ header #nav-icon {
 }
 
 .collection-list a:hover .variants {
-  height: 27px;
+  height: 50px;
 }
 
 .collection-list a .variants {
@@ -4451,4 +4451,9 @@ header #nav-icon span:nth-child(3) {
 
 .swatch.error code {
   font-family: monospace;
+}
+.cake-image-card{
+  height:270px;
+  width:270px;
+  border-radius: 10px;
 }
