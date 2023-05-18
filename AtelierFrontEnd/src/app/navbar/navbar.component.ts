@@ -153,4 +153,11 @@ export class NavbarComponent implements  OnInit {
   openModal(){
     this.utilsServiceService.modalObjSource.next({open:true, data:null})
   }
+  goToCart(){
+    if(this.userparsed){
+      this.router.navigate(['cart']);
+    }else{
+      this.messageService.add({ severity: 'info', summary: 'Log In', detail: 'You have to login/signup first to use the cart!!' });
+    }
+  }
 }
