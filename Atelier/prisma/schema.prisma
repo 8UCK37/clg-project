@@ -13,17 +13,13 @@ model User {
   createdAt       DateTime          @default(now())
   name            String
   profilePicture  String?
-  profileBanner   String?
-  bio             String?
   gmailId         String?
   activeChoice    Boolean?
   isConnected     Boolean?
   isAdmin         Boolean?
   userInfoId      Int?              @unique
   userInfo        UserInfo?         @relation(fields: [userInfoId], references: [id])
-  Comment         Comment[]
   Order           Orders[]
-  CommentReaction CommentReaction[]
 }
 
 model UserInfo {
@@ -47,55 +43,6 @@ model Chat {
 }
 
 
-model Posts {
-  id          Int       @id @default(autoincrement())
-  author      String
-  createdAt   DateTime  @default(now())
-  photoUrl    String?
-  description String?
-  comments    Comment[]
-  deleted     Boolean?
-  mention     Json?
-  shared      Int?
-}
-
-model Comment {
-  id              Int               @id @default(autoincrement())
-  author          User              @relation(fields: [userId], references: [id])
-  createdAt       DateTime          @default(now())
-  commentStr      String
-  commentOf       Int?
-  Posts           Posts?            @relation(fields: [postsId], references: [id])
-  postsId         Int?
-  userId          String
-  deleted         Boolean?
-  CommentReaction CommentReaction[]
-}
-
-model Tags {
-  id      Int    @id @default(autoincrement())
-  tagName String
-  post    Int
-}
-
-model Activity {
-  id        Int      @id @default(autoincrement())
-  post      Int
-  weight    Int
-  author    String
-  createdAt DateTime @default(now())
-  type      String
-}
-
-model CommentReaction {
-  id        Int      @id @default(autoincrement())
-  author    User     @relation(fields: [authorid], references: [id])
-  authorid  String
-  createdAt DateTime @default(now())
-  comment   Comment  @relation(fields: [commentid], references: [id])
-  commentid Int
-  type      String
-}
 model Cakes {
   id          Int      @id @default(autoincrement())
   createdAt   DateTime @default(now())
