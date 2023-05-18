@@ -51,6 +51,7 @@ export class ChatPageComponent implements OnInit {
   public fileSelected:boolean=false;
   public formData:any;
   public sentImages:any;
+  public showLoading:boolean=false;
   @ViewChild('toggleButton') toggleButton!: ElementRef;
   @ViewChild('menu') menu!: ElementRef;
   constructor(private messageService: MessageService,public userService:UserService,private socketService : ChatServicesService , private route: ActivatedRoute,private auth: AngularFireAuth , private renderer: Renderer2,private router: Router) {
@@ -323,6 +324,10 @@ export class ChatPageComponent implements OnInit {
       }
     }
     loadIncomingPictures(id:any){
+      this.showLoading=true
+      setTimeout(() => {
+        this.showLoading=false
+      }, 750);
       setTimeout(() => {
         this.fetchChatData(id)
       }, 1000);
