@@ -7,7 +7,7 @@
           {{ userparsed?.name }}
         </div>
         <input class="type-checkbox" id="toogle" type="checkbox" name="name" [checked]="!activeState"
-          (click)="toggleState()">
+          (click)="toggleState()" *ngIf="userparsed.isAdmin">
         <label class="estado" for="toogle">
           <span class="aprobado">Online</span>
           <span class="desaprobado">Offline</span>
@@ -31,8 +31,8 @@
                 <div class="wrapper">
                   <i *ngIf="notification.get(frnd.id)" class="fa fa-bell icon"></i>
                 </div>
-                <img [src]="frnd.profilePicture" referrerpolicy="no-referrer" />
-                <span class="chat-list-name">{{ frnd.name }}</span>
+                <img [src]="frnd.isAdmin? './../../assets/icon-resource/chef.png':frnd.profilePicture" referrerpolicy="no-referrer" />
+                <span class="chat-list-name">{{ frnd.isAdmin? 'Chef':frnd.name }}</span>
                 <i *ngIf="status.get(frnd.id)" class="fa-sharp fa-solid fa-circle"></i>
               </div>
               <!-- <i class="fa-sharp fa-solid fa-circle" (click)="sendnoti(frnd.id)"></i> -->
@@ -60,10 +60,10 @@
       <div class="chat-container">
         <div class="user-bar" [style.background]="averageHue">
           <div class="avatar">
-            <img [src]="selectedFrnd.profilePicture" referrerpolicy="no-referrer" alt="Avatar">
+            <img [src]="selectedFrnd.isAdmin? './../../assets/icon-resource/chef.png':selectedFrnd.profilePicture" referrerpolicy="no-referrer" alt="Avatar">
           </div>
           <div class="name">
-            <span>{{selectedFrnd.name}}</span>
+            <span>{{selectedFrnd.isAdmin? 'Chef':selectedFrnd.name}}</span>
             <ng-container *ngIf="status.get(selectedFrnd.id); else elseblock">
               <span class="status">online</span>
             </ng-container>
@@ -115,10 +115,10 @@
       </div>
     </div>
   </div>
-    <div class="app-right">
+    <div class="app-right" *ngIf="userparsed.isAdmin">
       <div class="app-profile-box">
         <div class="chat-list-header">
-          Friendlist
+          UserList
           <span class="c-number">{{ friendList.length }}</span>
           <svg class="list-header-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"
             stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
@@ -135,6 +135,7 @@
                 <span class="chat-list-name">{{ frnd.data.name }}</span>
                 <i *ngIf="status.get(frnd.data.id)" class="fa-sharp fa-solid fa-circle"></i>
               </div>
+              <!-- <i class="fa-sharp fa-solid fa-circle" (click)="sendnoti(frnd.data.id)"></i> -->
             </ul>
           </div>
         </div>

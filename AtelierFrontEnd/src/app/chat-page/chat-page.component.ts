@@ -76,6 +76,9 @@ export class ChatPageComponent implements OnInit {
       this.chatBackGroundUrl=`https://firebasestorage.googleapis.com/v0/b/teamfinder-e7048.appspot.com/o/ChatBackground%2F${this.userparsed?.id}.jpg?alt=media&token=8f8ec438-1ee6-4511-8478-04f3c418431e`
       this.getActiveChoice();
 
+      this.getUserlist()
+      this.getActiveConvo()
+
       average(this.chatBackGroundUrl,{format:'hex'}).then(color=>{
         //console.log(color)
         this.averageHue=color
@@ -119,18 +122,22 @@ export class ChatPageComponent implements OnInit {
 
   }
 
-  getfriendlist(){
+
+  getUserlist(){
     this.friendList=[];
-    axios.get('friendData').then(res=>{
+    axios.get('userList').then(res=>{
       res.data.forEach((data: any) => {
         this.friendList.push({data})
         //this.status.set(data.id,false);
         this.notification.set(data.id,false);
+        console.log(data)
         this.status.set(data.id,data.activeChoice&&data.isConnected)
       });
     }).catch(err=>console.log(err))
-    //console.log(this.friendList)
+    console.log(this.status)
   }
+
+
   fetchChatData(friendId:any){
     // let senderId = this.route.snapshot.queryParamMap.get('senderId');
     this.to = friendId
@@ -233,6 +240,7 @@ export class ChatPageComponent implements OnInit {
       axios.get('getChats').then(res=>{
         //console.log(res.data)
         res.data.forEach((data: any)=> {
+
          if(data.chat_type=='received'){
           if(!uniqueConvId.includes(data.sender)){
             uniqueConvId.push(data.sender)
@@ -248,11 +256,11 @@ export class ChatPageComponent implements OnInit {
          }
          });
          this.activeConvList = uniqueConv
+         console.log(this.activeConvList)
         });
-        //console.log(uniqueConvId)
+
         //console.log(uniqueConv)
     }
-
 
 
     toggleEmojiPicker() {
@@ -272,7 +280,7 @@ export class ChatPageComponent implements OnInit {
     }
 
     sendnoti(frndid:any){
-      // console.log("test clicked : "+frndid)
+      console.log("test clicked : "+frndid)
       // this.socketService.sendNoti({sender:this.userparsed.uid,receiver:frndid,noti:"test notification"})
       axios.post('sendNoti',{receiver_id:frndid}).then(res=>{
         console.log(res.data);

@@ -168,7 +168,7 @@ app.post('/getUserInfo', ensureAuthenticated, async (req, res) => {
           userInfo:true
         }
       })
-      console.log(userData)
+      //console.log(userData)
       res.send(JSON.stringify(userData));
     }
     catch(e){
@@ -274,6 +274,19 @@ app.post("/isFriend", ensureAuthenticated, urlencodedParser, async (req, res) =>
     res.send('no engagement')
   }
 })
+
+app.get("/userList", ensureAuthenticated, async (req, res) => {
+  const result = await prisma.User.findMany({
+    where:{
+      NOT:{
+        id:req.user.user_id
+      }
+    }
+  })
+
+  res.send(JSON.stringify(result));
+})
+
 //returns your friends #endpoint
 app.get("/friendData", ensureAuthenticated, async (req, res) => {
   const result = await prisma.$queryRaw`select * from public."User" where id in (select reciever from public."Friends" where sender =${req.user.user_id})`
@@ -287,8 +300,8 @@ app.post("/friendsoffriendData", ensureAuthenticated, async (req, res) => {
 })
 //TODO:testing function for notification #endpoint
 app.post("/sendNoti", ensureAuthenticated, async (req, res) => {
-  // console.log(req.user.user_id);
-  // console.log(req.body.receiver_id);
+  console.log(req.user.user_id);
+  console.log(req.body.receiver_id);
   socketRunner.sendNotification(io, "poke", req.user.user_id, req.body.receiver_id,"null")
   res.sendStatus(200);
 });
@@ -903,13 +916,19 @@ app.post('/activeStateChange', ensureAuthenticated, urlencodedParser, async (req
       activeChoice: jsonObject.state,
     },
   })
-  const friendlist = await prisma.$queryRaw`select reciever from public."Friends" where sender =${req.user.user_id}`
-  //console.log(friendlist)
-  friendlist.forEach(frnd => {
+  const userlist = await prisma.User.findMany({
+    where:{
+      NOT:{
+        id:req.user.user_id
+      }
+    }
+  })
+  console.log(userlist)
+  userlist.forEach(user => {
     if (jsonObject.state) {
-      socketRunner.sendNotification(io, "online", req.user.user_id, frnd.reciever,"null")
+      socketRunner.sendNotification(io, "online", req.user.user_id, user.id,"null")
     } else {
-      socketRunner.sendNotification(io, "disc", req.user.user_id, frnd.reciever,"null")
+      socketRunner.sendNotification(io, "disc", req.user.user_id, user.id,"null")
     }
   });
 });
