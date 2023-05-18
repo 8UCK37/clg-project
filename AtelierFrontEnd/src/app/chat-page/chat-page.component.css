@@ -1121,3 +1121,10 @@ body[data-theme=dark] {
   top: -10px;
   cursor: pointer;
 }
+.cake-image-card{
+  height:270px;
+  width:270px;
+  margin-top: 347px;
+  margin-left:62px;
+  border-radius: 10px;
+}

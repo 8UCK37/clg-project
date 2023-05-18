@@ -7,14 +7,17 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { UserService } from '../login/user.service';
 import { prominent } from 'color.js'
 import { average } from 'color.js'
+import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-chat-page',
   templateUrl: './chat-page.component.html',
-  styleUrls: ['./chat-page.component.css']
+  styleUrls: ['./chat-page.component.css'],
+  providers: [MessageService]
 })
 export class ChatPageComponent implements OnInit {
   @ViewChild('messageContainer', {static: false}) messageContainer!: ElementRef;
-
+  @ViewChild('image') input!:ElementRef;
+  @ViewChild('cakeImagePreview', { static: false }) cakeImagePreview!: ElementRef<HTMLImageElement>;
   name = 'Angular';
   message = '';
   showEmojiPicker = false;
@@ -45,9 +48,11 @@ export class ChatPageComponent implements OnInit {
   public recData:any;
   public chatBackGroundUrl:any;
   public averageHue:any;
+  public fileSelected:boolean=false;
+  public formData:any;
   @ViewChild('toggleButton') toggleButton!: ElementRef;
   @ViewChild('menu') menu!: ElementRef;
-  constructor(public userService:UserService,private socketService : ChatServicesService , private route: ActivatedRoute,private auth: AngularFireAuth , private renderer: Renderer2,private router: Router) {
+  constructor(private messageService: MessageService,public userService:UserService,private socketService : ChatServicesService , private route: ActivatedRoute,private auth: AngularFireAuth , private renderer: Renderer2,private router: Router) {
     this.renderer.listen('window', 'click',(e:Event)=>{
       /**
        * Only run when toggleButton is not clicked
@@ -109,6 +114,10 @@ export class ChatPageComponent implements OnInit {
     //console.log("sending to: "+this.to);
     //console.log("msg txt: "+this.values);
     this.socketService.send(data);
+    axios.post('chatentry',{data:data}).then(res=>{
+      //console.log(res.data);
+
+    }).catch(err=>console.log(err));
     this.allMsgs.push({sender:this.to,rec:false,msg:this.values,time:this.getLocalTime(),stl:"anim"})
     //console.log(this.getLocalTime())
     this.scrollToBottom();
@@ -285,6 +294,42 @@ export class ChatPageComponent implements OnInit {
       axios.post('sendNoti',{receiver_id:frndid}).then(res=>{
         console.log(res.data);
      }).catch(err=>console.log(err))
+    }
+    previewImage() {
+      this.fileSelected = true;
+      const file = this.input.nativeElement.files[0];
+      const reader = new FileReader();
+      if(this.input.nativeElement.files[0]!=null){
+        reader.onload = () => {
+          const img = new Image();
+          img.src = reader.result as string;
+          this.cakeImagePreview.nativeElement.src=img.src
+        }
+        reader.readAsDataURL(file);
+      }
+    }
+    uploadPicture(){
+      this.formData = new FormData();
+      //this.input.nativeElement.value=null;
+      //console.log(this.input.nativeElement.files[0])
+
+      if(this.input.nativeElement.files[0]!=null){
+        console.log("not null")
+        let type = this.input.nativeElement.files[0].type
+        if(type != "image/jpeg" && type != "image/jpg"){
+          alert("wrong image type please upload jpg or Jpeg")
+          return
+        }
+        this.formData.append("chatbackground", this.input.nativeElement.files[0]);
+
+
+        axios.post('chat/background',this.formData, {headers: {'Content-Type': 'multipart/form-data'}}).then(res=>{
+            this.input.nativeElement.value=null;
+          }).catch(err =>console.log(err))
+        }else{
+          this.messageService.add({ severity: 'error', summary: 'No image selected', detail: 'No image to upload' });
+        }
+
     }
 }
 

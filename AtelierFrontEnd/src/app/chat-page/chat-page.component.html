@@ -94,10 +94,14 @@
                 </ng-template>
               </ng-container>
             </div>
+            <img class="cake-image-card" src="" #cakeImagePreview alt="" *ngIf="fileSelected">
           </div>
+          <input type="file" style="display: none;" #image (change)="previewImage()">
+
           <form class="conversation-compose">
             <div class="emoji">
               <a style="cursor: pointer;"  (click)="toggleEmojiPicker()"> 😀</a><br>
+              <i class="fa-solid fa-paperclip" style="cursor:pointer" (click)="image.click()"></i>
             </div>
             <input #msg class="input-msg" style="background-color: #00000082;
             color: white;" name="input" placeholder="Type a message" autocomplete="off" autofocus

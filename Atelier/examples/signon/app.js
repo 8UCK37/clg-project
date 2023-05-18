@@ -923,7 +923,7 @@ app.post('/activeStateChange', ensureAuthenticated, urlencodedParser, async (req
       }
     }
   })
-  console.log(userlist)
+  //console.log(userlist)
   userlist.forEach(user => {
     if (jsonObject.state) {
       socketRunner.sendNotification(io, "online", req.user.user_id, user.id,"null")
@@ -975,7 +975,16 @@ app.get('/chatData', ensureAuthenticated, async (req, res) => {
   })
   res.send(JSON.stringify(fetchedChat))
 });
-
+app.post('/chatentry', ensureAuthenticated, urlencodedParser, async (req, res) => {
+  console.log('foprm app.js',req.body.data)
+  chatData = await prisma.Chat.create({
+    data:{
+      sender: req.body.data.sender,
+      receiver: req.body.data.receiver,
+      msg: req.body.data.msg
+    }
+  })
+})
 //returns active conversations #endpoint
 app.get('/getChats', ensureAuthenticated, async (req, res) => {
   const fetchedChat = await prisma.$queryRaw`
