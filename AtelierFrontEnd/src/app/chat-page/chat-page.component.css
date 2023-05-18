@@ -900,6 +900,7 @@ body[data-theme=dark] {
   background: #fff;
   border-radius: 0px 5px 5px 5px;
   float: left;
+  z-index: 99;
 }
 
 .message.received .metadata {

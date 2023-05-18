@@ -2,12 +2,12 @@
   <div class="app-container">
     <div class="app-left">
       <div class="app-profile-box">
-        <img [src]="userInfo?.profilePicture" alt="profile" referrerpolicy="no-referrer"  />
+        <img [src]="userInfo?.profilePicture" alt="profile" referrerpolicy="no-referrer" />
         <div class="app-profile-box-name">
           {{ userparsed?.name }}
         </div>
         <input class="type-checkbox" id="toogle" type="checkbox" name="name" [checked]="!activeState"
-          (click)="toggleState()" *ngIf="userparsed.isAdmin">
+          (click)="toggleState()" *ngIf="userparsed?.isAdmin">
         <label class="estado" for="toogle">
           <span class="aprobado">Online</span>
           <span class="desaprobado">Offline</span>
@@ -31,7 +31,8 @@
                 <div class="wrapper">
                   <i *ngIf="notification.get(frnd.id)" class="fa fa-bell icon"></i>
                 </div>
-                <img [src]="frnd.isAdmin? './../../assets/icon-resource/chef.png':frnd.profilePicture" referrerpolicy="no-referrer" />
+                <img [src]="frnd.isAdmin? './../../assets/icon-resource/chef.png':frnd.profilePicture"
+                  referrerpolicy="no-referrer" />
                 <span class="chat-list-name">{{ frnd.isAdmin? 'Chef':frnd.name }}</span>
                 <i *ngIf="status.get(frnd.id)" class="fa-sharp fa-solid fa-circle"></i>
               </div>
@@ -56,83 +57,89 @@
       </div>
     </div>
     <div style="width:100%;justify-content: center;display: flex;">
-    <div class="chat" *ngIf="selectedFrnd!=null">
-      <div class="chat-container">
-        <div class="user-bar" [style.background]="averageHue">
-          <div class="avatar">
-            <img [src]="selectedFrnd.isAdmin? './../../assets/icon-resource/chef.png':selectedFrnd.profilePicture" referrerpolicy="no-referrer" alt="Avatar">
-          </div>
-          <div class="name">
-            <span>{{selectedFrnd.isAdmin? 'Chef':selectedFrnd.name}}</span>
-            <ng-container *ngIf="status.get(selectedFrnd.id); else elseblock">
-              <span class="status">online</span>
-            </ng-container>
-            <ng-template #elseblock>
-              <span class="status">offline</span>
-            </ng-template>
-          </div>
-        </div>
-        <div class="conversation" style="background-image: url('{{chatBackGroundUrl}}')">
-          <div #messageContainer class="conversation-container">
-            <div *ngFor="let i of allMsgs">
-              <ng-container *ngIf="i.sender==selectedFrndId" >
-                <ng-container *ngIf="i.rec; else elseBlock">
-                  <div class="message received" >
-                    <ng-container *ngIf="i.photoUrl">
-                      <img class="cake-image-card" [src]="i.photoUrl" alt="" *ngIf="i.photoUrl">
-                      <br>
-                    </ng-container>
-                    <ng-container *ngIf="i.photo">
-                      <img class="cake-image-card" src="./../../assets/icon-resource/chatPhoto.png" alt="">
-                      <br>
-                    </ng-container>
-                    {{ i.msg }}
-                    <span class="metadata">
-                      <span class="time">{{i.time}}</span>
-                    </span>
-                  </div>
-                </ng-container>
-                <ng-template #elseBlock>
-                  <div class="message sent" [ngClass]="i.stl">
-                    <ng-container *ngIf="i.photoUrl">
-                      <img class="cake-image-card" [src]="i.photoUrl" alt="">
-                      <br>
-                    </ng-container>
-                    {{ i.msg }}
-                    <span class="metadata" >
-                      <span class="time">{{i.time}}</span>
-                    </span>
-                  </div>
-                </ng-template>
+      <div class="chat" *ngIf="selectedFrnd!=null">
+        <div class="chat-container">
+          <div class="user-bar" [style.background]="averageHue">
+            <div class="avatar">
+              <img [src]="selectedFrnd.isAdmin? './../../assets/icon-resource/chef.png':selectedFrnd.profilePicture"
+                referrerpolicy="no-referrer" alt="Avatar">
+            </div>
+            <div class="name">
+              <span>{{selectedFrnd.isAdmin? 'Chef':selectedFrnd.name}}</span>
+              <ng-container *ngIf="status.get(selectedFrnd.id); else elseblock">
+                <span class="status">online</span>
               </ng-container>
+              <ng-template #elseblock>
+                <span class="status">offline</span>
+              </ng-template>
             </div>
-            <img class="cake-image-card" style="position: absolute;bottom: 73px;left: 70px;border: 3px solid green;border-radius: 5px;"
-              src="" #cakeImagePreview alt="" *ngIf="fileSelected">
           </div>
-          <input type="file" style="display: none;" #image (change)="previewImage()">
-
-          <form class="conversation-compose">
-            <div class="emoji">
-              <a style="cursor: pointer;"  (click)="toggleEmojiPicker()"> 😀</a><br>
-              <i class="fa-solid fa-paperclip" style="cursor:pointer" (click)="image.click()"></i>
-            </div>
-            <input #msg class="input-msg" style="background-color: #00000082;
-            color: white;" name="input" placeholder="Type a message" autocomplete="off" autofocus
-              [(ngModel)]="values">
-            <button class="send" (click)="sendMessage()">
-              <div class="circle">
-                <i class="fa-sharp fa-solid fa-location-arrow"></i>
+          <div class="conversation" style="background-image: url('{{chatBackGroundUrl}}')">
+            <div #messageContainer class="conversation-container">
+              <div *ngFor="let i of allMsgs">
+                <ng-container *ngIf="i.sender==selectedFrndId">
+                  <ng-container *ngIf="i.rec; else elseBlock">
+                    <div class="message received" >
+                      <ng-container *ngIf="i.photoUrl">
+                        <img class="cake-image-card" [src]="i.photoUrl" alt="" *ngIf="i.photoUrl">
+                        <br>
+                      </ng-container>
+                      <ng-container *ngIf="i.photo">
+                        <div style="position:relative;cursor:pointer" >
+                          <i class="pi pi-download" style="color: #708090;font-size: 3rem;z-index: 80;
+                              position: absolute;left: 106px;
+                              top: 106px;cursor: pointer;" (click)="loadIncomingPictures(selectedFrnd.id)" ></i>
+                          <img class="cake-image-card" src="./../../assets/icon-resource/chatPhoto.png" alt="">
+                        </div>
+                        <br>
+                      </ng-container>
+                      {{ i.msg }}
+                      <span class="metadata">
+                        <span class="time">{{i.time}}</span>
+                      </span>
+                    </div>
+                  </ng-container>
+                  <ng-template #elseBlock>
+                    <div class="message sent" [ngClass]="i.stl">
+                      <ng-container *ngIf="i.photoUrl">
+                        <img class="cake-image-card" [src]="i.photoUrl" alt="">
+                        <br>
+                      </ng-container>
+                      {{ i.msg }}
+                      <span class="metadata">
+                        <span class="time">{{i.time}}</span>
+                      </span>
+                    </div>
+                  </ng-template>
+                </ng-container>
               </div>
-            </button>
-          </form>
-          <div #menu *ngIf="showEmojiPicker">
-            <emoji-mart class="emoji-mart" set="google" (emojiSelect)="addEmoji($event)"></emoji-mart>
+              <img class="cake-image-card"
+                style="position: absolute;bottom: 73px;left: 70px;border: 3px solid green;border-radius: 5px;z-index: 99;" src=""
+                #cakeImagePreview alt="" *ngIf="fileSelected">
+            </div>
+            <input type="file" style="display: none;" #image (change)="previewImage()">
+
+            <form class="conversation-compose">
+              <div class="emoji">
+                <a style="cursor: pointer;" (click)="toggleEmojiPicker()"> 😀</a><br>
+                <i class="fa-solid fa-paperclip" style="cursor:pointer" (click)="image.click()"></i>
+              </div>
+              <input #msg class="input-msg" style="background-color: #00000082;
+            color: white;" name="input" placeholder="Type a message" autocomplete="off" autofocus [(ngModel)]="values">
+              <button class="send" (click)="sendMessage()">
+                <div class="circle">
+                  <i class="fa-sharp fa-solid fa-location-arrow"></i>
+                </div>
+              </button>
+            </form>
+            <div #menu *ngIf="showEmojiPicker">
+              <emoji-mart class="emoji-mart" set="google" (emojiSelect)="addEmoji($event)"></emoji-mart>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-    <div class="app-right" *ngIf="userparsed.isAdmin">
+    <div class="app-right" *ngIf="userparsed?.isAdmin">
       <div class="app-profile-box">
         <div class="chat-list-header">
           UserList

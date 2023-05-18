@@ -79,7 +79,7 @@ export class ChatPageComponent implements OnInit {
       this.userparsed = usr;
       this.userInfo = usr;
       //console.log(this.userparsed.id)
-      this.chatBackGroundUrl=`https://firebasestorage.googleapis.com/v0/b/teamfinder-e7048.appspot.com/o/ChatBackground%2F${this.userparsed?.id}.jpg?alt=media&token=8f8ec438-1ee6-4511-8478-04f3c418431e`
+      this.chatBackGroundUrl=`https://firebasestorage.googleapis.com/v0/b/arachnoid-a42069.appspot.com/o/ChatBackground%2Fbackground2.jpg?alt=media&token=7eb1f61c-9fd5-4c47-ad7a-b712f018e150`
       this.getActiveChoice();
 
       this.getUserlist()
@@ -153,11 +153,11 @@ export class ChatPageComponent implements OnInit {
         this.friendList.push({data})
         //this.status.set(data.id,false);
         this.notification.set(data.id,false);
-        console.log(data)
+        //console.log(data)
         this.status.set(data.id,data.activeChoice&&data.isConnected)
       });
     }).catch(err=>console.log(err))
-    console.log(this.status)
+    //console.log(this.status)
   }
 
 
@@ -171,7 +171,7 @@ export class ChatPageComponent implements OnInit {
         let left = (ele.sender== this.userparsed?.id) ? false : true
         this.allMsgs.push({sender:friendId,rec: left , msg: ele.msg,time:this.timeArr[0]+":"+this.timeArr[1],photoUrl:ele.photoUrl})
         })
-        console.log(this.allMsgs)
+        //console.log(this.allMsgs)
       }).catch(err=>console.log(err));
       this.scrollToBottom();
     }
@@ -219,7 +219,7 @@ export class ChatPageComponent implements OnInit {
 
     scrollToBottom() {
       setTimeout(() => {
-        this.messageContainer.nativeElement.scrollTop = this.messageContainer.nativeElement?.scrollHeight;
+        this.messageContainer.nativeElement.scrollTop = this.messageContainer?.nativeElement?.scrollHeight;
       }, 200);
     }
 
@@ -279,7 +279,7 @@ export class ChatPageComponent implements OnInit {
          }
          });
          this.activeConvList = uniqueConv
-         console.log(this.activeConvList)
+         //console.log(this.activeConvList)
         });
 
     }
@@ -322,6 +322,10 @@ export class ChatPageComponent implements OnInit {
         reader.readAsDataURL(file);
       }
     }
-
+    loadIncomingPictures(id:any){
+      setTimeout(() => {
+        this.fetchChatData(id)
+      }, 1000);
+    }
 }
 
