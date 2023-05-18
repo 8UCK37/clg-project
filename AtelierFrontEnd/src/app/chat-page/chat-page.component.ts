@@ -50,6 +50,7 @@ export class ChatPageComponent implements OnInit {
   public averageHue:any;
   public fileSelected:boolean=false;
   public formData:any;
+
   @ViewChild('toggleButton') toggleButton!: ElementRef;
   @ViewChild('menu') menu!: ElementRef;
   constructor(private messageService: MessageService,public userService:UserService,private socketService : ChatServicesService , private route: ActivatedRoute,private auth: AngularFireAuth , private renderer: Renderer2,private router: Router) {
@@ -84,11 +85,6 @@ export class ChatPageComponent implements OnInit {
       this.getUserlist()
       this.getActiveConvo()
 
-      average(this.chatBackGroundUrl,{format:'hex'}).then(color=>{
-        //console.log(color)
-        this.averageHue=color
-      }).catch(err=>console.log(err))
-
     setTimeout(() => {
       this.onclick(this.activeConvList[0])
       this.friendList.forEach(frnd => {
@@ -108,13 +104,12 @@ export class ChatPageComponent implements OnInit {
   }
 
   sendMessage(){
-      this.formData = new FormData();
+    this.formData = new FormData();
 
-    if(this.values == "" || this.values.length == 0 ) return;
+    if((this.values == "" || this.values.length == 0) && !this.fileSelected) return;
+    let data = {receiver: this.to , msg : this.values , sender : this.userparsed.id,photo:this.fileSelected}
+    console.log(data);
 
-    let data = {receiver: this.to , msg : this.values , sender : this.userparsed.id}
-    //console.log("sending to: "+this.to);
-    //console.log("msg txt: "+this.values);
     this.socketService.send(data);
     if(this.input.nativeElement.files[0]!=null){
       console.log("not null")
@@ -123,15 +118,21 @@ export class ChatPageComponent implements OnInit {
         alert("wrong image type please upload jpg or Jpeg")
         return
       }
-      this.formData.append("chatbackground", this.input.nativeElement.files[0]);
+      this.formData.append("chatimages", this.input.nativeElement.files[0]);
+
+      this.allMsgs.push({sender:this.to,rec:false,msg:this.values,time:this.getLocalTime(),stl:"anim"})
+    }else{
+      this.allMsgs.push({sender:this.to,rec:false,msg:this.values,time:this.getLocalTime(),stl:"anim"})
     }
 
       this.formData.append("data" , JSON.stringify({data : data}))
       axios.post('chat/Images',this.formData, {headers: {'Content-Type': 'multipart/form-data'}}).then(res=>{
           this.input.nativeElement.value=null;
+          this.cakeImagePreview.nativeElement.src=''
+          this.fileSelected=false
         }).catch(err =>console.log(err))
 
-    this.allMsgs.push({sender:this.to,rec:false,msg:this.values,time:this.getLocalTime(),stl:"anim"})
+
     //console.log(this.getLocalTime())
     this.scrollToBottom();
 
@@ -226,7 +227,7 @@ export class ChatPageComponent implements OnInit {
       this.incomingDataSubscription = this.socketService.getIncomingMsg().subscribe((data) => {
         const recData = typeof data === 'string' ? JSON.parse(data) : data;
         console.log(recData);
-        this.allMsgs.push({sender:recData.sender,rec:true,msg:recData.msg,time:this.getLocalTime()});
+        this.allMsgs.push({sender:recData.sender,rec:true,msg:recData.msg,time:this.getLocalTime(),photo:recData.photo});
         if(recData.sender==this.selectedFrndId){
         this.scrollToBottom();
         //this.getActiveConvo();
@@ -281,7 +282,6 @@ export class ChatPageComponent implements OnInit {
          console.log(this.activeConvList)
         });
 
-        //console.log(uniqueConv)
     }
 
 
@@ -321,28 +321,6 @@ export class ChatPageComponent implements OnInit {
         reader.readAsDataURL(file);
       }
     }
-    chatEntry(){
-      this.formData = new FormData();
-      //this.input.nativeElement.value=null;
-      //console.log(this.input.nativeElement.files[0])
 
-      if(this.input.nativeElement.files[0]!=null){
-        console.log("not null")
-        let type = this.input.nativeElement.files[0].type
-        if(type != "image/jpeg" && type != "image/jpg"){
-          alert("wrong image type please upload jpg or Jpeg")
-          return
-        }
-        this.formData.append("chatbackground", this.input.nativeElement.files[0]);
-
-
-        axios.post('chat/background',this.formData, {headers: {'Content-Type': 'multipart/form-data'}}).then(res=>{
-            this.input.nativeElement.value=null;
-          }).catch(err =>console.log(err))
-        }else{
-          this.messageService.add({ severity: 'error', summary: 'No image selected', detail: 'No image to upload' });
-        }
-
-    }
 }
 

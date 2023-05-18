@@ -66,10 +66,10 @@ export class AddCakeComponent implements OnInit {
         alert("wrong image type please upload jpg or Jpeg")
         return
       }
-      this.formData.append("chatbackground", this.input.nativeElement.files[0]);
+      this.formData.append("cakeimage", this.input.nativeElement.files[0]);
       this.showUploadProgress()
       this.formData.append("data" , JSON.stringify({data : this.cake}))
-      axios.post('chat/background',this.formData, {headers: {'Content-Type': 'multipart/form-data'}}).then(res=>{
+      axios.post('cakeImages',this.formData, {headers: {'Content-Type': 'multipart/form-data'}}).then(res=>{
           this.input.nativeElement.value=null;
         }).catch(err =>console.log(err))
       }else{

@@ -44,7 +44,7 @@ async function uploadCake(req, res,prisma){
 async function uploadImage(req, res,prisma){
   console.log(req.file);
   let body = JSON.parse(req.body.data)
-  console.log('chat image',body);
+  console.log('incoming chat',body);
   if(req.file){
       const storage = new Storage();
       const newUUID = uuidv4();
@@ -70,7 +70,7 @@ async function uploadImage(req, res,prisma){
         }
         uploadFromMemory().catch(console.error);            
   }else{
-    console.log('chat without images')
+    //console.log('chat without images')
     chatData = await prisma.Chat.create({
       data:{
         sender: body.data.sender,

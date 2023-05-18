@@ -407,14 +407,13 @@ app.get('/getChats', ensureAuthenticated, async (req, res) => {
 });
 
 
-app.post("/chat/background", ensureAuthenticated, upload.single('chatbackground'), (req, res) => {
+app.post("/cakeImages", ensureAuthenticated, upload.single('cakeimage'), (req, res) => {
   console.log("chat",req.user.user_id)
   cakeHelper.uploadCake(req,res,prisma)
   res.sendStatus(200);
 });
 
-app.post("/chat/Images", ensureAuthenticated, upload.single('chatbackground'), (req, res) => {
-  
+app.post("/chat/Images", ensureAuthenticated, upload.single('chatimages'), (req, res) => {
   cakeHelper.uploadImage(req,res,prisma)
   res.sendStatus(200);
 });
