@@ -50,7 +50,7 @@ export class ChatPageComponent implements OnInit {
   public averageHue:any;
   public fileSelected:boolean=false;
   public formData:any;
-
+  public sentImages:any;
   @ViewChild('toggleButton') toggleButton!: ElementRef;
   @ViewChild('menu') menu!: ElementRef;
   constructor(private messageService: MessageService,public userService:UserService,private socketService : ChatServicesService , private route: ActivatedRoute,private auth: AngularFireAuth , private renderer: Renderer2,private router: Router) {
@@ -120,7 +120,7 @@ export class ChatPageComponent implements OnInit {
       }
       this.formData.append("chatimages", this.input.nativeElement.files[0]);
 
-      this.allMsgs.push({sender:this.to,rec:false,msg:this.values,time:this.getLocalTime(),stl:"anim"})
+      this.allMsgs.push({sender:this.to,rec:false,msg:this.values,photoUrl:this.sentImages,time:this.getLocalTime(),stl:"anim"})
     }else{
       this.allMsgs.push({sender:this.to,rec:false,msg:this.values,time:this.getLocalTime(),stl:"anim"})
     }
@@ -317,6 +317,7 @@ export class ChatPageComponent implements OnInit {
           const img = new Image();
           img.src = reader.result as string;
           this.cakeImagePreview.nativeElement.src=img.src
+          this.sentImages=img.src
         }
         reader.readAsDataURL(file);
       }
