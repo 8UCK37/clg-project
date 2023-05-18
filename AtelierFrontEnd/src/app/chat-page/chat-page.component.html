@@ -78,6 +78,8 @@
               <ng-container *ngIf="i.sender==selectedFrndId" >
                 <ng-container *ngIf="i.rec; else elseBlock">
                   <div class="message received" >
+                    <img class="cake-image-card" [src]="i.photoUrl"  alt="" *ngIf="i.photoUrl">
+                    <br>
                     {{ i.msg }}
                     <span class="metadata">
                       <span class="time">{{i.time}}</span>
@@ -86,6 +88,8 @@
                 </ng-container>
                 <ng-template #elseBlock>
                   <div class="message sent" [ngClass]="i.stl">
+                    <img class="cake-image-card" [src]="i.photoUrl"  alt="" *ngIf="i.photoUrl">
+                    <br>
                     {{ i.msg }}
                     <span class="metadata" >
                       <span class="time">{{i.time}}</span>

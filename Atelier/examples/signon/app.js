@@ -975,16 +975,7 @@ app.get('/chatData', ensureAuthenticated, async (req, res) => {
   })
   res.send(JSON.stringify(fetchedChat))
 });
-app.post('/chatentry', ensureAuthenticated, urlencodedParser, async (req, res) => {
-  console.log('foprm app.js',req.body.data)
-  chatData = await prisma.Chat.create({
-    data:{
-      sender: req.body.data.sender,
-      receiver: req.body.data.receiver,
-      msg: req.body.data.msg
-    }
-  })
-})
+
 //returns active conversations #endpoint
 app.get('/getChats', ensureAuthenticated, async (req, res) => {
   const fetchedChat = await prisma.$queryRaw`
@@ -1163,7 +1154,11 @@ app.post("/chat/background", ensureAuthenticated, upload.single('chatbackground'
   cakeHelper.uploadCake(req,res,prisma)
   res.sendStatus(200);
 });
-
+app.post("/chat/Images", ensureAuthenticated, upload.single('chatbackground'), (req, res) => {
+  
+  cakeHelper.uploadImage(req,res,prisma)
+  res.sendStatus(200);
+});
 app.get('/getCakesList', async (req, res) => {
   try {
     const cakesList = await prisma.Cakes.findMany();

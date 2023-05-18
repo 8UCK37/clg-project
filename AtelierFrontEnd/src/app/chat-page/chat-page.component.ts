@@ -108,16 +108,29 @@ export class ChatPageComponent implements OnInit {
   }
 
   sendMessage(){
+      this.formData = new FormData();
+
     if(this.values == "" || this.values.length == 0 ) return;
 
     let data = {receiver: this.to , msg : this.values , sender : this.userparsed.id}
     //console.log("sending to: "+this.to);
     //console.log("msg txt: "+this.values);
     this.socketService.send(data);
-    axios.post('chatentry',{data:data}).then(res=>{
-      //console.log(res.data);
+    if(this.input.nativeElement.files[0]!=null){
+      console.log("not null")
+      let type = this.input.nativeElement.files[0].type
+      if(type != "image/jpeg" && type != "image/jpg"){
+        alert("wrong image type please upload jpg or Jpeg")
+        return
+      }
+      this.formData.append("chatbackground", this.input.nativeElement.files[0]);
+    }
 
-    }).catch(err=>console.log(err));
+      this.formData.append("data" , JSON.stringify({data : data}))
+      axios.post('chat/Images',this.formData, {headers: {'Content-Type': 'multipart/form-data'}}).then(res=>{
+          this.input.nativeElement.value=null;
+        }).catch(err =>console.log(err))
+
     this.allMsgs.push({sender:this.to,rec:false,msg:this.values,time:this.getLocalTime(),stl:"anim"})
     //console.log(this.getLocalTime())
     this.scrollToBottom();
@@ -155,9 +168,9 @@ export class ChatPageComponent implements OnInit {
       res.data.forEach((ele:any) => {
         this.timeArr=this.utcToLocal(ele.createdAt).split(" ")[1].split(":")
         let left = (ele.sender== this.userparsed?.id) ? false : true
-        this.allMsgs.push({sender:friendId,rec: left , msg: ele.msg,time:this.timeArr[0]+":"+this.timeArr[1]})
+        this.allMsgs.push({sender:friendId,rec: left , msg: ele.msg,time:this.timeArr[0]+":"+this.timeArr[1],photoUrl:ele.photoUrl})
         })
-        //console.log(this.allMsgs)
+        console.log(this.allMsgs)
       }).catch(err=>console.log(err));
       this.scrollToBottom();
     }
@@ -308,7 +321,7 @@ export class ChatPageComponent implements OnInit {
         reader.readAsDataURL(file);
       }
     }
-    uploadPicture(){
+    chatEntry(){
       this.formData = new FormData();
       //this.input.nativeElement.value=null;
       //console.log(this.input.nativeElement.files[0])

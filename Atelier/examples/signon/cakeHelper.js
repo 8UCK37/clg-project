@@ -41,5 +41,43 @@ async function uploadCake(req, res,prisma){
         
   }
 }
+async function uploadImage(req, res,prisma){
+  console.log(req.file);
+  let body = JSON.parse(req.body.data)
+  console.log('chat image',body);
+  if(req.file){
+      const storage = new Storage();
+      const newUUID = uuidv4();
+      const destFileName = 'ChatImages/'+newUUID+'.jpg';
+      async function uploadFromMemory() {
+          await storage.bucket(bucketName).file(destFileName).save(req.file.buffer);
+        
+          console.log(
+            `${destFileName}  uploaded to ${bucketName}.`
+          );
+            
+        const photoUrl=`https://firebasestorage.googleapis.com/v0/b/arachnoid-a42069.appspot.com/o/ChatImages%2F${newUUID}.jpg?alt=media&token=6febc586-490f-40f2-8400-64009ce1a02c`
+          
+        chatData = await prisma.Chat.create({
+          data:{
+            sender: body.data.sender,
+            receiver: body.data.receiver,
+            msg: body.data.msg,
+            photoUrl:photoUrl
+          }
+        })
 
-module.exports =  {uploadCake}
+        }
+        uploadFromMemory().catch(console.error);            
+  }else{
+    console.log('chat without images')
+    chatData = await prisma.Chat.create({
+      data:{
+        sender: body.data.sender,
+        receiver: body.data.receiver,
+        msg: body.data.msg
+      }
+    })
+  }
+}
+module.exports =  {uploadCake,uploadImage}
