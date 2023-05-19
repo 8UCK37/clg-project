@@ -121,6 +121,7 @@ nav ul li a{
   background-color:  #ffffff;
   padding-top: 75px;
   min-height: 100%;
+  overflow-x: hidden;
   overflow-y: scroll;
 }
 
