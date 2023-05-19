@@ -130,7 +130,10 @@ public counter:number=0;
     //console.log(searchTerm)
     this.router.navigate(['store-page'],{ queryParams: { search: searchTerm } });
   }
-
+  onHover(flavor: string) {
+    // Perform additional actions when hovering over the buttons
+    console.log('Hovering over', flavor);
+  }
 }
 
 

@@ -4,14 +4,13 @@
           <ul>
             <li class="flavours"><a style="color: black;">Flavours<span class="arrow-down"></span></a>
               <div class="flavours-menu">
-
                   <div class="flavours-child">
                     <div class="flavours-item">
-                      <button (click)="goToStore('Mango')">Mango Cakes</button><br>
-                      <button (click)="goToStore('forest')">Black Forest Cakes</button><br>
-                      <button (click)="goToStore('Chocolate')">Choclate Cakes</button><br>
-                      <button (click)="goToStore('Butterscotch')">Butterscotch Cakes</button><br>
-                      <button (click)="goToStore('Strawberry')">Strawberry Cakes</button><br>
+                      <button (mouseenter)="onHover('Mango')" (click)="goToStore('Mango')">Mango Cakes</button><br>
+                      <button (mouseenter)="onHover('forest')" (click)="goToStore('forest')">Black Forest Cakes</button><br>
+                      <button (mouseenter)="onHover('Chocolate')" (click)="goToStore('Chocolate')">Chocolate Cakes</button><br>
+                      <button (mouseenter)="onHover('Butterscotch')" (click)="goToStore('Butterscotch')">Butterscotch Cakes</button><br>
+                      <button (mouseenter)="onHover('Strawberry')" (click)="goToStore('Strawberry')">Strawberry Cakes</button><br>
                     </div>
                   </div>
                   <div class="vertical-line"></div>
@@ -30,12 +29,13 @@
               <div class="categories-menu">
                 <div class="flavours-child">
                   <div class="flavours-item">
-                    <button (click)="goToStore('Eggless')">Eggless Cakes</button><br>
-                    <button (click)="goToStore('Cheese')">Cheese Cakes</button><br>
-                    <button (click)="goToStore('Premium')">Premium Cakes</button><br>
-                    <button (click)="goToStore('Rose')">Rose Cakes</button><br>
-                    <button (click)="goToStore('Photo')">Photo Cakes</button><br>
+                    <button (mouseenter)="onHover('Eggless')" (click)="goToStore('Eggless')">Eggless Cakes</button><br>
+                    <button (mouseenter)="onHover('Cheese')" (click)="goToStore('Cheese')">Cheese Cakes</button><br>
+                    <button (mouseenter)="onHover('Premium')" (click)="goToStore('Premium')">Premium Cakes</button><br>
+                    <button (mouseenter)="onHover('Rose')" (click)="goToStore('Rose')">Rose Cakes</button><br>
+                    <button (mouseenter)="onHover('Photo')" (click)="goToStore('Photo')">Photo Cakes</button><br>
                   </div>
+
                 </div>
                 <div class="vertical-line"></div>
                 <div class="flavours-child">
@@ -51,12 +51,13 @@
               <div class="popular-menu">
                 <div class="flavours-child">
                   <div class="flavours-item">
-                    <button (click)="goToStore('Pinata')">Pinata Cakes</button><br>
-                    <button (click)="goToStore('Bento')">Bento Cakes</button><br>
-                    <button (click)="goToStore('Pastel')">Pastel Cakes</button><br>
-                    <button (click)="goToStore('comic')">Comic Cakes</button><br>
-                    <button (click)="goToStore('Super Hero')">Super Hero Cakes</button><br>
+                    <button (mouseenter)="onHover('Pinata')" (click)="goToStore('Pinata')">Pinata Cakes</button><br>
+                    <button (mouseenter)="onHover('Bento')" (click)="goToStore('Bento')">Bento Cakes</button><br>
+                    <button (mouseenter)="onHover('Pastel')" (click)="goToStore('Pastel')">Pastel Cakes</button><br>
+                    <button (mouseenter)="onHover('Comic')" (click)="goToStore('Comic')">Comic Cakes</button><br>
+                    <button (mouseenter)="onHover('Super Hero')" (click)="goToStore('Super Hero')">Super Hero Cakes</button><br>
                   </div>
+
                 </div>
                 <div class="vertical-line"></div>
                 <div class="flavours-child">
@@ -72,12 +73,13 @@
               <div class="theme-menu">
                 <div class="flavours-child">
                   <div class="flavours-item">
-                    <button (click)="goToStore('Football')">Football Cakes</button><br>
-                    <button (click)="goToStore('Harry Potter')">Harry Potter Cake</button><br>
-                    <button (click)="goToStore('Unicorn')">Unicorn Cakes</button><br>
-                    <button (click)="goToStore('Avengers')">Avengers Cakes</button><br>
-                    <button (click)="goToStore('Classic')">Classic Cakes</button><br>
+                    <button (mouseenter)="onHover('Football')" (click)="goToStore('Football')">Football Cakes</button><br>
+                    <button (mouseenter)="onHover('Harry Potter')" (click)="goToStore('Harry Potter')">Harry Potter Cake</button><br>
+                    <button (mouseenter)="onHover('Unicorn')" (click)="goToStore('Unicorn')">Unicorn Cakes</button><br>
+                    <button (mouseenter)="onHover('Avengers')" (click)="goToStore('Avengers')">Avengers Cakes</button><br>
+                    <button (mouseenter)="onHover('Classic')" (click)="goToStore('Classic')">Classic Cakes</button><br>
                   </div>
+
                 </div>
                 <div class="vertical-line"></div>
                 <div class="flavours-child">
