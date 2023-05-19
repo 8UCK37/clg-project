@@ -441,7 +441,34 @@ app.post('/getCakeById', async (req, res) => {
   }
 });
 
-
+app.post('/adminLogin',ensureAuthenticated, async (req, res) => {
+  console.log(req.body.password)
+  if(req.body.password=='161198'){
+  const newUser = await prisma.User.update({
+    where:{
+      id:req.user.user_id
+    },data:{
+      isAdmin:true
+    }
+  })
+  res.sendStatus(200)
+  }else{
+  res.sendStatus(420)
+  }
+  
+});
+app.get('/adminLogout',ensureAuthenticated, async (req, res) => {
+  
+  const newUser = await prisma.User.update({
+    where:{
+      id:req.user.user_id
+    },data:{
+      isAdmin:false
+    }
+  })
+  res.sendStatus(200)
+  
+});
 socketRunner.execute(io)
 
 app.listen(3000);

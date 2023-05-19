@@ -24,19 +24,29 @@
           <div class="tab-pane fade active show"  role="tabpanel" id="v-pills-home" aria-labelledby="v-pills-home-tab">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title mb-0">Change Username</h5>
+                <h5 class="card-title mb-0">Admin Login</h5>
               </div>
               <div class="card-body">
                 <form>
                   <div class="row1">
                     <div class="col-md-8">
-                      <div class="form-group">
-                        <label for="inputUsername">Username</label>
-                        <input type="text" class="form-control" id="inputUsername" placeholder="{{userparsed?.name}}" [(ngModel)]="newUserName" [ngModelOptions]="{standalone: true}">
-                      </div>
+                      <p-accordion>
+                        <p-accordionTab header="Only for Admins">
+                          <ng-container *ngIf="!userparsed?.isAdmin">
+                          <span class="p-float-label" style="margin-top: 15px;" >
+                            <p-password [(ngModel)]="adminPassword" [feedback]="false" [toggleMask]="true" [ngModelOptions]="{standalone: true}"></p-password>
+                            <label for="password">Password</label>
+                          </span>
+                        <button type="submit" class="button" (click)="loginAsAdmin()">Login</button>
+                      </ng-container>
+                      <ng-container *ngIf="userparsed?.isAdmin" >
+                        <button type="submit" class="button" (click)="logoutAsAdmin()">Logout as admin</button>
+                      </ng-container>
+                        </p-accordionTab>
+                    </p-accordion>
                     </div>
                   </div>
-                  <button type="submit" class="button" (click)="changeName()">Save changes</button>
+
                 </form>
               </div>
             </div>
