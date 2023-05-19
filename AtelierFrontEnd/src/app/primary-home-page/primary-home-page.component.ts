@@ -24,13 +24,12 @@ export class PrimaryHomePageComponent implements OnInit {
   public timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   public cakes:Product[]=[]
   public cart:any;
-  public carosleUrl:string=''
-  public urlarray:string[]=['https://sweetcrunch.in/wp-content/uploads/2016/12/img1-1-750x400.jpg',
-  'https://cakesrus.store/image/cache/catalog/Slider%20Images/Cake%20slider%201-1000x500h.jpg',
-'https://www.madewithdelmonte.in/uploads/christmas-cake-slider.jpg',
-'https://cdn.shopify.com/s/files/1/0272/5848/6851/files/slide05_124ae589-51dd-4e69-bee1-3310b09fbf0e_1800x.jpg?v=1667895282']
-public counter:number=0;
+  public counter:number=0;
 
+  public urlarray:string[]=['https://sweetcrunch.in/wp-content/uploads/2016/12/img1-1-750x400.jpg',
+        'https://cakesrus.store/image/cache/catalog/Slider%20Images/Cake%20slider%201-1000x500h.jpg',
+        'https://www.madewithdelmonte.in/uploads/christmas-cake-slider.jpg',
+        'https://cdn.shopify.com/s/files/1/0272/5848/6851/files/slide05_124ae589-51dd-4e69-bee1-3310b09fbf0e_1800x.jpg?v=1667895282']
 
 
   responsiveOptions: any=[
@@ -71,16 +70,14 @@ public counter:number=0;
     });
 
     setInterval(() => {
-        //this.selectRandomElements(this.urlarray,1)
-        console.log(this.carosleUrl)
-        if(!(this.counter==3)){
-          this.counter++;
-        }
-        else{
-
+      //console.log(this.counter)
+        if(this.counter==3){
           this.counter=0;
         }
-      }, 3000);
+        else{
+          this.counter++;
+        }
+      }, 3500);
    }
 
   toggleMenu() {
@@ -108,24 +105,6 @@ public counter:number=0;
     }).catch(err=>console.log(err))
   }
 
-
-  selectRandomElements(array: any[], count: number) {
-    const shuffled = [...array]; // Create a shallow copy of the original array
-    const result = [];
-
-    // Shuffle the elements using the Fisher-Yates algorithm
-    for (let currentIndex = shuffled.length - 1; currentIndex > 0; currentIndex--) {
-      const randomIndex = Math.floor(Math.random() * (currentIndex + 1));
-      [shuffled[currentIndex], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[currentIndex]];
-    }
-
-    // Select the first 'count' elements from the shuffled array
-    for (let i = 0; i < count; i++) {
-      result.push(shuffled[i]);
-    }
-
-    this.carosleUrl=result[0];
-  }
   goToStore(searchTerm:any){
     //console.log(searchTerm)
     this.router.navigate(['store-page'],{ queryParams: { search: searchTerm } });

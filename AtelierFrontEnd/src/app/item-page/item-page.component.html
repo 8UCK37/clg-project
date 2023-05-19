@@ -9,23 +9,23 @@
           <div class="left-col">
             <div class="thumbs" style="border-radius: 5px;">
               <a class="thumb-image active" href="" data-index="0">
-                <span><img [src]="cake.photoUrl" alt="" style="border-radius: 5px;"></span>
+                <span><img [src]="cake?.photoUrl" alt="" style="border-radius: 5px;"></span>
               </a>
 
             </div>
             <div class="big">
-              <img [src]="cake.photoUrl" style="border-radius: 5px;">
+              <img [src]="cake?.photoUrl" style="border-radius: 5px;">
 
             </div>
           </div>
           <div class="right-col">
-            <h1 itemprop="name">{{cake.name}}</h1>
+            <h1 itemprop="name">{{cake?.name}}</h1>
             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
               <meta itemprop="priceCurrency" content="USD">
               <link itemprop="availability" href="http://schema.org/InStock">
               <div class="price-shipping">
                 <div class="price" id="price-preview" quickbeam="price" quickbeam-price="800">
-                  ₹{{cake.price}}
+                  ₹{{cake?.price}}
                 </div>
 
               </div>
@@ -60,7 +60,7 @@
                   <br>
 
                 </div>
-                <span>{{cake.description}}</span>
+                <span>{{cake?.description}}</span>
                 <div class="tab-slides">
                   <div id="tab-slide-1" itemprop="description"  class="slide active">
 
@@ -88,9 +88,9 @@
               <img class="cake-image-card" [src]="cake.photoUrl">
             </span>
             <span class="text">
-              <strong>{{cake.name}}</strong>
+              <strong>{{cake?.name}}</strong>
               <span>
-                ₹{{cake.price}}
+                ₹{{cake?.price}}
               </span>
               <div class="variants" >
                 <span >{{cake.description}}</span>
@@ -120,7 +120,7 @@
     </div>
     <div class="top">
       <div class="right">
-        
+
       </div>
       <div class="left">
         <span class="phone">+420 123 456 789</span>

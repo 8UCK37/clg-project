@@ -72,11 +72,16 @@ export class ItemCartComponent implements OnInit {
         this.utilsServiceService.cartObj$.subscribe(cart => {
           this.cart= cart;
           this.cart.forEach((item: any)=> {
-            item.flavour.name='Vanilla'
-            item.veg.name='With Eggs'
+            if(item.flavour!.name==null){
+              item.flavour!.name='Vanilla'
+            }
+            if(item.veg!.name==null){
+              item.veg.name!='With Eggs'
+            }
           });
           console.log(this.cart)
           this.getTotalPrice()
+          this.upDateCartInformation()
         });
       }
     })
@@ -88,6 +93,7 @@ export class ItemCartComponent implements OnInit {
       this.cart=res.data.items
       this.getTotalPrice()
     }).catch(err=>console.log(err))
+
   }
   getTotalPrice(){
     this.totalPrice=0
@@ -124,5 +130,13 @@ export class ItemCartComponent implements OnInit {
       window.location.reload()
     }).catch(err=>console.log(err))
   }
-
+  upDateCartInformation(){
+    this.cart.forEach((item: any) => {
+      //console.log(item)
+      axios.post('getCakeById',{cakeId:item.id}).then(res => {
+        //console.log(res.data)
+        item=res.data.price
+      }).catch(err=>console.log(err))
+    });
+  }
 }

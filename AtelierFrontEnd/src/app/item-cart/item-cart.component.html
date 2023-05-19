@@ -1,7 +1,7 @@
 <main class="page" >
   <h1 style="margin-left: 150px;">Shopping Cart</h1>
 
-<div class="shopping-cart" *ngIf="this.cart.length!=0">
+<div class="shopping-cart" *ngIf="this.cart?.length!=0">
 
   <div class="column-labels">
     <label class="product-image">Image</label>
@@ -69,7 +69,7 @@
   </div>
       <button class="checkout" (click)="checkOut()">Checkout</button>
 </div>
-<ng-container *ngIf="this.cart.length===0">
+<ng-container *ngIf="this.cart?.length===0">
   <h2 style="margin-left: 500px;">such empty!! much wow</h2>
 </ng-container>
 </main>
