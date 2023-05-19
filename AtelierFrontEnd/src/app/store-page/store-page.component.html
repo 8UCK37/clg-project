@@ -95,11 +95,11 @@
         <a href="" class="title-mobile">Fostrap</a>
       </div>
     </nav>
-    <h2 style="font-size: 20px;margin-left: 6px;margin-top: 5px;font-family: 'Times New Roman', Times, serif  ;">{{header}}</h2>
+    <h2 style="font-size: 20px;margin-left: 6px;margin-top: 5px;font-family: 'Times New Roman', Times, serif  ;"><b>{{header}}</b></h2>
 
   </div>
   <div class="grid-holder">
-    <div class="app-left" style="height: 100px;">
+    <div class="app-left" style="height:20rem;">
         <span style="font-size: 2rem;margin-left: 30px;font-family: 'Times New Roman', Times, serif;">Sort By:</span>
       <br>
       <span style="font-size: 1.5rem;margin-left: 70px;">Price</span>
@@ -108,7 +108,7 @@
       <span style="font-size: 1.5rem;margin-left: 70px;">Tags</span>
       <p-listbox [options]="tagOptions" [(ngModel)]="selectedTag"  [style]="{'width':'15rem','margin-left':'70px'}" (click)="sortByTags()"></p-listbox>
     </div>
-    <div class="vertical-line" style="left:25%;height: 50rem;">
+    <div class="vertical-line" style="left:25%;height: 80rem;">
       <div class="cake-grid">
         <ng-container *ngFor="let cake of filteredResults">
           <app-cake [cake]="cake"></app-cake>
