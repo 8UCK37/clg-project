@@ -602,7 +602,7 @@ a { text-decoration: none; }
 .nav-fostrap {
   display: block;
   margin-bottom: 15px 0;
-  background: #f06bac;
+  background: #ffffff;
   -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
   -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
   -ms-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
@@ -685,7 +685,7 @@ a { text-decoration: none; }
   height: 0;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-top: 5px solid #def1f0;
+  border-top: 5px solid #000000;
   position: relative;
   top: 15px;
   right: -5px;
@@ -814,19 +814,49 @@ a { text-decoration: none; }
 }
 .flavours{
 
+
 }
 .flavours-menu{
   height:250px;
   width:40rem;
   z-index: 1;
   position: absolute;
-  background-color: #fba86f;
+  background-color:#ffffff;
   display: none;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
 .flavours:hover .flavours-menu {
   display: block;
+}
+
+.flavours-item button {
+  display: block;
+  width: 50%;
+  padding: 2px;
+  text-align: left;
+  border: none;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size:medium;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.flavours-item button:hover {
+  color: rgb(252, 3, 53);
+}
+.flavours-image{
+
+}
+.flavours-child{
+  width: 50%;
+  float: left;
+}
+.vertical-line {
+  border-left: 1px solid black;
+  height: 240px;
+  position:absolute;
+  left: 35%;
 }
 .categories{
 
@@ -836,7 +866,7 @@ a { text-decoration: none; }
   width:40rem;
   z-index: 1;
   position: absolute;
-  background-color: #bcbdf9;
+  background-color: #ffffff;
   display: none;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -852,7 +882,7 @@ a { text-decoration: none; }
   width:40rem;
   z-index: 1;
   position: absolute;
-  background-color: #a0e6d1;
+  background-color: #ffffff;
   display: none;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -869,7 +899,7 @@ a { text-decoration: none; }
   width:40rem;
   z-index: 1;
   position: absolute;
-  background-color: #c7eeea;
+  background-color: #ffffff;
   display: none;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -1522,19 +1552,17 @@ footer .right {
     transform: scale(1.22);
   }
 
-  .caroselslider{
-    position: absolute;
+   .caroselslider{
+  position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   animation-name: example;
   animation-duration: 2s;
-
-
   }
 
   @keyframes example {
-    0%   {left:320px; top:320px;}
+    0%   {left:250px; top:250px;}
   }
 
 

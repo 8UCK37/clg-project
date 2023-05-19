@@ -28,7 +28,7 @@ export class PrimaryHomePageComponent implements OnInit {
   'https://cakesrus.store/image/cache/catalog/Slider%20Images/Cake%20slider%201-1000x500h.jpg',
 'https://www.madewithdelmonte.in/uploads/christmas-cake-slider.jpg',
 'https://cdn.shopify.com/s/files/1/0272/5848/6851/files/slide05_124ae589-51dd-4e69-bee1-3310b09fbf0e_1800x.jpg?v=1667895282']
-
+public counter:number=0;
 
 
 
@@ -68,10 +68,18 @@ export class PrimaryHomePageComponent implements OnInit {
       this.cart= cart;
       //console.log(this.cart)
     });
-      setInterval(() => {
-        this.selectRandomElements(this.urlarray,1)
+
+    setInterval(() => {
+        //this.selectRandomElements(this.urlarray,1)
         console.log(this.carosleUrl)
-      }, 1500);
+        if(!(this.counter==3)){
+          this.counter++;
+        }
+        else{
+
+          this.counter=0;
+        }
+      }, 3000);
    }
 
   toggleMenu() {
