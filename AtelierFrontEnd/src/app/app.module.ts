@@ -49,6 +49,7 @@ import { TimelineModule } from 'primeng/timeline';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { OrderListComponent } from './order-list/order-list.component';
 import { StorePageComponent } from './store-page/store-page.component';
+import { ListboxModule } from 'primeng/listbox';
 @NgModule({
   declarations: [
       AppComponent,
@@ -84,6 +85,7 @@ import { StorePageComponent } from './store-page/store-page.component';
     RadioButtonModule,
     ButtonModule,
     BrowserModule,
+    ListboxModule ,
     InputTextareaModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),

@@ -40,7 +40,7 @@ carousel img {
 .card_cust {
   display: flex;
   flex-direction: column;
-  min-width: 400px;
+  width: 400px;
   min-height: 570px;
   background-color:#eeeeee;
   border-radius: 5px;

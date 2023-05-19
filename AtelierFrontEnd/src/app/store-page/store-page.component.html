@@ -103,10 +103,16 @@
   </div>
   <div class="grid-holder">
     <div class="app-left">
-
+      <span style="font-size: 2rem;margin-left: 50px;">Sort By</span>
+      <br>
+      <span style="font-size: 1.5rem;margin-left: 70px;">Price</span>
+      <p-listbox [options]="priceOptions" [(ngModel)]="selectedPriceRange"  [style]="{'width':'15rem','margin-left':'70px'}" (click)="priceCap()"></p-listbox>
+      <br>
+      <span style="font-size: 1.5rem;margin-left: 70px;">Tags</span>
+      <p-listbox [options]="tagOptions" [(ngModel)]="selectedTag"  [style]="{'width':'15rem','margin-left':'70px'}" (click)="sortByTags()"></p-listbox>
     </div>
     <div class="cake-grid">
-      <ng-container *ngFor="let cake of searchResults">
+      <ng-container *ngFor="let cake of filteredResults">
         <app-cake [cake]="cake"></app-cake>
       </ng-container>
     </div>
