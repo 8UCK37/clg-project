@@ -17,8 +17,8 @@
   gap: 20px;
 }
 .header{
-  height:10rem;
-  border:1px solid red;
+  height:7rem;
+  background-color: pink;
 }
 .app-left{
   width:25rem;
