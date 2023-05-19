@@ -5,6 +5,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Product } from 'src/service/product';
 import axios from 'axios';
 import { UtilsServiceService } from '../utils/utils-service.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -50,7 +51,7 @@ public counter:number=0;
     }];
 
 
-  constructor(public utilsServiceService : UtilsServiceService,private auth: AngularFireAuth,private renderer: Renderer2,private modalService: BsModalService , private userService : UserService ) {
+  constructor(private router: Router,public utilsServiceService : UtilsServiceService,private auth: AngularFireAuth,private renderer: Renderer2,private modalService: BsModalService , private userService : UserService ) {
 
   }
   // constructor(public user: UserService ,private auth: AngularFireAuth,private renderer: Renderer2,private modalService: BsModalService ) {}
@@ -125,7 +126,10 @@ public counter:number=0;
 
     this.carosleUrl=result[0];
   }
-
+  goToStore(searchTerm:any){
+    //console.log(searchTerm)
+    this.router.navigate(['store-page'],{ queryParams: { search: searchTerm } });
+  }
 
 }
 

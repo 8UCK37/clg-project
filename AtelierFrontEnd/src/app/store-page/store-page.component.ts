@@ -11,6 +11,7 @@ import { Product } from 'src/service/product';
 export class StorePageComponent implements OnInit {
   public searchTerm:any;
   public searchResults: any[] = [];
+  public header:any=''
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -32,7 +33,13 @@ export class StorePageComponent implements OnInit {
     this.searchResults=[];
     if(this.searchTerm?.length!=0){
     await axios.post('searchCakes',{searchTerm: this.searchTerm}).then(res=>{
+      if(res.data.length!=0){
       this.searchResults=res.data;
+      this.header='Showing results for '+ this.searchTerm
+      }else{
+        this.header='No matching results found for "'+this.searchTerm+'" ,you can try these instead '
+        this.getCakesList();
+      }
       console.log(this.searchResults)
     }).catch(err=>console.log(err))
     }
