@@ -50,8 +50,8 @@ export class CakeComponent implements OnInit {
     return this.utcDateTime.toLocaleString('en-US', { timeZone: this.timeZone });
   }
 
-  goToPostPage(){
-    //console.log(this.childPost.id)
+  goToItemPage(){
+    
     this.router.navigate(['item-page'],{ queryParams: { item_id: this.cake.id } });
   }
   async addTocart(){

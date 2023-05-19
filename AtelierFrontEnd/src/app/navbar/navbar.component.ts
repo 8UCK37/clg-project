@@ -77,6 +77,7 @@ export class NavbarComponent implements  OnInit {
       this.socketService.setSocketId(this.userparsed.id);
       this.incMsg();
       this.incNotification();
+      this.getCart()
       axios.post('getUserInfo', { id: usr.id }).then(res => {
         //console.log(res.data);
       }).catch(err => console.log(err))
@@ -159,5 +160,11 @@ export class NavbarComponent implements  OnInit {
     }else{
       this.messageService.add({ severity: 'info', summary: 'Log In', detail: 'You have to login/signup first to use the cart!!' });
     }
+  }
+  getCart(){
+    axios.get('getCart').then(res => {
+      //console.log(res.data)
+      this.utilsServiceService.setCartObj(res.data.items)
+    }).catch(err=>console.log(err))
   }
 }

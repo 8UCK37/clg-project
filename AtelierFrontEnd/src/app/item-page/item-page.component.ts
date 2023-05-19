@@ -1,10 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, ElementRef, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import axios from 'axios';
 import { Product } from 'src/service/product';
 import { UtilsServiceService } from '../utils/utils-service.service';
 import { UserService } from '../login/user.service';
 import { MessageService } from 'primeng/api';
+
+interface Flavours {
+  name: string;
+}
+interface Veg {
+  name: string;
+}
 @Component({
   selector: 'app-item-page',
   templateUrl: './item-page.component.html',
@@ -17,10 +24,37 @@ export class ItemPageComponent implements OnInit {
   public cakes:Product[]=[]
   public rndCake:any[]=[]
   public cart:any[]=[];
+  public flavours:Flavours[]=[]
+  public veg:Veg[]=[]
   public userparsed:any;
-  constructor(private messageService: MessageService,public utilsServiceService : UtilsServiceService,private route: ActivatedRoute,public userService:UserService) { }
+  constructor(private elementRef: ElementRef,private router: Router,private messageService: MessageService,public utilsServiceService : UtilsServiceService,private route: ActivatedRoute,public userService:UserService) { }
 
   ngOnInit(): void {
+    this.flavours = [
+      { name: 'Vanilla' },
+      { name: 'Butterscotch' },
+      { name: 'Orange' },
+      { name: 'Strawberry'},
+      { name: 'Chocolate' },
+      { name: 'Pineapple' },
+      { name: 'Coffee' },
+      { name: 'Mango' },
+      { name: 'Caramel Delight' },
+      { name: 'Choco Vanilla' },
+      { name: 'White forest' },
+      { name: 'Black forest' },
+      { name: 'Chocolate truffle' },
+      { name: 'Butterscotch with Caramel Sauce' },
+      { name: 'Red velvet with cream cheese' },
+      { name: 'Rasamalai' },
+      { name: 'Choco - strawberry' },
+      { name: 'Nutty Chocolate' },
+      { name: 'Chocolate cake with salted Caramel cream and nuts' }
+    ];
+    this.veg=[
+      {name:'With Eggs'},
+      {name:'Eggless'}
+    ]
     this.route.queryParams.subscribe(async params => {
       this.itemId = params['item_id'];
       console.log(this.itemId)
@@ -97,5 +131,10 @@ export class ItemPageComponent implements OnInit {
     this.messageService.add({ severity: 'warn', summary: 'Login/Signup', detail: "You have to login/signup to add-to-cart" });
   }
   }
-
+  goToItemPage(id:any){
+    this.router.navigate(['item-page'],{ queryParams: { item_id: id } });
+    setTimeout(() => {
+      window.location.reload()
+    }, 50);
+  }
 }

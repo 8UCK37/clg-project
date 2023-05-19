@@ -32,15 +32,11 @@
               <div class="swatches">
                 <div class="swatch clearfix" data-option-index="0">
                   <div class="header">Veg/Non-Veg</div>
-
-
-
-
+                  <p-dropdown  [(ngModel)]="cake.veg" [options]="veg" optionLabel="name" ></p-dropdown>
                 </div>
                 <div class="swatch clearfix" data-option-index="1">
                   <div class="header">Flavour</div>
-
-
+                  <p-dropdown  [(ngModel)]="cake.flavour" [options]="flavours" optionLabel="name"></p-dropdown>
                 </div>
 
               </div>
@@ -83,7 +79,7 @@
         <h2>You might also like</h2>
         <div class="collection-list cols-4" id="collection-list" data-products-per-page="4">
           <ng-container *ngFor="let cake of rndCake;">
-          <a class="product-box">
+          <a class="product-box" (click)="goToItemPage(cake.id)">
             <span class="img">
               <img class="cake-image-card" [src]="cake.photoUrl">
             </span>
