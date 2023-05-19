@@ -5,8 +5,27 @@
   min-height: 100%;
   overflow-y: scroll;
 }
+.grid-holder{
+  display: flex;
+  flex-direction: row;
+}
 .cake-grid {
+  margin-left: 15px;
+  margin-top: 25px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px; /* Adjust the gap value to your preference */
+  gap: 20px;
+}
+.header{
+  height:10rem;
+  border:1px solid red;
+}
+.app-left{
+  width:25rem;
+  height: 90rem;
+  border: 1px solid red;
+}
+.app-right{
+  width:10rem;
+  height:100vh;
 }

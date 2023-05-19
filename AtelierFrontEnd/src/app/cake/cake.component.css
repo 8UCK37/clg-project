@@ -38,11 +38,14 @@ carousel img {
 }
 
 .card_cust {
-  height:500px;
-  width:400px;
+  display: flex;
+  flex-direction: column;
+  min-width: 400px;
+  min-height: 570px;
   background-color:#eeeeee;
   border-radius: 5px;
   cursor:pointer;
+  position: relative;
 }
 .cake-image-card{
   height:270px;

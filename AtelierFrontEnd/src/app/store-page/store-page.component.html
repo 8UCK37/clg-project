@@ -1,8 +1,19 @@
 <main class="page">
-  <div class="cake-grid">
-    <ng-container *ngFor="let cake of searchResults">
-      <app-cake [cake]="cake"></app-cake>
-    </ng-container>
+  <div class="header">
+
+  </div>
+  <div class="grid-holder">
+    <div class="app-left">
+
+    </div>
+    <div class="cake-grid">
+      <ng-container *ngFor="let cake of searchResults">
+        <app-cake [cake]="cake"></app-cake>
+      </ng-container>
+    </div>
+    <div class="app-right">
+
+    </div>
   </div>
 </main>
 
