@@ -122,7 +122,7 @@ export class SettingsComponent implements OnInit {
       this.messageService.add({ severity: 'info', summary: 'Logged out as admin', detail: "Successfully loged out from admin duty" })
       setTimeout(() => {
         window.location.reload()
-      }, 3000);
+      }, 2500);
     }).catch(err=>console.log(err))
   }
 

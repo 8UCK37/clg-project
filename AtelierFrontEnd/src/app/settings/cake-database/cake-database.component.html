@@ -1,0 +1,24 @@
+<ng-container>
+<p-table [columns]="cols" [value]="cakes" [tableStyle]="{ 'min-width': '50rem' }">
+  <ng-template pTemplate="header" let-columns>
+      <tr>
+          <th *ngFor="let col of columns">
+              {{ col.header }}
+          </th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-product>
+      <tr>
+        <td>{{ product.id }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.description }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.size }}</td>
+        <td>{{ product.category }}</td>
+        <td>{{ product.theme }}</td>
+        <td>{{ product.tags }}</td>
+        <td>{{ product.photoUrl }}</td>
+      </tr>
+  </ng-template>
+</p-table>
+</ng-container>
