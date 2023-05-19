@@ -76,7 +76,7 @@ app.post('/saveuser', ensureAuthenticated, async function (req, res) {
   if (fetchUser == null) {
     // console.log("user not found ")
 
-    const newUser = await prisma.user.create({
+    const newUser = await prisma.User.create({
       data: {
         id: req.user.user_id,
         name: req.user.name,
