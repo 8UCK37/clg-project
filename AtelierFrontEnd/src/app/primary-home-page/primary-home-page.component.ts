@@ -25,7 +25,8 @@ export class PrimaryHomePageComponent implements OnInit {
   public cakes:Product[]=[]
   public cart:any;
   public counter:number=0;
-
+  public hoverUrl:any="https://firebasestorage.googleapis.com/v0/b/arachnoid-a42069.appspot.com/o/Cakes%2Fbe129de2-e468-4124-9ab4-8c8a12c55a43.jpg?alt=media&token=6febc586-490f-40f2-8400-64009ce1a02c"
+  public hoverAlt:any="cake not in db"
   public urlarray:string[]=['https://sweetcrunch.in/wp-content/uploads/2016/12/img1-1-750x400.jpg',
         'https://cakesrus.store/image/cache/catalog/Slider%20Images/Cake%20slider%201-1000x500h.jpg',
         'https://www.madewithdelmonte.in/uploads/christmas-cake-slider.jpg',
@@ -94,7 +95,7 @@ export class PrimaryHomePageComponent implements OnInit {
   }
   getCakesList(){
     axios.get('getCakesList').then(res => {
-      console.log(res.data)
+      //console.log(res.data)
       this.cakes=res.data
     }).catch(err=>console.log(err))
   }
@@ -112,7 +113,12 @@ export class PrimaryHomePageComponent implements OnInit {
   onHover(flavor: string) {
     // Perform additional actions when hovering over the buttons
     console.log('Hovering over', flavor);
+    axios.post('searchCakes',{searchTerm: flavor}).then(res=>{
+      console.log(res.data)
+      this.hoverUrl=res.data[0]?.photoUrl
+    }).catch(err=>console.log(err))
   }
+
 }
 
 

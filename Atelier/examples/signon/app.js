@@ -428,7 +428,7 @@ app.get('/getCakesList', async (req, res) => {
 });
 
 app.post('/getCakeById', async (req, res) => {
-  console.log(req.body.cakeId)
+  //console.log(req.body.cakeId)
   try {
     const cakes = await prisma.Cakes.findUnique({
       where:{
