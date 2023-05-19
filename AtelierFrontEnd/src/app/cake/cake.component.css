@@ -42,7 +42,7 @@ carousel img {
   flex-direction: column;
   width: 400px;
   min-height: 570px;
-  background-color:#eeeeee;
+  background-color: white;
   border-radius: 5px;
   cursor:pointer;
   position: relative;
