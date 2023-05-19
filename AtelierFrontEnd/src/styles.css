@@ -38,9 +38,7 @@ span.mention {
   border-radius: 2px;
 }
 
-*{
-  scrollbar-width: none;
-}
+
 html{
   top: 00px;
   overflow: scroll;
@@ -48,14 +46,7 @@ html{
   /* width: 0px;
   height: 0px; */
 }
-::-webkit-scrollbar {
-    width: 0;  /* Remove scrollbar space */
-    background: transparent;  /* Optional: just make scrollbar invisible */
-}
-/* Optional: show position indicator in red */
-/* ::-webkit-scrollbar-thumb {
-    background: #FF0000;
-} */
+
 .page-bg
 {
   background-color: #171717;

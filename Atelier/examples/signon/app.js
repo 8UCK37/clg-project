@@ -420,7 +420,11 @@ app.post("/chat/Images", ensureAuthenticated, upload.single('chatimages'), (req,
 
 app.get('/getCakesList', async (req, res) => {
   try {
-    const cakesList = await prisma.Cakes.findMany();
+    const cakesList = await prisma.Cakes.findMany({
+      orderBy:{
+        id:'asc'
+      }
+    });
     res.json(cakesList);
   } catch (error) {
     res.status(500).json({ error: 'Internal server error' });
@@ -469,6 +473,35 @@ app.get('/adminLogout',ensureAuthenticated, async (req, res) => {
   res.sendStatus(200)
   
 });
+
+app.post('/cakeEdit',ensureAuthenticated, async (req, res) => {
+  console.log(req.body.data)
+  const cake = await prisma.Cakes.update({
+    where:{
+      id:parseInt(req.body.data.id)
+    },data :{
+      name:req.body.data.name,
+      description:req.body.data.description,
+      size:req.body.data.size,
+      price:req.body.data.price,
+      category:req.body.data.category,
+      theme:req.body.data.theme,
+      tags:req.body.data.tags,
+  }
+  })
+  res.sendStatus(200)
+});
+
+app.post('/cakeDelete',ensureAuthenticated, async (req, res) => {
+  console.log(req.body.data)
+  const cake = await prisma.Cakes.delete({
+    where:{
+      id:parseInt(req.body.data.id)
+    }
+  })
+  res.sendStatus(200)
+});
+
 socketRunner.execute(io)
 
 app.listen(3000);
