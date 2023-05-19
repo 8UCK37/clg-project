@@ -33,8 +33,11 @@
         </td>
         <td>{{ product.photoUrl }}</td>
       </tr>
+      <div style="display: flex;">
       <button type="submit" class="button" (click)="editCake(product)" >Save</button>
+      <button type="submit" class="button" (click)="deleteCake(product)" >Delete</button>
+      </div>
     </ng-template>
   </p-table>
-
+  <p-toast position='bottom-right'></p-toast>
 </ng-container>
