@@ -12,6 +12,7 @@ import { ItemPageComponent } from './item-page/item-page.component';
 import { ItemCartComponent } from './item-cart/item-cart.component';
 import { OrderListComponent } from './order-list/order-list.component';
 import { StorePageComponent } from './store-page/store-page.component';
+import { CakeDatabaseComponent } from './settings/cake-database/cake-database.component';
 
 
 const routes: Routes = [

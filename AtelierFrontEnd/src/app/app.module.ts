@@ -52,6 +52,8 @@ import { StorePageComponent } from './store-page/store-page.component';
 import { ListboxModule } from 'primeng/listbox';
 import { AccordionModule } from 'primeng/accordion';
 import { PasswordModule } from 'primeng/password';
+import { CakeDatabaseComponent } from './settings/cake-database/cake-database.component';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [
@@ -71,6 +73,7 @@ import { PasswordModule } from 'primeng/password';
       IncomingOrdersComponent,
       OrderListComponent,
       StorePageComponent,
+      CakeDatabaseComponent,
    ],
   imports: [
     CarouselModule,
@@ -87,6 +90,7 @@ import { PasswordModule } from 'primeng/password';
     TimelineModule,
     RadioButtonModule,
     AccordionModule,
+    TableModule,
     PasswordModule,
     ButtonModule,
     BrowserModule,

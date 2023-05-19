@@ -15,6 +15,7 @@
               <div style="margin-left: 50px;">
               <button *ngIf="userparsed?.isAdmin" class="nav-link"  id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-add-cake" type="button" role="tab" aria-controls="v-pills-settings" >Add a cake</button>
               <button *ngIf="userparsed?.isAdmin" class="nav-link"  id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-incoming-orders" type="button" role="tab" aria-controls="v-pills-settings" >Incoming Orders</button>
+              <button *ngIf="userparsed?.isAdmin" class="nav-link"  id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-cake-db" type="button" role="tab" aria-controls="v-pills-settings" >View cake database</button>
               </div>
             </div>
         </div>
@@ -105,6 +106,14 @@
               <div class="card-body">
                 <h5 class="card-title" style="color: black;">View Incoming Orders</h5>
                  <app-incoming-orders></app-incoming-orders>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade " role="tabpanel" id="v-pills-cake-db" aria-labelledby="v-pills-settings-tab">
+            <div class="card" style="background-color: aliceblue;min-width: 80rem;">
+              <div class="card-body">
+                <h5 class="card-title" style="color: black;">View Cake Database</h5>
+                 <app-cake-database></app-cake-database>
               </div>
             </div>
           </div>
