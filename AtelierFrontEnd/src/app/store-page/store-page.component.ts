@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import axios from 'axios';
 import { Product } from 'src/service/product';
 
@@ -12,7 +12,9 @@ export class StorePageComponent implements OnInit {
   public searchTerm:any;
   public searchResults: any[] = [];
   public header:any=''
-  constructor(private route: ActivatedRoute) { }
+  public hoverUrl:any="https://firebasestorage.googleapis.com/v0/b/arachnoid-a42069.appspot.com/o/Cakes%2Fbe129de2-e468-4124-9ab4-8c8a12c55a43.jpg?alt=media&token=6febc586-490f-40f2-8400-64009ce1a02c"
+  public hoverAlt:any="cake not in db"
+  constructor(private router: Router,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(async params => {
@@ -49,6 +51,18 @@ export class StorePageComponent implements OnInit {
     axios.get('getCakesList').then(res => {
       console.log(res.data)
       this.searchResults=res.data
+    }).catch(err=>console.log(err))
+  }
+  goToStore(searchTerm:any){
+    //console.log(searchTerm)
+    this.router.navigate(['store-page'],{ queryParams: { search: searchTerm } });
+  }
+  onHover(flavor: string) {
+    // Perform additional actions when hovering over the buttons
+    console.log('Hovering over', flavor);
+    axios.post('searchCakes',{searchTerm: flavor}).then(res=>{
+      console.log(res.data)
+      this.hoverUrl=res.data[0]?.photoUrl
     }).catch(err=>console.log(err))
   }
 }

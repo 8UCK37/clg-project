@@ -1,6 +1,105 @@
 <main class="page">
   <div class="header">
+    <nav style="margin-top: -0.21rem;">
+      <div class="nav-fostrap" style="cursor: pointer;">
+        <ul>
+          <li class="flavours"><a style="color: black;">Flavours<span class="arrow-down"></span></a>
+            <div class="flavours-menu">
+                <div class="flavours-child">
+                  <div class="flavours-item">
+                    <button (mouseenter)="onHover('Mango')" (click)="goToStore('Mango')">Mango Cakes</button><br>
+                    <button (mouseenter)="onHover('forest')" (click)="goToStore('forest')">Black Forest Cakes</button><br>
+                    <button (mouseenter)="onHover('Chocolate')" (click)="goToStore('Chocolate')">Chocolate Cakes</button><br>
+                    <button (mouseenter)="onHover('Butterscotch')" (click)="goToStore('Butterscotch')">Butterscotch Cakes</button><br>
+                    <button (mouseenter)="onHover('Strawberry')" (click)="goToStore('Strawberry')">Strawberry Cakes</button><br>
+                  </div>
+                </div>
+                <div class="vertical-line"></div>
+                <div class="flavours-child">
+                  <div class="flavours-image"style>
+                    <img class="hover-img" [src]="hoverUrl" [alt]="hoverAlt" >
+                    <p style="color: black; padding-left: 15%;font-family:'Times New Roman', Times, serif;">Choclate Cake</p>
+                  </div>
+                </div>
+            </div>
+
+
+          </li>
+
+          <li class="categories"><a style="color: black;">Categories<span class="arrow-down"></span></a>
+            <div class="categories-menu">
+              <div class="flavours-child">
+                <div class="flavours-item">
+                  <button (mouseenter)="onHover('Eggless')" (click)="goToStore('Eggless')">Eggless Cakes</button><br>
+                  <button (mouseenter)="onHover('Cheese')" (click)="goToStore('Cheese')">Cheese Cakes</button><br>
+                  <button (mouseenter)="onHover('Premium')" (click)="goToStore('Premium')">Premium Cakes</button><br>
+                  <button (mouseenter)="onHover('Rose')" (click)="goToStore('Rose')">Rose Cakes</button><br>
+                  <button (mouseenter)="onHover('Photo')" (click)="goToStore('Photo')">Photo Cakes</button><br>
+                </div>
+
+              </div>
+              <div class="vertical-line"></div>
+              <div class="flavours-child">
+                <div class="flavours-image"style>
+                  <img class="hover-img" [src]="hoverUrl" [alt]="hoverAlt">
+                  <p style="color: black; padding-left: 18%;font-family:'Times New Roman', Times, serif;">Photo Cakes</p>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="popular"><a style="color: black;">Trending<span class="arrow-down"></span></a>
+            <div class="popular-menu">
+              <div class="flavours-child">
+                <div class="flavours-item">
+                  <button (mouseenter)="onHover('Pinata')" (click)="goToStore('Pinata')">Pinata Cakes</button><br>
+                  <button (mouseenter)="onHover('Bento')" (click)="goToStore('Bento')">Bento Cakes</button><br>
+                  <button (mouseenter)="onHover('Pastel')" (click)="goToStore('Pastel')">Pastel Cakes</button><br>
+                  <button (mouseenter)="onHover('Comic')" (click)="goToStore('Comic')">Comic Cakes</button><br>
+                  <button (mouseenter)="onHover('Super Hero')" (click)="goToStore('Super Hero')">Super Hero Cakes</button><br>
+                </div>
+
+              </div>
+              <div class="vertical-line"></div>
+              <div class="flavours-child">
+                <div class="flavours-image"style>
+                  <img class="hover-img" [src]="hoverUrl" [alt]="hoverAlt">
+                  <p style="color: black; padding-left: 20%;font-family:'Times New Roman', Times, serif;">Rose Cake</p>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="theme"><a style="color: black;">Theme<span class="arrow-down"></span></a>
+            <div class="theme-menu">
+              <div class="flavours-child">
+                <div class="flavours-item">
+                  <button (mouseenter)="onHover('Football')" (click)="goToStore('Football')">Football Cakes</button><br>
+                  <button (mouseenter)="onHover('Harry Potter')" (click)="goToStore('Harry Potter')">Harry Potter Cake</button><br>
+                  <button (mouseenter)="onHover('Unicorn')" (click)="goToStore('Unicorn')">Unicorn Cakes</button><br>
+                  <button (mouseenter)="onHover('Avengers')" (click)="goToStore('Avengers')">Avengers Cakes</button><br>
+                  <button (mouseenter)="onHover('Classic')" (click)="goToStore('Classic')">Classic Cakes</button><br>
+                </div>
+
+              </div>
+              <div class="vertical-line"></div>
+              <div class="flavours-child">
+                <div class="flavours-image"style>
+                  <img class="hover-img" [src]="hoverUrl" [alt]="hoverAlt">
+                  <p style="color: black; padding-left: 10%;font-family:'Times New Roman', Times, serif;">Football Theme Cake </p>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="nav-bg-fostrap">
+        <div class="navbar-fostrap"> <span></span> <span></span> <span></span> </div>
+        <a href="" class="title-mobile">Fostrap</a>
+      </div>
+    </nav>
     <h2>{{header}}</h2>
+
   </div>
   <div class="grid-holder">
     <div class="app-left">
