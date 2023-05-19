@@ -18,7 +18,7 @@ export class SettingsComponent implements OnInit {
   public info:any={Locality:'',zipcode:'',Address:'',Landmark:'',Phoneno:''};
 
   public tab:any;
-
+  public adminPassword:string='';
 
   constructor(private messageService: MessageService,public userService:UserService,private route: ActivatedRoute) { }
 
@@ -97,6 +97,32 @@ export class SettingsComponent implements OnInit {
 
     axios.post('/saveUserInfo', {Locality:this.info.Locality,zipcode:this.info.zipcode,Address:this.info.Address,Landmark:this.info.Landmark,Phoneno:this.info.Phoneno}).then(res=>{
       this.messageService.add({ severity: 'success', summary: 'Contact info Successfully Updated', detail: "Enjoy!!" })
+    }).catch(err=>console.log(err))
+  }
+  loginAsAdmin(){
+    //console.log(this.adminPassword)
+    axios.post('adminLogin',{password: this.adminPassword}).then(res=>{
+      this.messageService.add({ severity: 'success', summary: 'Admin login successfull', detail: "The page will reload itself in 3 seconds!!" })
+      setTimeout(() => {
+        window.location.reload()
+      }, 3000);
+    }).catch(err=>{
+      if (err.response && err.response.status === 420) {
+        this.messageService.add({ severity: 'error', summary: 'incorrect password', detail: "Please do not try to log in if you are not an admin!!" })
+        console.log('Error: Custom handling for status code 420');
+      } else {
+        // Handle other errors or display a generic error message
+        console.log('Error:', err);
+      }
+    })
+  }
+
+  logoutAsAdmin(){
+    axios.get('adminLogout').then(res => {
+      this.messageService.add({ severity: 'info', summary: 'Logged out as admin', detail: "Successfully loged out from admin duty" })
+      setTimeout(() => {
+        window.location.reload()
+      }, 3000);
     }).catch(err=>console.log(err))
   }
 

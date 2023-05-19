@@ -37,7 +37,7 @@ import { ProgressBarModule } from 'primeng/progressbar';
 import { LocationModalComponent } from './utils/location-modal/location-modal.component';
 import { QuillModule } from "ngx-quill";
 import { AddCakeComponent } from './settings/add-cake/add-cake.component';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CarouselModule } from 'primeng/carousel';
 import { ItemPageComponent } from './item-page/item-page.component';
 import { ItemCartComponent } from './item-cart/item-cart.component';
@@ -50,6 +50,9 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 import { OrderListComponent } from './order-list/order-list.component';
 import { StorePageComponent } from './store-page/store-page.component';
 import { ListboxModule } from 'primeng/listbox';
+import { AccordionModule } from 'primeng/accordion';
+import { PasswordModule } from 'primeng/password';
+
 @NgModule({
   declarations: [
       AppComponent,
@@ -83,6 +86,8 @@ import { ListboxModule } from 'primeng/listbox';
     CalendarModule,
     TimelineModule,
     RadioButtonModule,
+    AccordionModule,
+    PasswordModule,
     ButtonModule,
     BrowserModule,
     ListboxModule ,
