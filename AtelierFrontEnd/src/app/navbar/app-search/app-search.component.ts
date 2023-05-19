@@ -37,7 +37,7 @@ export class AppSearchComponent implements OnInit {
   ngOnDestroy() {
     document.removeEventListener('click', this.handleClickOutside.bind(this));
   }
-  async getUsers(){
+  async searchCakes(){
     this.searchResults=[];
     if(this.selected?.length!=0){
     await axios.post('searchCakes',{searchTerm: this.selected}).then(res=>{

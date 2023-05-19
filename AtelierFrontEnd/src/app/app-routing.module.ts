@@ -11,6 +11,7 @@ import { AuthGuard } from './shared/guard/auth.guard';
 import { ItemPageComponent } from './item-page/item-page.component';
 import { ItemCartComponent } from './item-cart/item-cart.component';
 import { OrderListComponent } from './order-list/order-list.component';
+import { StorePageComponent } from './store-page/store-page.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'item-page', component: ItemPageComponent, canActivate: [AuthGuard] },
   { path: 'cart', component: ItemCartComponent, canActivate: [AuthGuard] },
   { path: 'orders', component: OrderListComponent, canActivate: [AuthGuard] },
+  { path: 'store-page', component: StorePageComponent, canActivate: [AuthGuard] },
   { path: 'login-page', pathMatch: 'full', component: LoginComponent },
   { path: 'settings', pathMatch: 'full', component: SettingsComponent },
   { path: 'chat', pathMatch: 'full', component: ChatPageComponent, canActivate: [AuthGuard]},

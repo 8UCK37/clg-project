@@ -2,7 +2,7 @@
 <div style="min-width: 250px;margin-left: -6rem">
   <!-- <pre class="card card-block card-header mb-3">Model: {{selected | json}}</pre> -->
 <input [(ngModel)]="selected"
-       class="form-control" placeholder="Search" (keyup)="getUsers()">
+       class="form-control" placeholder="Search" (keyup)="searchCakes()">
       <div class="searchResults" #dropdown>
       <div class="row" *ngFor="let item of searchResults" (click)="onclick(item.id)">
         <div class="col">

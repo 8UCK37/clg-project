@@ -48,6 +48,7 @@ import { IncomingOrdersComponent } from './settings/incoming-orders/incoming-ord
 import { TimelineModule } from 'primeng/timeline';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { OrderListComponent } from './order-list/order-list.component';
+import { StorePageComponent } from './store-page/store-page.component';
 @NgModule({
   declarations: [
       AppComponent,
@@ -65,6 +66,7 @@ import { OrderListComponent } from './order-list/order-list.component';
       ItemCartComponent,
       IncomingOrdersComponent,
       OrderListComponent,
+      StorePageComponent,
    ],
   imports: [
     CarouselModule,
