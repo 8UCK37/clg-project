@@ -23,7 +23,13 @@
 .app-left{
   width:25rem;
   height: 90rem;
-  border: 1px solid red;
+
+}
+.vertical-line {
+  border-left: 1px solid black;
+  height: 500px;
+  position:relative;
+  left:10%;
 }
 .app-right{
   width:10rem;
