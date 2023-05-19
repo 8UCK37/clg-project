@@ -1,24 +1,40 @@
 <ng-container>
-<p-table [columns]="cols" [value]="cakes" [tableStyle]="{ 'min-width': '50rem' }">
-  <ng-template pTemplate="header" let-columns>
+  <p-table [columns]="cols" [value]="cakes" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header" let-columns>
       <tr>
-          <th *ngFor="let col of columns">
-              {{ col.header }}
-          </th>
+        <th *ngFor="let col of columns">
+          {{ col.header }}
+        </th>
       </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-product>
+    </ng-template>
+    <ng-template pTemplate="body" let-product>
       <tr>
         <td>{{ product.id }}</td>
-        <td>{{ product.name }}</td>
-        <td>{{ product.description }}</td>
-        <td>{{ product.price }}</td>
-        <td>{{ product.size }}</td>
-        <td>{{ product.category }}</td>
-        <td>{{ product.theme }}</td>
-        <td>{{ product.tags }}</td>
+        <td>
+          <input [(ngModel)]="product.name" type="text">
+        </td>
+        <td>
+          <textarea [(ngModel)]="product.description"></textarea>
+        </td>
+        <td>
+          <input [(ngModel)]="product.price" type="number">
+        </td>
+        <td>
+          <input [(ngModel)]="product.size" type="text">
+        </td>
+        <td>
+          <input [(ngModel)]="product.category" type="text">
+        </td>
+        <td>
+          <input [(ngModel)]="product.theme" type="text">
+        </td>
+        <td>
+          <input [(ngModel)]="product.tags" type="text">
+        </td>
         <td>{{ product.photoUrl }}</td>
       </tr>
-  </ng-template>
-</p-table>
+      <button type="submit" class="button" (click)="editCake(product)" >Save</button>
+    </ng-template>
+  </p-table>
+
 </ng-container>

@@ -41,4 +41,11 @@ export class CakeDatabaseComponent implements OnInit {
       this.cakes=res.data
     }).catch(err=>console.log(err))
   }
+  editCake(cake:any){
+    console.log(cake)
+    axios.post('cakeEdit',{data:cake}).then(res => {
+      //console.log(res.data)
+
+    }).catch(err=>console.log(err))
+  }
 }
