@@ -19,7 +19,7 @@ export class StorePageComponent implements OnInit {
   public priceOptions:string[]=['All','Under 700','Between 700 and 1000','1000 and above']
   public selectedPriceRange:any;
 
-  public tagOptions:string[]=['Birthday','Anniversary']
+  public tagOptions:string[]=['Birthday','Anniversary','Kids','Cup Cake']
   public selectedTag:any;
   constructor(private router: Router,private route: ActivatedRoute) { }
 
@@ -45,9 +45,9 @@ export class StorePageComponent implements OnInit {
       if(res.data.length!=0){
       this.searchResults=res.data;
       this.filteredResults=res.data
-      this.header='Showing results for '+ this.searchTerm
+      this.header='Showing results for '+ this.searchTerm +' Cakes'
       }else{
-        this.header='No matching results found for "'+this.searchTerm+'" ,you can try these instead '
+        this.header='No matching results found for "'+this.searchTerm+' Cakes" ,you can try these instead '
         this.getCakesList();
       }
       console.log(this.searchResults)

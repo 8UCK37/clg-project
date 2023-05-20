@@ -27,7 +27,6 @@
 }
 .vertical-line {
   border-left: 1px solid black;
-  height: 500px;
   position:relative;
   left:10%;
 }
