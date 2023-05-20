@@ -53,6 +53,7 @@ import { AccordionModule } from 'primeng/accordion';
 import { PasswordModule } from 'primeng/password';
 import { CakeDatabaseComponent } from './settings/cake-database/cake-database.component';
 import { TableModule } from 'primeng/table';
+import { BadgeModule } from 'primeng/badge';
 
 @NgModule({
   declarations: [
@@ -88,6 +89,7 @@ import { TableModule } from 'primeng/table';
     TimelineModule,
     RadioButtonModule,
     AccordionModule,
+    BadgeModule,
     TableModule,
     PasswordModule,
     ButtonModule,

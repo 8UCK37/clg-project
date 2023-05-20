@@ -23,9 +23,11 @@
         </div>
       </ul>
       <ul>
-        <div (click)="goToCart()" style="cursor: pointer;" >
+        <div (click)="goToCart()" style="cursor: pointer;position: relative;" >
           <img src="./../../assets/icon-resource/cupcakes.png" class="logo">
-          <span class="cart-count">{{cart?.length}}</span>Cart
+          <div style="position: absolute;top:-9px;left:39px">
+          <p-badge [value]="cart?.length" severity="danger" ></p-badge>
+          </div>
         </div>
       </ul>
       <div class="noti-menu-wrap"  #notiMenu [ngClass]="notiShow?'open-menu':''">
@@ -122,13 +124,13 @@
             <h3>{{userInfo?.name}}</h3>
           </div>
           <hr>
-          <a href="#" [routerLink]="['/settings']" routerLinkActive="router-link-active" class="sub-menu-link">
-            <img src="./../../assets/icon-resource/setting2.png">
-            <p>Settings</p>
-          </a>
           <a href="#" [routerLink]="['/orders']" routerLinkActive="router-link-active" class="sub-menu-link">
             <img src="./../../assets/icon-resource/checklist.png">
             <p>Your Orders</p>
+          </a>
+          <a href="#" [routerLink]="['/settings']" routerLinkActive="router-link-active" class="sub-menu-link">
+            <img src="./../../assets/icon-resource/setting2.png">
+            <p>Settings</p>
           </a>
           <a href="#" class="sub-menu-link">
             <img src="./../../assets/icon-resource/help1.png">
