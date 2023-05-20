@@ -31,7 +31,10 @@ export class ChatPageComponent implements OnInit {
   public userparsed:any;
   private incomingDataSubscription: Subscription | undefined;
   private incomingNotiSubscription: Subscription | undefined;
-  public friendList: any[]=[];
+  public userList: any[]=[];
+  public adminList:any[]=[]
+  public rightArray:any[]=[]
+  public selectedChef:any=0
   public activeState:boolean=true;
   public selectedFrnd:any=null;
   public selectedFrndId:any=null;
@@ -88,7 +91,7 @@ export class ChatPageComponent implements OnInit {
 
     setTimeout(() => {
       this.onclick(this.activeConvList[0])
-      this.friendList.forEach(frnd => {
+      this.userList.forEach(frnd => {
         ChatPageComponent.incSenderIds.forEach(sender => {
           if(frnd.data.id==sender){
             this.notification.set(frnd.data.id,true)
@@ -148,17 +151,26 @@ export class ChatPageComponent implements OnInit {
 
 
   getUserlist(){
-    this.friendList=[];
+    this.userList=[];
+    this.adminList=[];
     axios.get('userList').then(res=>{
       res.data.forEach((data: any) => {
-        this.friendList.push({data})
+        this.userList.push({data})
         //this.status.set(data.id,false);
         this.notification.set(data.id,false);
         //console.log(data)
+        if(data.isAdmin){
+          this.adminList.push({data})
+        }
         this.status.set(data.id,data.activeChoice&&data.isConnected)
       });
     }).catch(err=>console.log(err))
     //console.log(this.status)
+    if(this.userparsed.isAdmin){
+      this.rightArray=this.userList
+    }else{
+      this.rightArray=this.adminList
+    }
   }
 
 
@@ -198,7 +210,7 @@ export class ChatPageComponent implements OnInit {
     }
 
     onclick(frnd:any){
-      //console.log(frnd.id)
+      //console.log(frnd)
       this.values='';
       this.fetchChatData(frnd?.id);
       this.selectedFrndId=frnd?.id;
@@ -219,9 +231,11 @@ export class ChatPageComponent implements OnInit {
     }
 
     scrollToBottom() {
+      if(this.activeConvList.length!=0){
       setTimeout(() => {
         this.messageContainer.nativeElement.scrollTop = this.messageContainer?.nativeElement?.scrollHeight;
       }, 200);
+    }
     }
 
     incMsg(){
@@ -262,7 +276,7 @@ export class ChatPageComponent implements OnInit {
       const uniqueConvId:any=[];
       const uniqueConv:any=[];
       axios.get('getChats').then(res=>{
-        //console.log(res.data)
+        console.log(res.data)
         res.data.forEach((data: any)=> {
 
          if(data.chat_type=='received'){
@@ -280,7 +294,7 @@ export class ChatPageComponent implements OnInit {
          }
          });
          this.activeConvList = uniqueConv
-         //console.log(this.activeConvList)
+         console.log(this.activeConvList)
         });
 
     }

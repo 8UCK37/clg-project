@@ -65,7 +65,9 @@
                 referrerpolicy="no-referrer" alt="Avatar">
             </div>
             <div class="name">
-              <span>{{selectedFrnd.isAdmin? 'Chef':selectedFrnd.name}}</span>
+              <span>{{selectedFrnd.isAdmin? 'Chef':selectedFrnd.name}}
+                <ng-container *ngIf="!userparsed.isAdmin">{{selectedChef}}</ng-container>
+              </span>
               <ng-container *ngIf="status.get(selectedFrnd.id); else elseblock">
                 <span class="status">online</span>
               </ng-container>
@@ -149,11 +151,11 @@
         </div>
       </div>
     </div>
-    <div class="app-right" *ngIf="userparsed?.isAdmin">
+    <div class="app-right">
       <div class="app-profile-box">
         <div class="chat-list-header">
           UserList
-          <span class="c-number">{{ friendList.length }}</span>
+          <span class="c-number">{{ userList.length }}</span>
           <svg class="list-header-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"
             stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
             class="feather feather-chevron-up" viewBox="0 0 24 24">
@@ -163,11 +165,16 @@
         </div>
         <div class="chat-list active">
           <div class="app-profile-box-text-align-left">
-            <ul class="chat-list active" *ngFor="let frnd of friendList; let i = index">
-              <div class="chat-list-item active" (click)="onclick(frnd.data)">
-                <img [src]="frnd.data.profilePicture" />
-                <span class="chat-list-name">{{ frnd.data.name }}</span>
-                <i *ngIf="status.get(frnd.data.id)" class="fa-sharp fa-solid fa-circle"></i>
+            <ul class="chat-list active" *ngFor="let user of rightArray let i = index">
+              <div class="chat-list-item active" (click)="onclick(user.data);selectedChef=i">
+                <img [src]="userparsed.isAdmin? user.data.profilePicture:'./../../assets/icon-resource/chef.png'" />
+                <span class="chat-list-name">{{ userparsed.isAdmin? user.data.name:'Chef' }}
+                  <ng-container *ngIf="!userparsed.isAdmin" >
+                    {{i}}
+                  </ng-container>
+                </span>
+                <ng-container *ngIf="userparsed.isAdmin && user.data.isAdmin"><img style="height: 25px;width: 25px;border-radius: 0%;margin-bottom: 5px;margin-left: 7px;" src="./../../assets/icon-resource/crown.png" alt=""></ng-container>
+                <i *ngIf="status.get(user.data.id)" class="fa-sharp fa-solid fa-circle"></i>
               </div>
               <!-- <i class="fa-sharp fa-solid fa-circle" (click)="sendnoti(frnd.data.id)"></i> -->
             </ul>
