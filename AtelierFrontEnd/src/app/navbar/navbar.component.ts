@@ -151,9 +151,7 @@ export class NavbarComponent implements  OnInit {
     this.notiShow=false
     this.router.navigate(['post-page'],{ queryParams: { post_id: postId} });
   }
-  openModal(){
-    this.utilsServiceService.modalObjSource.next({open:true, data:null})
-  }
+ 
   goToCart(){
     if(this.userparsed){
       this.router.navigate(['cart']);

@@ -5,8 +5,6 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class UtilsServiceService {
-  modalObjSource = new BehaviorSubject<any>({});
-  modalObj = this.modalObjSource.asObservable();
 
   private cartObjSource = new BehaviorSubject<any>([]);
   cartObj$ = this.cartObjSource.asObservable();
