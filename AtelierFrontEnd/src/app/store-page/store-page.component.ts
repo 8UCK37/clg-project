@@ -47,7 +47,7 @@ export class StorePageComponent implements OnInit {
       this.filteredResults=res.data
       this.header='Showing results for '+ this.searchTerm +' Cakes'
       }else{
-        this.header='No matching results found for "'+this.searchTerm+'" ,you can try these instead '
+        this.header='No matching results found for "'+this.searchTerm+' Cakes" ,you can try these instead '
         this.getCakesList();
       }
       console.log(this.searchResults)
