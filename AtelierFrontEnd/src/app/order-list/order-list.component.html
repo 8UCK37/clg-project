@@ -23,31 +23,30 @@
 
   <div class="shopping-cart">
 
-    <div style="display: flex;flex-direction: column;height:auto;;border-radius: 5px;overflow-y: auto; margin-top: 50px;">
-
+    <div style="display: flex;flex-direction: column;height:auto;;border-radius: 5px;overflow-y: auto; margin-top: 50px;width: auto;">
+      <span style="font-size: x-large;color:black;margin-left: 50px;" *ngIf="orderList.length==0">There are no such orders</span>
       <ng-container *ngFor="let order of orderList;let i = index">
         <div class="order-card">
           <div class="order-header">
             <div class="container">
               <div class="row">
                 <div class="col-sm">
-                  <span>Order placed on</span>
+                  <span style="font-size: larger;">Order placed on</span>
                   <br>
                   <span>{{utcToLocal(order.createdAt)}}</span>
                 </div>
                 <div class="col-sm">
-                  <span>Total</span>
+                  <span style="font-size: larger;">Total</span>
                   <br>
                   <span>₹{{order.total+100}}</span>
                 </div>
                 <div class="col-sm">
-                  <span>Order reference id</span>
+                  <span style="font-size: larger;">Order reference id</span>
                   <br>
                   <span>Id: {{order.id}}</span>
                 </div>
-                <div class="col-sm">
-                  <span>Status</span>
-                  <br>
+                <div class="col-sm" style="display: flex;flex-direction: column;justify-content: center;align-content: flex-end;align-items: center;">
+                  <span style="font-size: larger;">Status</span>
                   <span>{{order.status}}</span>
                 </div>
               </div>
@@ -59,7 +58,7 @@
               <label class="product-quantity" style="margin-left: 40px;">Quantity</label>
             </div>
             <div style="display: flex;">
-            <div style="width:auto;min-width:72rem ;">
+            <div style="width:auto;min-width:68rem ;">
             <ng-container *ngFor="let item of order.items;">
               <div class="product">
                 <div class="product-image">
@@ -67,6 +66,9 @@
                 </div>
                 <div class="product-details">
                   <div class="product-title">{{item.name}}</div>
+                  <span>{{item.veg.name}}</span>
+                  <br>
+                <span>{{item.flavour.name}}</span>
                   <p class="product-description">{{item.description}}</p>
                 </div>
                 <div class="product-price">{{item.price}}</div>

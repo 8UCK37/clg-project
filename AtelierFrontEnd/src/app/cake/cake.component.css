@@ -50,6 +50,7 @@ carousel img {
 .cake-image-card{
   height:270px;
   width:270px;
+  cursor:pointer;
   margin-top: 25px;
   margin-left:62px;
   border-radius: 10px;

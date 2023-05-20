@@ -97,6 +97,9 @@ export class PrimaryHomePageComponent implements OnInit {
     axios.get('getCakesList').then(res => {
       //console.log(res.data)
       this.cakes=res.data
+      this.cakes.forEach(cake => {
+        cake.rating=this.getRandomFloat(5,3).toString()
+      });
     }).catch(err=>console.log(err))
   }
   getCart(){
@@ -118,7 +121,9 @@ export class PrimaryHomePageComponent implements OnInit {
       this.hoverUrl=res.data[0]?.photoUrl
     }).catch(err=>console.log(err))
   }
-
+  getRandomFloat(min: number, max: number): number {
+    return Number((Math.random() * (max - min) + min).toFixed(1));
+  }
 }
 
 

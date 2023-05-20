@@ -70,7 +70,12 @@
       <button class="checkout" style="margin-bottom: 25px;" (click)="checkOut()">Place Order</button>
 </div>
 <ng-container *ngIf="this.cart?.length===0">
-  <h2 style="margin-left: 500px;">such empty!! much wow</h2>
+  <h2 style="margin-left: 500px;">Your cart seems to be empty!!!</h2>
+
+  <a style="margin-left: 500px;font-size: x-large;" [routerLink]="['/store-page']" routerLinkActive="router-link-active">
+    <img src="https://i.giphy.com/media/VIWIoLiKYVtoIx1eu4/giphy.webp" alt="">
+    <span>Here....head over to our store page to browse our offerings!!</span>
+  </a>
 </ng-container>
 <p-toast position='bottom-right'></p-toast>
 </main>

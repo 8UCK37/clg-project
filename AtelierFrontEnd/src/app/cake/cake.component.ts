@@ -43,6 +43,7 @@ export class CakeComponent implements OnInit {
       this.cart= cart;
 
     });
+    
   }
 
   utcToLocal(utcTime: any) {
@@ -51,7 +52,7 @@ export class CakeComponent implements OnInit {
   }
 
   goToItemPage(){
-    
+
     this.router.navigate(['item-page'],{ queryParams: { item_id: this.cake.id } });
   }
   async addTocart(){
@@ -74,5 +75,8 @@ export class CakeComponent implements OnInit {
 
     }).catch(err=>console.log(err))
     }
+  }
+  getRandomFloat(min: number, max: number): number {
+    return Number((Math.random() * (max - min) + min).toFixed(1));
   }
 }

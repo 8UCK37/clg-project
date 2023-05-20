@@ -84,8 +84,6 @@ label {
 
 .shopping-cart {
   margin-top: -45px;
-  margin-left: 50px;
-  margin-right: 260px;
 }
 
 /* Column headers */
@@ -251,12 +249,11 @@ label {
 }
 .order-card{
   height: auto;
-  max-width:85rem;
-  width:auto;
   margin-top: 50px;
   margin-bottom: 25px;
-  margin-left: 50px;
-  margin-right: 50px;
+  margin-left: 95px;
+  margin-right: 95px;
+  width:95rem;
   border-radius: 25px;
   border:1px solid black;
 }
@@ -273,10 +270,9 @@ label {
   height:auto;
 }
 .item-image{
-  margin-top: 50px;
   margin-left: 50px;
-  height:175px;
-  width:175px;
+  height:100px;
+  width:100px;
   border-radius: 10px;
 }
 .order-footer{

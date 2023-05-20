@@ -77,15 +77,15 @@
                 <br>
                 <span>{{item.flavour.name}}</span>
               </div>
-              <div class="product-price" style="margin-top: 50px;">{{item.price}}</div>
+              <div class="product-price" style="margin-top: 50px;">₹{{item.price}}</div>
               <div class="product-quantity" style="margin-top: 50px;">
                 <span>Quantity: {{item.quantity}}</span>
               </div>
-              <div class="product-line-price" style="margin-top: 50px;">{{item.quantity*item.price}}</div>
+              <div class="product-line-price" style="margin-top: 50px;">₹{{item.quantity*item.price}}</div>
 
             </div>
           </ng-container>
-          <div style="margin-left: 50rem;">Order Total: {{order.total}}</div>
+          <div style="margin-left: 50rem;">Order Total: ₹{{order.total}}</div>
         </div>
         <div class="order-footer">
           <div style="display: flex;margin-left: 150px;margin-top: 10px;">
