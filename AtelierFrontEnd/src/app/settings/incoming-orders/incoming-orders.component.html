@@ -62,7 +62,8 @@
         <div style="display: flex;margin-left: 25px;">
           <img class="user-pic" [src]="order.user.profilePicture" alt="">
           <div>
-            <span style="color:black">{{order.user.name}}</span>
+            <span style="color:black;margin-left: 15px;">{{order.user.name}}</span>
+            <button style="margin-left: 90px;" type="submit" class="button" (click)="goToUserChat(order.user.id)">Chat with this User</button>
           </div>
         </div>
           <ng-container *ngFor="let item of order.items;">
@@ -84,7 +85,7 @@
 
             </div>
           </ng-container>
-          <div style="margin-left: 50rem;">Order Toatal: {{order.total}}</div>
+          <div style="margin-left: 50rem;">Order Total: {{order.total}}</div>
         </div>
         <div class="order-footer">
           <div style="display: flex;margin-left: 150px;margin-top: 10px;">

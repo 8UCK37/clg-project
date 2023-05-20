@@ -55,6 +55,7 @@ export class ChatPageComponent implements OnInit {
   public formData:any;
   public sentImages:any;
   public showLoading:boolean=false;
+  public userFromOrder:any
   @ViewChild('toggleButton') toggleButton!: ElementRef;
   @ViewChild('menu') menu!: ElementRef;
   constructor(private messageService: MessageService,public userService:UserService,private socketService : ChatServicesService , private route: ActivatedRoute,private auth: AngularFireAuth , private renderer: Renderer2,private router: Router) {
@@ -87,18 +88,33 @@ export class ChatPageComponent implements OnInit {
       this.getActiveChoice();
 
       this.getUserlist()
-      this.getActiveConvo()
-
-    setTimeout(() => {
-      this.onclick(this.activeConvList[0])
-      this.userList.forEach(frnd => {
-        ChatPageComponent.incSenderIds.forEach(sender => {
-          if(frnd.data.id==sender){
-            this.notification.set(frnd.data.id,true)
-          }
-        });
+      this.route.queryParams.subscribe(async params => {
+        if (Object.keys(params).length === 0) {
+          // No query parameters
+          console.log('No query parameters found');
+          this.getActiveConvo()
+          setTimeout(() => {
+            this.onclick(this.activeConvList[0])
+            this.userList.forEach(frnd => {
+              ChatPageComponent.incSenderIds.forEach(sender => {
+                if(frnd.data.id==sender){
+                  this.notification.set(frnd.data.id,true)
+                }
+              });
+            });
+          }, 500);
+          // Handle the case of no query parameters
+        } else {
+          this.userFromOrder = params['order'];
+          console.log(this.userFromOrder);
+          axios.get('userList').then(res=>{
+            console.log(res.data)
+            //console.log(res.data.filter((obj: { id: any; }) => obj.id == this.userFromOrder))
+            this.onclick(res.data.filter((obj: { id: any; }) => obj.id == this.userFromOrder)[0])
+          }).catch(err=>console.log(err))
+        }
       });
-    }, 500);
+
     })
     this.incNotification();
   }
@@ -166,7 +182,7 @@ export class ChatPageComponent implements OnInit {
       });
     }).catch(err=>console.log(err))
     //console.log(this.status)
-    if(this.userparsed.isAdmin){
+    if(this.userparsed?.isAdmin){
       this.rightArray=this.userList
     }else{
       this.rightArray=this.adminList
@@ -210,7 +226,7 @@ export class ChatPageComponent implements OnInit {
     }
 
     onclick(frnd:any){
-      //console.log(frnd)
+      console.log(frnd)
       this.values='';
       this.fetchChatData(frnd?.id);
       this.selectedFrndId=frnd?.id;
@@ -231,7 +247,7 @@ export class ChatPageComponent implements OnInit {
     }
 
     scrollToBottom() {
-      if(this.activeConvList.length!=0){
+      if(this.activeConvList.length!=0 || this.userFromOrder){
       setTimeout(() => {
         this.messageContainer.nativeElement.scrollTop = this.messageContainer?.nativeElement?.scrollHeight;
       }, 200);

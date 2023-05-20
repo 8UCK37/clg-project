@@ -66,7 +66,7 @@
             </div>
             <div class="name">
               <span>{{selectedFrnd.isAdmin? 'Chef':selectedFrnd.name}}
-                <ng-container *ngIf="!userparsed.isAdmin">{{selectedChef}}</ng-container>
+                <ng-container *ngIf="!userparsed?.isAdmin">{{selectedChef}}</ng-container>
               </span>
               <ng-container *ngIf="status.get(selectedFrnd.id); else elseblock">
                 <span class="status">online</span>

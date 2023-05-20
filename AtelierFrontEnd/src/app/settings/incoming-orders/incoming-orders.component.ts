@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import axios from 'axios';
 import { UserService } from 'src/app/login/user.service';
 import { UtilsServiceService } from 'src/app/utils/utils-service.service';
@@ -19,7 +20,7 @@ export class IncomingOrdersComponent implements OnInit {
   public tabSeleted:any='Upcoming Orders'
   public utcDateTime:any;
   public timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  constructor(public utilsServiceService : UtilsServiceService,private userService : UserService) {
+  constructor(private router: Router,public utilsServiceService : UtilsServiceService,private userService : UserService) {
     this.events = [
       { status: 'Accepted', icon: 'pi pi-shopping-cart', color: '#9C27B0'},
       { status: 'Prepping', icon: 'pi pi-cog', color: '#673AB7' },
@@ -68,5 +69,9 @@ export class IncomingOrdersComponent implements OnInit {
   utcToLocal(utcTime:any){
     this.utcDateTime = new Date(utcTime);
     return this.utcDateTime.toLocaleString('en-US', { timeZone:this.timeZone });
+  }
+  goToUserChat(userId:any){
+    //console.log(userId)
+    this.router.navigate(['chat'],{ queryParams: { order: userId } });
   }
 }

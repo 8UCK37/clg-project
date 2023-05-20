@@ -94,7 +94,7 @@ export class SettingsComponent implements OnInit {
       return;
     }
     console.log(this.info)
-
+    this.messageService.add({ severity: 'info',detail: "Be patient!!" , summary: 'Waiting for database to update'})
     axios.post('/saveUserInfo', {Locality:this.info.Locality,zipcode:this.info.zipcode,Address:this.info.Address,Landmark:this.info.Landmark,Phoneno:this.info.Phoneno}).then(res=>{
       this.messageService.add({ severity: 'success', summary: 'Contact info Successfully Updated', detail: "Enjoy!!" })
     }).catch(err=>console.log(err))
