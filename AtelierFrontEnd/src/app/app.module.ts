@@ -34,7 +34,6 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DialogModule } from 'primeng/dialog';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ProgressBarModule } from 'primeng/progressbar';
-import { LocationModalComponent } from './utils/location-modal/location-modal.component';
 import { QuillModule } from "ngx-quill";
 import { AddCakeComponent } from './settings/add-cake/add-cake.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -66,7 +65,6 @@ import { TableModule } from 'primeng/table';
       ChatPageComponent,
       PrimaryHomePageComponent,
       CakeComponent,
-      LocationModalComponent,
       AddCakeComponent,
       ItemPageComponent,
       ItemCartComponent,

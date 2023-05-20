@@ -99,7 +99,7 @@ export class StorePageComponent implements OnInit {
     console.log(this.filteredResults)
   }
   sortByTags(){
-    this.filteredResults=this.searchResults.filter((obj) => obj.tags.includes(this.selectedTag))
+    this.filteredResults=this.searchResults.filter((obj) => obj.tags.includes(this.selectedTag.toLowerCase()))
     console.log(this.searchResults)
     console.log(this.filteredResults)
   }
