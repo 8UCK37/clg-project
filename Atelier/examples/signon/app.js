@@ -306,17 +306,38 @@ app.get('/getOrdersForUser', ensureAuthenticated, async function (req, res) {
 });
 
 app.post('/updateOrderStatus', ensureAuthenticated, async function (req, res) {
-  
-  const orders= await prisma.Orders.update({
-    where:{
-      id:parseInt(req.body.orderId)
-    },
-    data:{
-      status:req.body.status,
-    }
-  })
-  res.send(JSON.stringify(orders));
+  try {
+    const orderId = parseInt(req.body.orderId);
+
+    const result = await prisma.$transaction(async (prisma) => {
+      // Perform the update operation
+      const updatedOrder = await prisma.Orders.update({
+        where: { id: orderId },
+        data: { status: req.body.status },
+      });
+
+      // Perform the fetch operation
+      const user = await prisma.Orders.findUnique({ 
+        where: { 
+          id: orderId 
+        },select:{
+          id:true,
+          userId:true
+        } 
+      })
+        
+      return { user };
+    });
+    console.log(result)
+    const data={msg:"Your order's status has been updated",orderId:result.user.id,currentStatus:req.body.status}
+    socketRunner.sendNotification(io, "orderUpdate", req.user.user_id, result.user.userId,data)
+    res.sendStatus(200)
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('An error occurred');
+  }
 });
+
 //selfexplanatory #endpoint
 app.get('/logout', function (req, res) {
   req.logout();

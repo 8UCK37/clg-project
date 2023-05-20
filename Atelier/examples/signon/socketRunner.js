@@ -70,7 +70,7 @@ async function sendNotification(io,notification,sender_id,receiver_id,data){
   // console.log(sender_id)
   // console.log(receiver_id)
   // console.log(userSocketMap)
-  //console.log(receiver)
+  // console.log(receiver)
   io.to(receiver).emit('notification' , {sender:sender_id,notification:notification,data:data});
 }
 module.exports = { execute,sendNotification }

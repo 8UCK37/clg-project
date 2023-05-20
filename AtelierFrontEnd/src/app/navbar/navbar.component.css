@@ -494,12 +494,13 @@ a:visited{
   background-color: #969595;
 }
 .frnd-noti{
+  cursor:pointer;
   height: 105px;
   margin-top: 0px;
   display: flex;
   margin-left: 0px;
   gap: 30px;
-  width: 350px;
+  width: 335px;
 }
 .accpt-rej-btns{
   display: flex;

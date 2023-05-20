@@ -15,9 +15,11 @@
       </ul>
       <ul *ngIf="userparsed">
         <div class="notification">
-          <div class="notBtn" href="#">
+          <div class="notBtn" href="#" style="position: relative">
             <!--Number supports double digits and automaticly hides itself when there is nothing between divs -->
-            <div class="number" *ngIf="notificationArray?.length!=0">{{notificationArray?.length}}</div>
+            <div style="position: absolute;top:-14px;left:25px">
+              <p-badge *ngIf="notificationArray?.length>0" [value]="notificationArray?.length"></p-badge>
+            </div>
             <i ><img class="notiicon" src="./../../assets/icon-resource/noti.png" #togglenoti (click)="toggleNotiDropDown()"></i>
           </div>
         </div>
@@ -26,7 +28,7 @@
         <div (click)="goToCart()" style="cursor: pointer;position: relative;" >
           <img src="./../../assets/icon-resource/cupcakes.png" class="logo">
           <div style="position: absolute;top:-9px;left:39px">
-          <p-badge [value]="cart?.length" severity="danger" ></p-badge>
+          <p-badge *ngIf="cart?.length>0" [value]="cart?.length" severity="danger" ></p-badge>
           </div>
         </div>
       </ul>
@@ -38,61 +40,11 @@
                 <div class="cont"><!-- Fold this div and try deleting evrything inbetween -->
                   <div class="sec new" *ngIf="notificationArray?.length!=0;else elseblock">
                     <div *ngFor="let noti of notificationArray;let i= index">
-                      <ng-container *ngIf="noti.notiType=='frnd req'">
-                        <div class="frnd-noti">
-                          <div class="noti-img" (click)="onclick(noti.sender)" style="cursor: pointer;">
-                            <img [src]="noti.profileurl" class="img-sk" referrerpolicy="no-referrer" />
-                          </div>
-                          <div class="accpt-rej-btns">
-                            <div style="color: rgb(227, 213, 213);margin-top: 10px;"> {{noti.userName}} sent you a friend request</div>
-                            <div style="margin-bottom: 5px;">
-
+                      <ng-container *ngIf="noti.notiType=='orderUpdate'">
+                        <div class="frnd-noti" [routerLink]="['/orders']" routerLinkActive="router-link-active">
+                            <div style="color: rgb(227, 213, 213);margin: 10px;">{{noti.data.msg}}
+                              <span>Current Status of your Order: {{noti.data.currentStatus}}</span>
                             </div>
-                          </div>
-                        </div>
-                      </ng-container>
-                      <ng-container *ngIf="noti.notiType=='poke'">
-                        <div class="frnd-noti">
-                          <div class="noti-img" (click)="onclick(noti.sender)" style="cursor: pointer;">
-                            <img [src]="noti.profileurl" class="img-sk" referrerpolicy="no-referrer" />
-                          </div>
-                          <div class="accpt-rej-btns">
-                            <div style="color: rgb(227, 213, 213);margin-top: 10px;">You've been poked by {{noti.userName}}{{i}} </div>
-                          </div>
-                          <button type="button" class="btn-close" (click)="notiDismiss(i)" style="height: 25px;width: 25px;margin-right: 25px;margin-top: 10px;" ></button>
-                        </div>
-                      </ng-container>
-                      <ng-container *ngIf="noti.notiType=='frndReqAcc'">
-                        <div class="frnd-noti">
-
-                          <div class="noti-img" (click)="onclick(noti.sender)" style="cursor: pointer;">
-                            <img [src]="noti.profileurl" class="img-sk" referrerpolicy="no-referrer" />
-                          </div>
-                          <div class="accpt-rej-btns">
-                            <div style="color: rgb(227, 213, 213);margin-top: 10px;"> {{noti.userName}} accepted your friend request</div>
-                          </div>
-                        </div>
-                      </ng-container>
-                      <ng-container *ngIf="noti.notiType=='new comment'">
-                        <div class="frnd-noti">
-
-                          <div class="noti-img" (click)="onclick(noti.sender)" style="cursor: pointer;">
-                            <img [src]="noti.profileurl" class="img-sk" referrerpolicy="no-referrer" />
-                          </div>
-                          <div class="accpt-rej-btns" style="cursor: pointer;" (click)="goToPost(noti.data.postId,i)">
-                            <div style="color: rgb(227, 213, 213);margin-top: 10px;"> {{noti.userName}} commented on your post</div>
-                          </div>
-                        </div>
-                      </ng-container>
-                      <ng-container *ngIf="noti.notiType=='new mention'">
-                        <div class="frnd-noti">
-
-                          <div class="noti-img" (click)="onclick(noti.sender)" style="cursor: pointer;">
-                            <img [src]="noti.profileurl" class="img-sk" referrerpolicy="no-referrer" />
-                          </div>
-                          <div class="accpt-rej-btns">
-                            <div style="color: rgb(227, 213, 213);margin-top: 10px;"> {{noti.userName}} mentioned you in a new post</div>
-                          </div>
                         </div>
                       </ng-container>
                     </div>
