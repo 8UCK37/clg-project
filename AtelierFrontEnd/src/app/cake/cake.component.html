@@ -3,21 +3,21 @@
 
     <img class="cake-image-card" [src]="cake?.photoUrl " alt="" (click)="goToItemPage()">
     <div style="display: flex;justify-content: space-around;margin-top: 15px;">
-      <i class="fa-solid fa-star" style="font-size: 1.5rem;color:goldenrod">{{cake?.rating}}</i>
+      <i class="fa-solid fa-star" style="font-size: 1.5rem;color:goldenrod">  {{cake?.rating}}</i>
       <i class="fa-solid fa-cart-plus" (click)="addTocart()" style="font-size: 1.5rem;color: blue;"></i>
     </div>
     <div style="margin-left: 25px;">
-      <h2 style="color: black;">{{cake?.name}}</h2>
+      <h2 style="color: black;">Name: {{cake?.name}}</h2>
 
-      <span style="color: black;">{{cake?.size}}</span>
+      <span style="color: black;">Size: {{cake?.size}}</span>
       <br>
-      <span style="color: black;">₹{{cake?.price}}</span>
+      <span style="color: black;">Price: ₹{{cake?.price}}</span>
       <br>
-      <span style="color: black;">{{cake?.description}}</span>
+      <span style="color: black;">Description: {{cake?.description}}</span>
       <br>
-      <span style="color: black;">{{cake?.category}}</span>
+      <span style="color: black;">Category: {{cake?.category}}</span>
       <br>
-      <span style="color: black;">{{cake?.theme}}</span>
+      <span style="color: black;">:theme: {{cake?.theme}}</span>
     </div>
   </div>
 </ng-container>
