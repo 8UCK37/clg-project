@@ -78,10 +78,10 @@
             </ng-container>
           </div>
           <div style="margin-left: 50px;">
-            <p-timeline [value]="events">
+            <p-timeline [value]="selectedElements(order.status)">
               <ng-template pTemplate="marker" let-event>
-                <span [style.backgroundColor]="order.status=='pending'? event.color:'green'" style="border-radius: 53px;height: 25px;width: 25px;">
-                    <i style="margin-left: 4px;margin-top: 4px;" [ngClass]="event.icon"></i>
+                <span [style.backgroundColor]="event.color" style="border-radius: 53px;height: 25px;width: 25px;">
+                    <i style="margin-left: 5px;margin-top: 4px;" [ngClass]="event.icon"></i>
                 </span>
               </ng-template>
               <ng-template pTemplate="content" let-event>

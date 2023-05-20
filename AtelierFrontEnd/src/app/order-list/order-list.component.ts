@@ -20,11 +20,11 @@ export class OrderListComponent implements OnInit {
   public events: any[]=[]
   constructor(public utilsServiceService : UtilsServiceService,private userService : UserService) {
     this.events = [
-      { status: 'Accepted', date: '15/10/2020 10:30', icon: 'pi pi-shopping-cart', color: '#06b6d4' },
-      { status: 'Prepping', date: '15/10/2020 14:00', icon: 'pi pi-cog', color: '#673AB7' },
-      { status: 'Out for delivery', date: '15/10/2020 16:15', icon: 'pi pi-shopping-cart', color: '#FF9800' },
+      { status: 'Accepted', date: '15/10/2020 10:30', icon: 'pi pi-thumbs-up', color: '#06b6d4' },
+      { status: 'Prepping', date: '15/10/2020 14:00', icon: 'pi pi-stopwatch', color: '#76db9b' },
+      { status: 'Out for delivery', date: '15/10/2020 16:15', icon: 'pi pi-truck', color: '#eec137' },
       { status: 'Delivered', date: '16/10/2020 10:00', icon: 'pi pi-check', color: '#607D8B' }
-  ];
+    ];
    }
 
   ngOnInit(): void {
@@ -53,6 +53,7 @@ export class OrderListComponent implements OnInit {
         }else{
           this.orderPending.push(order)
         }
+
       });
       console.log(this.orderList)
       console.log(this.orderHistory)
@@ -63,5 +64,21 @@ export class OrderListComponent implements OnInit {
     this.utcDateTime = new Date(utcTime);
     return this.utcDateTime.toLocaleString('en-US', { timeZone:this.timeZone });
   }
+
+  selectedElements(orderStatus: string): any[]{
+    switch (orderStatus) {
+      case 'Accepted':
+        return [this.events[0]];
+      case 'Prepping':
+        return [this.events[0],this.events[1]];
+      case 'Out for delivery':
+        return [this.events[0],this.events[1],this.events[2]];
+      case 'Delivered':
+        return this.events
+      default:
+        return [];
+    }
+  };
+
 
 }
