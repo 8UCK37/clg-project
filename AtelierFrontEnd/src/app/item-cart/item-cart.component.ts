@@ -3,6 +3,8 @@ import { UtilsServiceService } from '../utils/utils-service.service';
 import { UserService } from '../login/user.service';
 import axios from 'axios';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MessageService } from 'primeng/api';
+import { Router } from '@angular/router';
 interface Flavours {
   name: string;
 }
@@ -12,7 +14,8 @@ interface Veg {
 @Component({
   selector: 'app-item-cart',
   templateUrl: './item-cart.component.html',
-  styleUrls: ['./item-cart.component.css']
+  styleUrls: ['./item-cart.component.css'],
+  providers: [MessageService]
 })
 export class ItemCartComponent implements OnInit {
   public userparsed:any;
@@ -26,7 +29,8 @@ export class ItemCartComponent implements OnInit {
   public maxDate!: Date;
 
   public requests!:string;
-  constructor(public utilsServiceService : UtilsServiceService,private userService : UserService) { }
+  public info:any
+  constructor(private router: Router,private messageService: MessageService,public utilsServiceService : UtilsServiceService,private userService : UserService) { }
 
   ngOnInit(): void {
     let today = new Date();
@@ -43,6 +47,7 @@ export class ItemCartComponent implements OnInit {
       //console.log("user data" , usr)
       this.userparsed = usr;
       if(usr){
+        this.getUserInfo()
         this.flavours = [
           { name: 'Vanilla' },
           { name: 'Butterscotch' },
@@ -72,11 +77,13 @@ export class ItemCartComponent implements OnInit {
         this.utilsServiceService.cartObj$.subscribe(cart => {
           this.cart= cart;
           this.cart.forEach((item: any)=> {
-            if(item.flavour!.name==null){
-              item.flavour!.name='Vanilla'
+            if(item.flavour==null){
+              item.falvour={name:'Vanilla'}
+
             }
-            if(item.veg!.name==null){
-              item.veg.name!='With Eggs'
+            if(item.veg==null){
+              item.veg={name:'With Egg'}
+
             }
           });
           console.log(this.cart)
@@ -121,6 +128,7 @@ export class ItemCartComponent implements OnInit {
     console.log(this.cart)
   }
   async checkOut(){
+    if(this.info){
     console.log("checkedout")
     await axios.post('checkout',{items: this.cart,request:this.requests,date:this.date}).then(res=>{
     }).catch(err=>console.log(err))
@@ -129,6 +137,12 @@ export class ItemCartComponent implements OnInit {
     await axios.post('addToCart',{data: this.cart}).then(res=>{
       window.location.reload()
     }).catch(err=>console.log(err))
+    }else{
+      this.messageService.add({ severity: 'error', summary: 'No delivery details set', detail: "Please enter your address details first to place orders!!" });
+      setTimeout(() => {
+        this.router.navigate(['settings']);
+      }, 1500);
+    }
   }
   upDateCartInformation(){
     this.cart.forEach((item: any) => {
@@ -138,5 +152,11 @@ export class ItemCartComponent implements OnInit {
         item=res.data.price
       }).catch(err=>console.log(err))
     });
+  }
+  getUserInfo(){
+    axios.post('getUserInfo',{id:this.userparsed.id}).then(res => {
+      console.log(res.data)
+      this.info=res.data.userInfo
+    }).catch(err=>console.log(err))
   }
 }

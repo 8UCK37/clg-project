@@ -123,7 +123,7 @@ export class ItemPageComponent implements OnInit {
     }
 
     this.utilsServiceService.setCartObj(this.cart)
-    this.messageService.add({ severity: 'success', summary: 'Accepted', detail: "Item Added to cart" });
+    this.messageService.add({ severity: 'success', summary: 'Added to cart', detail: "Item Added to cart" });
     await axios.post('addToCart',{data: this.cart}).then(res=>{
 
     }).catch(err=>console.log(err))
