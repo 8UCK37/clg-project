@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import axios from 'axios';
 import { UserService } from '../login/user.service';
@@ -16,12 +16,12 @@ import { UtilsServiceService } from '../utils/utils-service.service';
   styleUrls: ['./navbar.component.css'],
   providers: [MessageService]
 })
-export class NavbarComponent implements  OnInit {
+export class NavbarComponent implements OnInit {
   @ViewChild('toggleButton') toggleButton!: ElementRef;
   @ViewChild('menu') menu!: ElementRef;
   @ViewChild('togglenoti') togglenoti!: ElementRef;
   @ViewChild('notiMenu') notiMenu!: ElementRef;
-  public toastTrigger:any;
+  public toastTrigger: any;
   public toastLive: any;
   public show: boolean = false;
   public notiShow: boolean = false;
@@ -31,12 +31,12 @@ export class NavbarComponent implements  OnInit {
   private toastElement!: HTMLElement;
   public usr: any;
   public userparsed: any;
-  public userInfo:any
+  public userInfo: any
   public noti: boolean = false;
   public recData: any;
-  commentOpen: boolean=false;
-  public cart:any;
-  constructor(private messageService: MessageService,public user: UserService, private renderer: Renderer2, private auth: AngularFireAuth, private socketService: ChatServicesService, private router: Router , public userService : UserService,public utilsServiceService : UtilsServiceService) {
+  commentOpen: boolean = false;
+  public cart: any;
+  constructor(private messageService: MessageService, public user: UserService, private renderer: Renderer2, private auth: AngularFireAuth, private socketService: ChatServicesService, private router: Router, public userService: UserService, public utilsServiceService: UtilsServiceService) {
     this.renderer.listen('window', 'click', (e: Event) => {
       /**
        * Only run when toggleButton is not clicked
@@ -55,7 +55,7 @@ export class NavbarComponent implements  OnInit {
       if (this.togglenoti?.nativeElement != null && !this.notiMenu?.nativeElement.contains(e.target as HTMLElement)) {
         if (e.target !== this.togglenoti.nativeElement && e.target !== this.notiMenu?.nativeElement) {
           //console.log(clickedElementClassList)
-          if(this.notiShow  && clickedElementClassList[0]!='btn-close'){
+          if (this.notiShow && clickedElementClassList[0] != 'btn-close') {
             //console.log('cot')
             this.notiShow = false;
           }
@@ -67,25 +67,25 @@ export class NavbarComponent implements  OnInit {
 
   ngOnInit(): void {
 
-    this.userService.userCast.subscribe(usr=>{
+    this.userService.userCast.subscribe(usr => {
       //console.log("user data" , usr)
       this.userparsed = usr
       this.userInfo = usr
       //console.log(usr)
       if (usr) {
-      this.socketService.setupSocketConnection();
-      this.socketService.setSocketId(this.userparsed.id);
-      this.incMsg();
-      this.incNotification();
-      this.getCart()
-      axios.post('getUserInfo', { id: usr.id }).then(res => {
-        //console.log(res.data);
-      }).catch(err => console.log(err))
-      this.utilsServiceService.cartObj$.subscribe(cart => {
-        this.cart= cart;
-        //console.log(this.cart)
-      });
-    }
+        this.socketService.setupSocketConnection();
+        this.socketService.setSocketId(this.userparsed.id);
+        this.incMsg();
+        this.incNotification();
+        this.getCart()
+        axios.post('getUserInfo', { id: usr.id }).then(res => {
+          //console.log(res.data);
+        }).catch(err => console.log(err))
+        this.utilsServiceService.cartObj$.subscribe(cart => {
+          this.cart = cart;
+          //console.log(this.cart)
+        });
+      }
     })
     setInterval(() => {
       if (this.router.url == "/chat") {
@@ -93,12 +93,12 @@ export class NavbarComponent implements  OnInit {
       }
     }, 5000);
   }
-//OnInitEnd
+  //OnInitEnd
   toggleMenu() {
     this.show = !this.show;
   }
   toggleNotiDropDown() {
-      this.notiShow = !this.notiShow;
+    this.notiShow = !this.notiShow;
   }
   incMsg() {
     this.incomingMsgSubscription = this.socketService.getIncomingMsg().subscribe((data) => {
@@ -113,13 +113,13 @@ export class NavbarComponent implements  OnInit {
       this.recData = typeof data === 'string' ? JSON.parse(data) : data;
       console.log(this.recData);
       if (this.recData.notification != 'disc' && this.recData.notification != 'online') {
-        this.notificationArray.push({ sender: this.recData.sender, notiType: this.recData.notification ,data:this.recData.data})
+        this.notificationArray.push({ sender: this.recData.sender, notiType: this.recData.notification, data: this.recData.data })
         this.notificationArray.forEach((noti: any) => {
           axios.post('getUserInfo', { id: noti.sender }).then(res => {
             noti.profileurl = res.data.profilePicture;
             noti.userName = res.data.name;
-            if(noti.notiType =="frndReqAcc"){
-              this.messageService.add({ severity: 'success', summary: 'Accepted', detail: noti.userName.toString()+' accepted your friend request' });
+            if (noti.notiType == "frndReqAcc") {
+              this.messageService.add({ severity: 'success', summary: 'Accepted', detail: noti.userName.toString() + ' accepted your friend request' });
             }
             //console.log("res.data");
           }).catch(err => console.log(err))
@@ -132,37 +132,48 @@ export class NavbarComponent implements  OnInit {
   }
   onchatClicked() {
     this.noti = false;
-    this.router.navigate(['chat']);
+    if (this.userparsed) {
+      this.router.navigate(['chat']);
+    } else {
+      this.messageService.add({ severity: 'info', summary: 'Log In', detail: 'You have to login/signup first to use the chat!!' });
+    }
   }
 
   onclick(userid: any) {
     //console.log(userid)
-    this.notiShow=false
+    this.notiShow = false
     this.router.navigate(['/user'], { queryParams: { id: userid } });
   }
 
-  notiDismiss(index:any){
+  notiDismiss(index: any) {
     //console.log(index)
-    this.notificationArray.splice(index,1)
+    this.notificationArray.splice(index, 1)
     console.log(this.notificationArray)
   }
-  goToPost(postId:any,index:any){
+  goToPost(postId: any, index: any) {
     this.notiDismiss(index)
-    this.notiShow=false
-    this.router.navigate(['post-page'],{ queryParams: { post_id: postId} });
+    this.notiShow = false
+    this.router.navigate(['post-page'], { queryParams: { post_id: postId } });
   }
- 
-  goToCart(){
-    if(this.userparsed){
+
+  goToCart() {
+    if (this.userparsed) {
       this.router.navigate(['cart']);
-    }else{
+    } else {
       this.messageService.add({ severity: 'info', summary: 'Log In', detail: 'You have to login/signup first to use the cart!!' });
     }
   }
-  getCart(){
+  getCart() {
     axios.get('getCart').then(res => {
       //console.log(res.data)
       this.utilsServiceService.setCartObj(res.data.items)
-    }).catch(err=>console.log(err))
+    }).catch(err => console.log(err))
+  }
+  goToSettings() {
+    if (this.userparsed) {
+      this.router.navigate(['settings']);
+    } else {
+      this.messageService.add({ severity: 'info', summary: 'Log In', detail: 'You have to be loggedin to use this!!' });
+    }
   }
 }
