@@ -41,7 +41,7 @@
                   <div class="sec new" *ngIf="notificationArray?.length!=0;else elseblock">
                     <div *ngFor="let noti of notificationArray;let i= index">
                       <ng-container *ngIf="noti.notiType=='orderUpdate'">
-                        <div class="frnd-noti" [routerLink]="['/orders']" routerLinkActive="router-link-active">
+                        <div class="frnd-noti" [routerLink]="['/orders']" routerLinkActive="router-link-active" (click)="notiDismiss(i)">
                             <div style="color: rgb(227, 213, 213);margin: 10px;">{{noti.data.msg}}
                               <span>Current Status of your Order: {{noti.data.currentStatus}}</span>
                             </div>

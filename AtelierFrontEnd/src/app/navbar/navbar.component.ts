@@ -127,12 +127,6 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-  onclick(userid: any) {
-    //console.log(userid)
-    this.notiShow = false
-    this.router.navigate(['/user'], { queryParams: { id: userid } });
-  }
-
   notiDismiss(index: any) {
     //console.log(index)
     this.notificationArray.splice(index, 1)
