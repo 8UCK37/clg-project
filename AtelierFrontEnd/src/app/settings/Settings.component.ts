@@ -17,16 +17,23 @@ export class SettingsComponent implements OnInit {
   public bio:any;
   public info:any={Locality:'',zipcode:'',Address:'',Landmark:'',Phoneno:''};
 
-  public tab:any;
+  public tab:any=null;
   public adminPassword:string='';
 
   constructor(private messageService: MessageService,public userService:UserService,private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(async params => {
-      this.tab = params['tab'];
-      //console.log(this.tab)
-    })
+      if (Object.keys(params).length === 0) {
+        // No query parameters
+        console.log('No query parameters found');
+
+        // Handle the case of no query parameters
+      } else {
+        this.tab = params['tab'];
+        console.log(this.tab)
+      }
+    });
     this.userService.userCast.subscribe(usr=>{
       //console.log("user data" , usr)
       if(usr){

@@ -23,7 +23,7 @@
       <div class="col-md-7 col-xl-8">
         <div class="tab-content">
           <div class="tab-pane fade active show"  role="tabpanel" id="v-pills-home" aria-labelledby="v-pills-home-tab">
-            <div class="card">
+            <div class="card" *ngIf="tab=='admin' || userparsed.isAdmin">
               <div class="card-header">
                 <h5 class="card-title mb-0">Admin Login</h5>
               </div>
