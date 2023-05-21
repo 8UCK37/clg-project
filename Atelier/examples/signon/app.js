@@ -519,7 +519,7 @@ app.get('/getCakesList', async (req, res) => {
   try {
     const cakesList = await prisma.Cakes.findMany({
       orderBy:{
-        id:'asc'
+        id:'desc'
       }
     });
     res.json(cakesList);
