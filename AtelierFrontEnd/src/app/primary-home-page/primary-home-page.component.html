@@ -96,7 +96,7 @@
           <a href="" class="title-mobile">Fostrap</a>
         </div>
       </nav>
-
+      <div>
       <div style="height: 30rem;
       transition: all 3s;background-image: url('{{urlarray[counter]}}');background-repeat: no-repeat; background-attachment: fixed;
   background-size: cover;">
@@ -113,10 +113,13 @@
           </ng-template>
       </p-carousel>
       </div>
-
-
-
-
+      <div class="sticky-chat" (click)="onChatClicked()">
+        <div class="chat-icon" style="position: relative;">
+          <img class="chat-img" src="./../../assets/icon-resource/chat-sticky.png" alt="">
+          <span>Chat with Chef</span>
+        </div>
+      </div>
+    </div>
       <footer role="contentinfo" aria-label="Footer">
         <div class="_cont">
           <div class="socials">

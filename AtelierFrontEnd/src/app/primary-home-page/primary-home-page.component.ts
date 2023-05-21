@@ -6,12 +6,13 @@ import { Product } from 'src/service/product';
 import axios from 'axios';
 import { UtilsServiceService } from '../utils/utils-service.service';
 import { Router } from '@angular/router';
-
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-primary-home-page',
   templateUrl: './primary-home-page.component.html',
   styleUrls: ['./primary-home-page.component.css'],
+  providers: [MessageService]
 })
 
 export class PrimaryHomePageComponent implements OnInit {
@@ -51,7 +52,7 @@ export class PrimaryHomePageComponent implements OnInit {
     }];
 
 
-  constructor(private router: Router,public utilsServiceService : UtilsServiceService,private auth: AngularFireAuth,private renderer: Renderer2,private modalService: BsModalService , private userService : UserService ) {
+  constructor(private messageService: MessageService,private router: Router,public utilsServiceService : UtilsServiceService,private auth: AngularFireAuth,private renderer: Renderer2,private modalService: BsModalService , private userService : UserService ) {
 
   }
   // constructor(public user: UserService ,private auth: AngularFireAuth,private renderer: Renderer2,private modalService: BsModalService ) {}
@@ -123,6 +124,13 @@ export class PrimaryHomePageComponent implements OnInit {
   }
   getRandomFloat(min: number, max: number): number {
     return Number((Math.random() * (max - min) + min).toFixed(1));
+  }
+  onChatClicked() {
+    if (this.userparsed) {
+      this.router.navigate(['chat']);
+    } else {
+      this.messageService.add({ severity: 'info', summary: 'Log In', detail: 'You have to login/signup first to use the chat!!' });
+    }
   }
 }
 

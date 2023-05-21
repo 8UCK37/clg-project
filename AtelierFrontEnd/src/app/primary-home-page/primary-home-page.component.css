@@ -4609,3 +4609,81 @@ a { text-decoration: none; }
   padding-top: 3%;
   transition: all 0.45s;
 }
+.sticky-chat {
+  position: sticky;
+  bottom: 20px;
+  float:right;
+  z-index: 999;
+  margin-right: 50px;
+}
+
+.chat-icon {
+  width: 134px;
+  height: 44px;
+  margin-top: 15px;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.chat-img {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  bottom: 37px;
+  left: -2px;
+  animation: wiggle 5s infinite;
+}
+
+@keyframes wiggle-pause {
+  0% { transform: rotate(0deg); }
+  10% { transform: rotate(10deg); }
+  20% { transform: rotate(-10deg); }
+  30% { transform: rotate(10deg); }
+  40% { transform: rotate(0deg); }
+  50% { transform: rotate(0deg); }
+  60% { transform: rotate(0deg); }
+  70% { transform: rotate(10deg); }
+  80% { transform: rotate(-10deg); }
+  90% { transform: rotate(10deg); }
+  100% { transform: rotate(0deg); }
+}
+@keyframes wiggle{
+  0% { transform: rotate(-10deg); }
+  5% { transform: rotate(10deg); }
+  10% { transform: rotate(-10deg); }
+  15% { transform: rotate(10deg); }
+  20% { transform: rotate(-10deg); }
+  25% { transform: rotate(10deg); }
+  30% { transform: rotate(-10deg); }
+  35% { transform: rotate(0deg); }
+  40% { transform: rotate(0deg); }
+  45% { transform: rotate(0deg); }
+  50% { transform: rotate(0deg); }
+  55% { transform: rotate(-10deg); }
+  65% { transform: rotate(10deg); }
+  70% { transform: rotate(-10deg); }
+  75% { transform: rotate(10deg); }
+  80% { transform: rotate(-10deg); }
+  95% { transform: rotate(10deg); }
+  100% { transform: rotate(-10deg); }
+}
+
+
+.chat-icon-text {
+  font-size: 16px;
+}
+
+.chat-window {
+  width: 300px;
+  height: 400px;
+  background-color: #f7f7f7;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  display: none;
+  /* Additional styles for the chat window */
+}
