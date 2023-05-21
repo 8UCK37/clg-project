@@ -67,6 +67,7 @@ app.use('/static', express.static(__dirname + '/../../public'));
 
 //saves a new user #endpoint
 app.post('/saveuser', ensureAuthenticated, async function (req, res) {
+  try{
   console.log("/saveuser called")
   const fetchUser = await prisma.User.findUnique({
     where: {
@@ -96,7 +97,10 @@ app.post('/saveuser', ensureAuthenticated, async function (req, res) {
     // res.statusCode(200)
     res.send(JSON.stringify(fetchUser))
   }
-
+  }catch(e){
+    console.log(e)
+    res.sendStatus(400)
+  }
 });
 //returns user info #endpoint
 app.post('/getUserInfo', ensureAuthenticated, async (req, res) => {
@@ -167,6 +171,7 @@ app.post("/saveUserInfo" , ensureAuthenticated , async (req , res)=>{
 //updates displayname of the user #endpoint
 app.post('/userNameUpdate', ensureAuthenticated, urlencodedParser, async (req, res) => {
   console.log(req.body.name);
+  try{
   const updateUserName = await prisma.User.update({
     where: {
       id: req.user.user_id
@@ -176,9 +181,14 @@ app.post('/userNameUpdate', ensureAuthenticated, urlencodedParser, async (req, r
     }
   })
   res.sendStatus(200);
+  }catch(e){
+  console.log(e)
+  res.sendStatus(400)
+}
 });
 
 app.get("/userList", ensureAuthenticated, async (req, res) => {
+  try{
   const result = await prisma.User.findMany({
     where:{
       NOT:{
@@ -188,15 +198,24 @@ app.get("/userList", ensureAuthenticated, async (req, res) => {
   })
 
   res.send(JSON.stringify(result));
+  }catch(e){
+  console.log(e)
+  res.sendStatus(400)
+  }
 })
 
 
 //TODO:testing function for notification #endpoint
 app.post("/sendNoti", ensureAuthenticated, async (req, res) => {
+  try{
   console.log(req.user.user_id);
   console.log(req.body.receiver_id);
   socketRunner.sendNotification(io, "poke", req.user.user_id, req.body.receiver_id,"null")
   res.sendStatus(200);
+  }catch(e){
+    console.log(e)
+    res.sendStatus(400)
+  } 
 });
 //testing endpoint with no ensureauth
 app.get("/micCheck", async (req, res) => {
@@ -213,7 +232,7 @@ app.get("/serverTest", async (req, res) => {
 
 app.post('/searchCakes', urlencodedParser, async function (req, res) {
   const jsonObject = req.body;
-
+  try{
   const searchresult = await prisma.Cakes.findMany({
     where: {
       OR: [
@@ -237,11 +256,16 @@ app.post('/searchCakes', urlencodedParser, async function (req, res) {
   });
 
   res.send(JSON.stringify(searchresult));
+  }catch(e){
+  console.log(e)
+  res.sendStatus(400)
+  }
   //res.sendStatus(200);
 });
 
 
 app.post('/addToCart', ensureAuthenticated, async function (req, res) {
+  try{
   console.log(req.body.data)
   const cart=await prisma.Cart.upsert({
     where:{
@@ -255,8 +279,13 @@ app.post('/addToCart', ensureAuthenticated, async function (req, res) {
   })
 
   res.sendStatus(200);
+  }catch(e){
+  console.log(e)
+  res.sendStatus(400)
+  }
 });
 app.get('/getCart', ensureAuthenticated, async function (req, res) {
+  try{
   console.log(req.body.data)
   const cart=await prisma.Cart.findUnique({
     where:{
@@ -264,9 +293,14 @@ app.get('/getCart', ensureAuthenticated, async function (req, res) {
     }
   })
   res.send(JSON.stringify(cart));
+  }catch(e){
+  console.log(e)
+  res.sendStatus(400)
+  }
 });
 
 app.post('/checkout', ensureAuthenticated, async function (req, res) {
+  try{
   console.log(req.body)
   let order = await prisma.Orders.create({
     data:{
@@ -279,10 +313,14 @@ app.post('/checkout', ensureAuthenticated, async function (req, res) {
   })
 
   res.sendStatus(200);
+  }catch(e){
+  console.log(e)
+  res.sendStatus(400)
+  }
 });
 
 app.get('/getOrders', ensureAuthenticated, async function (req, res) {
-  
+  try{
   const orders= await prisma.Orders.findMany({
     include: {
       user: true,
@@ -291,10 +329,14 @@ app.get('/getOrders', ensureAuthenticated, async function (req, res) {
     }
   })
   res.send(JSON.stringify(orders));
+  }catch(e){
+    console.log(e)
+    res.sendStatus(400)
+  }
 });
 
 app.get('/getOrdersForUser', ensureAuthenticated, async function (req, res) {
-  
+  try{
   const orders= await prisma.Orders.findMany({
     where:{
       userId:req.user.user_id
@@ -303,6 +345,10 @@ app.get('/getOrdersForUser', ensureAuthenticated, async function (req, res) {
     }
   })
   res.send(JSON.stringify(orders));
+  }catch(e){
+    console.log(e)
+    res.sendStatus(400)
+  }
 });
 
 app.post('/updateOrderStatus', ensureAuthenticated, async function (req, res) {
@@ -352,6 +398,7 @@ app.get('/logout', function (req, res) {
 
 //returns the offline/pnline choice from the user table #endpoint
 app.get('/activeState', ensureAuthenticated, async (req, res) => {
+  try{
   let activeStateData = await prisma.User.findMany({
     where: {
       id: req.user.user_id
@@ -362,10 +409,15 @@ app.get('/activeState', ensureAuthenticated, async (req, res) => {
   })
   //console.log(activeStateData)
   res.send(JSON.stringify(activeStateData));
+  }catch(e){
+  console.log(e)
+  res.sendStatus(400)
+  }
 });
 
 //updates the user'c choice of active state in the user table #endpoint
 app.post('/activeStateChange', ensureAuthenticated, urlencodedParser, async (req, res) => {
+  try{
   const jsonObject = req.body;
   const updateUser = await prisma.User.update({
     where: {
@@ -390,10 +442,15 @@ app.post('/activeStateChange', ensureAuthenticated, urlencodedParser, async (req
       socketRunner.sendNotification(io, "disc", req.user.user_id, user.id,"null")
     }
   });
+  }catch(e){
+  console.log(e)
+  res.sendStatus(400)
+  }
 });
 
 //returns chats i.e texts #endpoint
 app.get('/chatData', ensureAuthenticated, async (req, res) => {
+  try{
   let fetchedChat = await prisma.Chat.findMany({
     where: {
       OR: [
@@ -409,10 +466,15 @@ app.get('/chatData', ensureAuthenticated, async (req, res) => {
     }
   })
   res.send(JSON.stringify(fetchedChat))
+  }catch(e){
+  console.log(e)
+  res.sendStatus(400)
+  }
 });
 
 //returns active conversations #endpoint
 app.get('/getChats', ensureAuthenticated, async (req, res) => {
+  try{
   const fetchedChat = await prisma.$queryRaw`
     SELECT 'sent' as chat_type, c.sender, c.receiver, u.*
     FROM public."Chat" c
@@ -425,18 +487,32 @@ app.get('/getChats', ensureAuthenticated, async (req, res) => {
     WHERE c.receiver = ${req.user.uid}
   `
   res.send(JSON.stringify(fetchedChat))
+  }catch(e){
+    console.log(e)
+    res.sendStatus(400)
+  }
 });
 
 
 app.post("/cakeImages", ensureAuthenticated, upload.single('cakeimage'), (req, res) => {
+  try{
   console.log("chat",req.user.user_id)
   cakeHelper.uploadCake(req,res,prisma)
   res.sendStatus(200);
+  }catch(e){
+    console.log(e)
+    res.sendStatus(400)
+  }
 });
 
 app.post("/chat/Images", ensureAuthenticated, upload.single('chatimages'), (req, res) => {
+  try{
   cakeHelper.uploadImage(req,res,prisma)
   res.sendStatus(200);
+  }catch(e){
+    console.log(e)
+    res.sendStatus(400)
+  }
 });
 
 app.get('/getCakesList', async (req, res) => {
@@ -483,7 +559,7 @@ app.post('/adminLogin',ensureAuthenticated, async (req, res) => {
   
 });
 app.get('/adminLogout',ensureAuthenticated, async (req, res) => {
-  
+  try{
   const newUser = await prisma.User.update({
     where:{
       id:req.user.user_id
@@ -492,11 +568,15 @@ app.get('/adminLogout',ensureAuthenticated, async (req, res) => {
     }
   })
   res.sendStatus(200)
-  
+  }catch(e){
+  console.log(e)
+  res.sendStatus(400)
+  }
 });
 
 app.post('/cakeEdit',ensureAuthenticated, async (req, res) => {
   console.log(req.body.data)
+  try{
   const cake = await prisma.Cakes.update({
     where:{
       id:parseInt(req.body.data.id)
@@ -511,16 +591,25 @@ app.post('/cakeEdit',ensureAuthenticated, async (req, res) => {
   }
   })
   res.sendStatus(200)
+  }catch(e){
+    console.log(e)
+    res.sendStatus(400)
+  }
 });
 
 app.post('/cakeDelete',ensureAuthenticated, async (req, res) => {
   console.log(req.body.data)
+  try{
   const cake = await prisma.Cakes.delete({
     where:{
       id:parseInt(req.body.data.id)
     }
   })
   res.sendStatus(200)
+}catch(e){
+  console.log(e)
+  res.sendStatus(400)
+}
 });
 
 socketRunner.execute(io)
