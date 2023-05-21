@@ -47,11 +47,17 @@ carousel img {
   cursor:pointer;
   position: relative;
 }
-.cake-image-card{
-  height:270px;
-  width:270px;
-  cursor:pointer;
+.cake-image-card {
+  height: 270px;
+  width: 270px;
+  cursor: pointer;
   margin-top: 25px;
-  margin-left:62px;
+  margin-left: 62px;
   border-radius: 10px;
+  transition: transform 0.3s ease;
 }
+
+.cake-image-card:hover {
+  transform: scale(1.05);
+}
+
