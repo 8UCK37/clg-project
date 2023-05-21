@@ -137,4 +137,11 @@ export class ItemPageComponent implements OnInit {
       window.location.reload()
     }, 50);
   }
+  onChatClicked() {
+    if (this.userparsed) {
+      this.router.navigate(['chat']);
+    } else {
+      this.messageService.add({ severity: 'info', summary: 'Log In', detail: 'You have to login/signup first to use the chat!!' });
+    }
+  }
 }
