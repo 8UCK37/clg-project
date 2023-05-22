@@ -57,7 +57,7 @@ export class ItemPageComponent implements OnInit {
     ]
     this.route.queryParams.subscribe(async params => {
       this.itemId = params['item_id'];
-      console.log(this.itemId)
+      //console.log(this.itemId)
       this.getcakeById()
       this.getCakesList()
     });
@@ -73,16 +73,16 @@ export class ItemPageComponent implements OnInit {
 
   getcakeById(){
     axios.post('getCakeById',{cakeId:this.itemId}).then(res => {
-      console.log(res.data)
+      //console.log(res.data)
       this.cake=res.data
     }).catch(err=>console.log(err))
   }
   getCakesList(){
     axios.get('getCakesList').then(res => {
-      console.log(res.data)
+      //console.log(res.data)
       this.cakes=res.data
       this.selectRandomElements(this.cakes,4)
-      console.log(this.rndCake)
+      //console.log(this.rndCake)
     }).catch(err=>console.log(err))
   }
   selectRandomElements(array: any[], count: number) {
@@ -111,7 +111,7 @@ export class ItemPageComponent implements OnInit {
 
     if(this.cart.length!=0){
       if(this.cart.find(element => element.id === this.cake.id)){
-        console.log('present')
+        //console.log('present')
         this.cart.find(element => element.id === this.cake.id).quantity+=1
       }else{
         this.cake.quantity=1

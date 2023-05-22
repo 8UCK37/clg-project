@@ -86,7 +86,7 @@ export class ItemCartComponent implements OnInit {
 
             }
           });
-          console.log(this.cart)
+          //console.log(this.cart)
           this.getTotalPrice()
           this.upDateCartInformation()
         });
@@ -125,11 +125,11 @@ export class ItemCartComponent implements OnInit {
   async select(){
     await axios.post('addToCart',{data: this.cart}).then(res=>{
     }).catch(err=>console.log(err))
-    console.log(this.cart)
+    //console.log(this.cart)
   }
   async checkOut(){
     if(this.info){
-    console.log("checkedout")
+    //console.log("checkedout")
     await axios.post('checkout',{items: this.cart,request:this.requests,date:this.date}).then(res=>{
     }).catch(err=>console.log(err))
     this.cart=[]
@@ -155,7 +155,7 @@ export class ItemCartComponent implements OnInit {
   }
   getUserInfo(){
     axios.post('getUserInfo',{id:this.userparsed.id}).then(res => {
-      console.log(res.data)
+      //console.log(res.data)
       this.info=res.data.userInfo
     }).catch(err=>console.log(err))
   }

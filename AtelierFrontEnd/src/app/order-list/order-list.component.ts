@@ -58,9 +58,9 @@ export class OrderListComponent implements OnInit {
         }
 
       });
-      console.log(this.orderList)
-      console.log(this.orderHistory)
-      console.log(this.orderPending)
+      //console.log(this.orderList)
+      //console.log(this.orderHistory)
+      //console.log(this.orderPending)
     }).catch(err=>console.log(err))
   }
   utcToLocal(utcTime:any){
@@ -70,7 +70,7 @@ export class OrderListComponent implements OnInit {
   incNotification() {
     this.incomingNotiSubscription = this.socketService.getIncomingNoti().subscribe((data) => {
       this.recData = typeof data === 'string' ? JSON.parse(data) : data;
-      console.log(this.recData);
+      //console.log(this.recData);
       if(this.recData.notification=='orderUpdate'){
         this.getOrders()
       }

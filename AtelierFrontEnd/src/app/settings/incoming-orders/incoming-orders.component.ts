@@ -42,7 +42,7 @@ export class IncomingOrdersComponent implements OnInit {
       this.orderHistory=[]
       this.orderPending=[]
     axios.get('getOrders').then(res=>{
-    console.log(res.data)
+    //console.log(res.data)
      this.orderList=res.data
      this.orderList.forEach((order: any) => {
        order.total=0
@@ -55,9 +55,9 @@ export class IncomingOrdersComponent implements OnInit {
          this.orderPending.push(order)
        }
      });
-     console.log(this.orderList)
-     console.log(this.orderHistory)
-     console.log(this.orderPending)
+     //console.log(this.orderList)
+     //console.log(this.orderHistory)
+     //console.log(this.orderPending)
    }).catch(err=>console.log(err))
  }
   updateOrderStatus(order:any){

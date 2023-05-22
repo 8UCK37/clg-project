@@ -60,7 +60,7 @@ export class AddCakeComponent implements OnInit {
     //console.log(this.input.nativeElement.files[0])
 
     if(this.input.nativeElement.files[0]!=null){
-      console.log("not null")
+      //console.log("not null")
       let type = this.input.nativeElement.files[0].type
       if(type != "image/jpeg" && type != "image/jpg"){
         alert("wrong image type please upload jpg or Jpeg")

@@ -27,12 +27,12 @@ export class StorePageComponent implements OnInit {
     this.route.queryParams.subscribe(async params => {
       if (Object.keys(params).length === 0) {
         // No query parameters
-        console.log('No query parameters found');
+        //console.log('No query parameters found');
           this.getCakesList();
         // Handle the case of no query parameters
       } else {
         this.searchTerm = params['search'];
-        console.log(this.searchTerm);
+        //console.log(this.searchTerm);
         this.searchCakes();
       }
     });
@@ -50,7 +50,7 @@ export class StorePageComponent implements OnInit {
         this.header='No matching results found for "'+this.searchTerm+' Cakes" ,you can try these instead '
         this.getCakesList();
       }
-      console.log(this.searchResults)
+      //console.log(this.searchResults)
     }).catch(err=>console.log(err))
     }
 
@@ -68,9 +68,9 @@ export class StorePageComponent implements OnInit {
   }
   onHover(flavor: string) {
     // Perform additional actions when hovering over the buttons
-    console.log('Hovering over', flavor);
+    //console.log('Hovering over', flavor);
     axios.post('searchCakes',{searchTerm: flavor}).then(res=>{
-      console.log(res.data)
+      //console.log(res.data)
       this.hoverUrl=res.data[0]?.photoUrl
     }).catch(err=>console.log(err))
   }
@@ -95,12 +95,12 @@ export class StorePageComponent implements OnInit {
 
         break;
     }
-    console.log(this.searchResults)
-    console.log(this.filteredResults)
+    //console.log(this.searchResults)
+    //console.log(this.filteredResults)
   }
   sortByTags(){
     this.filteredResults=this.searchResults.filter((obj) => obj.tags.includes(this.selectedTag.toLowerCase()))
-    console.log(this.searchResults)
-    console.log(this.filteredResults)
+    //console.log(this.searchResults)
+    //console.log(this.filteredResults)
   }
 }

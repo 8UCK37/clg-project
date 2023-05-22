@@ -32,7 +32,7 @@ const storage = multer.memoryStorage({
     cb(null, path.join(__dirname + './../../public/profilePicture'))
   },
   filename: function (req, file, cb) {
-    console.log(req.user)
+    //console.log(req.user)
     const uniqueSuffix = req.user.user_id
     cb(null, uniqueSuffix + '.' + 'jpg')
   }
@@ -68,7 +68,7 @@ app.use('/static', express.static(__dirname + '/../../public'));
 //saves a new user #endpoint
 app.post('/saveuser', ensureAuthenticated, async function (req, res) {
   try{
-  console.log("/saveuser called")
+  //console.log("/saveuser called")
   const fetchUser = await prisma.User.findUnique({
     where: {
       id: req.user.user_id
@@ -89,11 +89,11 @@ app.post('/saveuser', ensureAuthenticated, async function (req, res) {
       },
     })
 
-    console.log("new user created db updated", newUser)
+    //"new user created db updated", newUser)
     // res.statusCode = 201
     res.send(JSON.stringify(newUser))
   } else {
-    console.log("user exists")
+    //console.log("user exists")
     // res.statusCode(200)
     res.send(JSON.stringify(fetchUser))
   }
@@ -133,7 +133,7 @@ app.put('/updateUserInfo', ensureAuthenticated, async (req, res) => {
         userInfo:true
       }
     })
-    console.log(userData)
+    //console.log(userData)
     res.send(JSON.stringify(userData));
   }
   catch(e){
@@ -170,7 +170,7 @@ app.post("/saveUserInfo" , ensureAuthenticated , async (req , res)=>{
 })
 //updates displayname of the user #endpoint
 app.post('/userNameUpdate', ensureAuthenticated, urlencodedParser, async (req, res) => {
-  console.log(req.body.name);
+  //console.log(req.body.name);
   try{
   const updateUserName = await prisma.User.update({
     where: {
@@ -208,8 +208,8 @@ app.get("/userList", ensureAuthenticated, async (req, res) => {
 //TODO:testing function for notification #endpoint
 app.post("/sendNoti", ensureAuthenticated, async (req, res) => {
   try{
-  console.log(req.user.user_id);
-  console.log(req.body.receiver_id);
+  //console.log(req.user.user_id);
+  //console.log(req.body.receiver_id);
   socketRunner.sendNotification(io, "poke", req.user.user_id, req.body.receiver_id,"null")
   res.sendStatus(200);
   }catch(e){
@@ -219,7 +219,7 @@ app.post("/sendNoti", ensureAuthenticated, async (req, res) => {
 });
 //testing endpoint with no ensureauth
 app.get("/micCheck", async (req, res) => {
-  console.log("mic-check hit")
+  //console.log("mic-check hit")
   res.send("works");
 });
 
@@ -266,7 +266,7 @@ app.post('/searchCakes', urlencodedParser, async function (req, res) {
 
 app.post('/addToCart', ensureAuthenticated, async function (req, res) {
   try{
-  console.log(req.body.data)
+  //console.log(req.body.data)
   const cart=await prisma.Cart.upsert({
     where:{
       userId:req.user.user_id
@@ -286,7 +286,7 @@ app.post('/addToCart', ensureAuthenticated, async function (req, res) {
 });
 app.get('/getCart', ensureAuthenticated, async function (req, res) {
   try{
-  console.log(req.body.data)
+  //console.log(req.body.data)
   const cart=await prisma.Cart.findUnique({
     where:{
       userId:req.user.user_id
@@ -301,7 +301,7 @@ app.get('/getCart', ensureAuthenticated, async function (req, res) {
 
 app.post('/checkout', ensureAuthenticated, async function (req, res) {
   try{
-  console.log(req.body)
+  //console.log(req.body)
   let order = await prisma.Orders.create({
     data:{
       userId:req.user.user_id,
@@ -374,7 +374,7 @@ app.post('/updateOrderStatus', ensureAuthenticated, async function (req, res) {
         
       return { user };
     });
-    console.log(result)
+    //console.log(result)
     const data={msg:"Your order's status has been updated",orderId:result.user.id,currentStatus:req.body.status}
     socketRunner.sendNotification(io, "orderUpdate", req.user.user_id, result.user.userId,data)
     res.sendStatus(200)
@@ -496,7 +496,7 @@ app.get('/getChats', ensureAuthenticated, async (req, res) => {
 
 app.post("/cakeImages", ensureAuthenticated, upload.single('cakeimage'), (req, res) => {
   try{
-  console.log("chat",req.user.user_id)
+  //"chat",req.user.user_id)
   cakeHelper.uploadCake(req,res,prisma)
   res.sendStatus(200);
   }catch(e){
@@ -543,7 +543,7 @@ app.post('/getCakeById', async (req, res) => {
 });
 
 app.post('/adminLogin',ensureAuthenticated, async (req, res) => {
-  console.log(req.body.password)
+  //console.log(req.body.password)
   if(req.body.password=='161198'){
   const newUser = await prisma.User.update({
     where:{
@@ -575,7 +575,7 @@ app.get('/adminLogout',ensureAuthenticated, async (req, res) => {
 });
 
 app.post('/cakeEdit',ensureAuthenticated, async (req, res) => {
-  console.log(req.body.data)
+  //req.body.data)
   try{
   const cake = await prisma.Cakes.update({
     where:{
@@ -598,7 +598,7 @@ app.post('/cakeEdit',ensureAuthenticated, async (req, res) => {
 });
 
 app.post('/cakeDelete',ensureAuthenticated, async (req, res) => {
-  console.log(req.body.data)
+  //console.log(req.body.data)
   try{
   const cake = await prisma.Cakes.delete({
     where:{

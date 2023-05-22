@@ -26,12 +26,12 @@ export class SettingsComponent implements OnInit {
     this.route.queryParams.subscribe(async params => {
       if (Object.keys(params).length === 0) {
         // No query parameters
-        console.log('No query parameters found');
+        //console.log('No query parameters found');
 
         // Handle the case of no query parameters
       } else {
         this.tab = params['tab'];
-        console.log(this.tab)
+        //console.log(this.tab)
       }
     });
     this.userService.userCast.subscribe(usr=>{
@@ -72,35 +72,35 @@ export class SettingsComponent implements OnInit {
 
     // Validate phoneno
     if (!phonenoPattern.test(this.info.Phoneno)) {
-      console.log('Invalid phoneno');
+      //console.log('Invalid phoneno');
       this.messageService.add({ severity: 'warn', summary: 'Invalid phoneno', detail: "Phone no must be 10 digits and only numbers" });
       return;
     }
     // Validate locality
     if (!localityPattern.test(this.info.Locality)) {
-      console.log('Invalid locality');
+      //console.log('Invalid locality');
       this.messageService.add({ severity: 'warn', summary: 'Invalid locality', detail: "Locality can't contain special characters" });
       return;
     }
     // Validate landmark
     if (!landmarkPattern.test(this.info.Landmark)) {
-      console.log('Invalid landmark');
+      //console.log('Invalid landmark');
       this.messageService.add({ severity: 'warn', summary: 'Invalid Landmark', detail: "Landmark can't contain special characters" });
       return;
     }
     // Validate address
     if (!addressPattern.test(this.info.Address)) {
-      console.log('Invalid address');
+      //console.log('Invalid address');
       this.messageService.add({ severity: 'warn', summary: 'Invalid Address', detail: "Address can't contain special characters other than / or , " });
       return;
     }
     // Validate zipcode
     if (!zipcodePattern.test(this.info.zipcode)) {
-      console.log('Invalid zipcode');
+      //console.log('Invalid zipcode');
       this.messageService.add({ severity: 'warn', summary: 'Invalid zipcode', detail: "Zipcode must be a 6 digit number" });
       return;
     }
-    console.log(this.info)
+    //console.log(this.info)
     this.messageService.add({ severity: 'info',detail: "Be patient!!" , summary: 'Waiting for database to update'})
     axios.post('/saveUserInfo', {Locality:this.info.Locality,zipcode:this.info.zipcode,Address:this.info.Address,Landmark:this.info.Landmark,Phoneno:this.info.Phoneno}).then(res=>{
       this.messageService.add({ severity: 'success', summary: 'Contact info Successfully Updated', detail: "Enjoy!!" })
@@ -116,10 +116,10 @@ export class SettingsComponent implements OnInit {
     }).catch(err=>{
       if (err.response && err.response.status === 420) {
         this.messageService.add({ severity: 'error', summary: 'incorrect password', detail: "Please do not try to log in if you are not an admin!!" })
-        console.log('Error: Custom handling for status code 420');
+        //console.log('Error: Custom handling for status code 420');
       } else {
         // Handle other errors or display a generic error message
-        console.log('Error:', err);
+        //console.log('Error:', err);
       }
     })
   }

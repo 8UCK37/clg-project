@@ -36,11 +36,11 @@ export class ChatServicesService {
       }
   }
   send(msg: object){
-    console.log("sending this msg : " + msg);
+    //console.log("sending this msg : " + msg);
     this.socket.emit('my message', msg);
   }
   sendNoti(noti:object){
-    console.log("sending this noti : " + noti);
+    //console.log("sending this noti : " + noti);
     this.socket.emit('notification', noti);
   }
   getIncomingMsg() {

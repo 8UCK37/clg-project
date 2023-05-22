@@ -43,7 +43,7 @@ export class CakeComponent implements OnInit {
       this.cart= cart;
 
     });
-    
+
   }
 
   utcToLocal(utcTime: any) {
@@ -58,7 +58,7 @@ export class CakeComponent implements OnInit {
   async addTocart(){
     if(this.cart.length!=0){
       if(this.cart.find(element => element.id === this.cake.id)){
-        console.log('present')
+        //console.log('present')
         this.cart.find(element => element.id === this.cake.id).quantity+=1
       }else{
         this.cake.quantity=1

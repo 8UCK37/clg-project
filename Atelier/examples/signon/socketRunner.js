@@ -29,7 +29,7 @@ async function execute(io){
           })
           
         }catch(err){
-            console.log("probs new user")
+            console.log(err)
           }
           
         });
@@ -47,7 +47,7 @@ async function execute(io){
           socketUserMap.delete(socket.id)
           
         }catch(err){
-          console.log("probs new user disc lol")
+          console.log(err)
         }
         });
         

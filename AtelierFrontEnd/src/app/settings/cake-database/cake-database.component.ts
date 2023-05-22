@@ -43,14 +43,14 @@ export class CakeDatabaseComponent implements OnInit {
     }).catch(err=>console.log(err))
   }
   editCake(cake:any){
-    console.log(cake)
+    //console.log(cake)
     this.messageService.add({ severity: 'success', summary: 'The entry was updated', detail: "The entry with id: "+cake.id.toString()+" was updated successfully" })
     axios.post('cakeEdit',{data:cake}).then(res => {
       //console.log(res.data)
     }).catch(err=>console.log(err))
   }
   deleteCake(cake:any){
-    console.log(cake)
+    //console.log(cake)
     this.messageService.add({ severity: 'info', summary: 'The entry was deleted', detail: "The entry with id: "+cake.id.toString()+" was deleted successfully" })
     // axios.post('cakeEdit',{data:cake}).then(res => {
     axios.post('cakeDelete',{data:cake}).then(res => {

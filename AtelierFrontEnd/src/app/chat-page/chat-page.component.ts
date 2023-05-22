@@ -71,7 +71,6 @@ export class ChatPageComponent implements OnInit {
     if(this.toggleButton?.nativeElement!=null && this.menu?.nativeElement!=null){
 
         if(e.target !== this.toggleButton.nativeElement && e.target!==this.menu.nativeElement){
-          console.log("mussssssssssss")
           this.showEmojiPicker = false
         }
       }
@@ -91,7 +90,7 @@ export class ChatPageComponent implements OnInit {
       this.route.queryParams.subscribe(async params => {
         if (Object.keys(params).length === 0) {
           // No query parameters
-          console.log('No query parameters found');
+          //console.log('No query parameters found');
           this.getActiveConvo()
           setTimeout(() => {
             this.onclick(this.activeConvList[0])
@@ -106,9 +105,9 @@ export class ChatPageComponent implements OnInit {
           // Handle the case of no query parameters
         } else {
           this.userFromOrder = params['order'];
-          console.log(this.userFromOrder);
+          //console.log(this.userFromOrder);
           axios.get('userList').then(res=>{
-            console.log(res.data)
+            //console.log(res.data)
             //console.log(res.data.filter((obj: { id: any; }) => obj.id == this.userFromOrder))
             this.onclick(res.data.filter((obj: { id: any; }) => obj.id == this.userFromOrder)[0])
           }).catch(err=>console.log(err))
@@ -226,7 +225,7 @@ export class ChatPageComponent implements OnInit {
     }
 
     onclick(frnd:any){
-      console.log(frnd)
+      //console.log(frnd)
       this.values='';
       this.fetchChatData(frnd?.id);
       this.selectedFrndId=frnd?.id;
@@ -257,7 +256,7 @@ export class ChatPageComponent implements OnInit {
     incMsg(){
       this.incomingDataSubscription = this.socketService.getIncomingMsg().subscribe((data) => {
         const recData = typeof data === 'string' ? JSON.parse(data) : data;
-        console.log(recData);
+        //console.log(recData);
         this.allMsgs.push({sender:recData.sender,rec:true,msg:recData.msg,time:this.getLocalTime(),photo:recData.photo});
         if(recData.sender==this.selectedFrndId){
         this.scrollToBottom();
@@ -292,7 +291,7 @@ export class ChatPageComponent implements OnInit {
       const uniqueConvId:any=[];
       const uniqueConv:any=[];
       axios.get('getChats').then(res=>{
-        console.log(res.data)
+        //console.log(res.data)
         res.data.forEach((data: any)=> {
 
          if(data.chat_type=='received'){
@@ -310,22 +309,22 @@ export class ChatPageComponent implements OnInit {
          }
          });
          this.activeConvList = uniqueConv
-         console.log(this.activeConvList)
+         //console.log(this.activeConvList)
         });
 
     }
 
 
     toggleEmojiPicker() {
-      console.log(this.showEmojiPicker);
+      //console.log(this.showEmojiPicker);
         this.showEmojiPicker = !this.showEmojiPicker;
     }
 
     addEmoji(event:any) {
-      console.log(this.message)
+      //console.log(this.message)
       const { message } = this;
-      console.log(message);
-      console.log(`${event.emoji.native}`)
+      //console.log(message);
+      //console.log(`${event.emoji.native}`)
       const text = `${message}${event.emoji.native}`;
 
       this.values += text;
@@ -333,10 +332,10 @@ export class ChatPageComponent implements OnInit {
     }
 
     sendnoti(frndid:any){
-      console.log("test clicked : "+frndid)
+      //console.log("test clicked : "+frndid)
       // this.socketService.sendNoti({sender:this.userparsed.uid,receiver:frndid,noti:"test notification"})
       axios.post('sendNoti',{receiver_id:frndid}).then(res=>{
-        console.log(res.data);
+        //console.log(res.data);
      }).catch(err=>console.log(err))
     }
     previewImage() {
