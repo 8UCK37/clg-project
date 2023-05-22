@@ -13,7 +13,7 @@
   </div>
   <div style="display: flex;flex-direction: column;height:auto;border:2px solid red;
   border-radius: 5px;
-  overflow-y: auto;">
+  overflow-y: auto;min-height: 30rem;">
   <ng-container *ngFor="let item of cart;let i = index" >
     <div class="product">
       <div class="product-image">
@@ -32,7 +32,7 @@
       </div>
       <div class="product-price">{{item.price}}</div>
       <div class="product-quantity">
-        <input type="number" [(ngModel)]="item.quantity" min="1" (click)="changeQuantity()">
+        <input type="number" [(ngModel)]="item.quantity" (keydown)="onKeyDown($event,i)" min="1" (click)="changeQuantity()">
       </div>
       <div class="product-removal" (click)="removeItem(i)">
         <button class="remove-product">
@@ -42,12 +42,12 @@
       <div class="product-line-price">{{item.quantity*item.price}}</div>
     </div>
   </ng-container>
-  <div style="display: flex;">
+  <div style="display: flex;min-width: 55rem;">
   <span class="p-float-label">
     <textarea id="float-input" [(ngModel)]="requests" rows="5" cols="30" pInputTextarea></textarea>
     <label for="float-input">Special requests if any!!</label>
   </span>
-  <div style="margin-left: 900px;">
+  <div style="margin-left: 150px;">
     <p-calendar [(ngModel)]="date" dateFormat="dd/mm/yy" [minDate]="minDate" [maxDate]="maxDate" [readonlyInput]="true" placeholder="Select Delivery Date"></p-calendar>
   </div>
 </div>

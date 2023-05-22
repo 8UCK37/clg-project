@@ -159,4 +159,11 @@ export class ItemCartComponent implements OnInit {
       this.info=res.data.userInfo
     }).catch(err=>console.log(err))
   }
+  onKeyDown(event: KeyboardEvent,i:any): void {
+    if (event.key === '0') {
+      this.messageService.add({ severity: 'info', summary: 'Removed item', detail: "If you set the quantity to zero!!the item will be removed" });
+      event.preventDefault();
+      this.removeItem(i)
+    }
+  }
 }
