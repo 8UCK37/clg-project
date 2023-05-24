@@ -126,10 +126,12 @@ export class PrimaryHomePageComponent implements OnInit {
     return Number((Math.random() * (max - min) + min).toFixed(1));
   }
   onChatClicked() {
+   
     if (this.userparsed) {
       this.router.navigate(['chat']);
     } else {
-      this.messageService.add({ severity: 'info', summary: 'Log In', detail: 'You have to login/signup first to use the chat!!' });
+      //this.messageService.add({ severity: 'info', summary: 'Log In', detail: 'You have to login/signup first to use the chat!!' });
+      alert('You have to login/signup first to use the chat!!')
     }
   }
 }
